@@ -3,6 +3,7 @@ import MainPage from "../../pages/main-page/main-page";
 import LoginPage from "../../pages/login-page/login-page";
 import SettingsPage from "../../pages/settings-page/settings-page";
 import {AppRoute} from "../../constans";
+import "../../scss/main.scss";
 
 function App(): JSX.Element {
   return (

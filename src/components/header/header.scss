@@ -1,12 +1,14 @@
+@import "./src/scss/all";
+
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #0e3c10;
-  border: 4px solid #97dc99;
+  border: 4px solid $green-light;
   border-radius: 15px;
-  color: #fff;
+  background-color: $green;
+  color: $white;
 }
 
 .header-title {

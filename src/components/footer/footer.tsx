@@ -9,7 +9,7 @@ function Footer(): JSX.Element {
         <div className="footer-creator">
           <h2 className="">Developed by:</h2>
           {
-            DEVELOPERS.map((link) => (<DeveloperInfo name={link.name} linkPath={link.linkPath}/>))
+            DEVELOPERS.map((link) => (<DeveloperInfo key={link.name} name={link.name} linkPath={link.linkPath}/>))
           }
         </div>
         <p className="footer-copyright">All rights reserved © 2023</p>
