@@ -8,6 +8,7 @@ function Header(): JSX.Element {
         <h2 className='header-title'>Froggy css game</h2>
         <ul className='header-menu'>
           <li><Link to={AppRoute.Main}>Main page</Link></li>
+          <li><Link to={AppRoute.Game}>Game</Link></li>
           <li><Link to={AppRoute.Settings}>Settings</Link></li>
         </ul>
       </header>
