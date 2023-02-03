@@ -7,10 +7,13 @@ function Footer(): JSX.Element {
     <footer className="footer">
       <div className="footer-block">
         <div className="footer-creator">
-          <h2 className="">Developed by:</h2>
-          {
-            DEVELOPERS.map((link) => (<DeveloperInfo name={link.name} linkPath={link.linkPath}/>))
-          }
+          <h2>Developed by:</h2>
+          <ul className="dev-list">
+            {
+              DEVELOPERS.map((link) => (<DeveloperInfo key={link.name} name={link.name} linkPath={link.linkPath}/>))
+            }
+          </ul>
+
         </div>
         <p className="footer-copyright">All rights reserved © 2023</p>
         <a className="footer-link" href="https://rs.school/js/">
