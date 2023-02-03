@@ -1,0 +1,105 @@
+@import "./src/scss/all";
+
+.login {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 50px 0 170px;
+  margin: 0 auto;
+  background-image: linear-gradient(to right, #fff 651px, transparent 740px), url("../../../public/images/frog-bg-4.jpg");
+  background-position: top left,right top;
+  background-size: auto,auto 100%;
+  background-repeat: no-repeat,no-repeat;
+}
+
+.login-form {
+  position: relative;
+  height: calc(100vh - 154px);
+  width: 520px;
+  box-sizing: border-box;
+  padding: 20px 0;
+
+  &:after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 150px;
+    bottom: 0;
+    right: -12%;
+    background-color: $white;
+    border-right: 6px solid $green-light;
+    transform: skew(-6.5deg);
+  }
+}
+
+.form {
+  width: 345px;
+  z-index: 1;
+  padding: 20px;
+  border: 2px solid $green;
+  border-radius: 6px;
+}
+
+.login-title {
+  margin: 0 0 16px 0;
+  font-size: 40px;
+  line-height: 38px;
+  color: $green;
+}
+
+.form-label {
+  margin-bottom: 12px;
+  font-size: 22px;
+  line-height: 20px;
+  color: $green;
+
+  span {
+    font-size: 16px;
+    color: $gray;
+  }
+}
+
+.form-block {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid $green;
+}
+
+.form-submit {
+  width: 100%;
+  padding: 10px;
+  background-color: $green;
+  color: $white;
+  font-size: 18px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    color: $green;
+    background-color: $green-light;
+  }
+}
+
+.login-bg-block {
+  height: 100%;
+  width: 50%;
+}
+
+.error {
+  padding-top: 5px;
+  color: $red;
+  font-size: 15px;
+}
