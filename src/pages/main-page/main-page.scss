@@ -1,0 +1,55 @@
+@import "./src/scss/all";
+
+.main {
+  height: calc(100vh - 154px);
+  background-image: url("../../../public/images/frog-bg-3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.main-content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 20px 15px  15px;
+
+
+  p {
+    margin: 0 0 20px 0;
+    font-size: 26px;
+    line-height: 38px;
+  }
+
+  h2 {
+    margin: 0 0 20px 0;
+    color: $green;
+    text-transform: uppercase;
+  }
+}
+
+.game-description {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-left: 30px;
+  padding-right: 30px;
+
+  a {
+    width: 250px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    background-color: $green;
+    color: $white;
+    font-size: 26px;
+    text-decoration: none;
+    text-transform: uppercase;
+    border-radius: 8px;
+  }
+
+  a:hover {
+    color: $green;
+    background-color: $green-light;
+  }
+}
