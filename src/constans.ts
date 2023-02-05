@@ -28,3 +28,20 @@ export const ERROR_MESSAGE = {
   EMAIL: 'Invalid e-mail',
   PASSWORD: 'Should contain min 6 symbols',
 };
+
+export enum AuthorizationStatus {
+  Auth = 'AUTH',
+  NoAuth = 'NO_AUTH',
+  Unknown = 'UNKNOWN'
+}
+
+export enum APIRoute {
+  Login = '/login',
+  CheckAuth = '/check-auth',
+  Registration = '/register',
+}
+
+export enum NameSpace {
+  Game = 'GAME',
+  User = 'USER',
+}
