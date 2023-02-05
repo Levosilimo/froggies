@@ -25,11 +25,15 @@
   align-items: center;
   justify-content: space-between;
 
-  a {
+  li {
     margin-left: 20px;
     font-size: 22px;
-    color: #ffffff;
-    text-decoration: none;
+    cursor: pointer;
+
+    a {
+      color: #ffffff;
+      text-decoration: none;
+    }
 
     &:hover {
       text-decoration: underline;

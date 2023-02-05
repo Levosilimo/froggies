@@ -3,11 +3,13 @@ import Header from "../../components/header/header";
 import {AppRoute} from "../../constans";
 import {Link} from "react-router-dom";
 import "./main-page.scss";
+import SettingsWindow from "../settings-page/settings-window";
 
 function MainPage () {
   return (
     <div className="page page-main">
       <Header/>
+      <SettingsWindow/>
       <main className="main">
         <section className="main-content">
           <div className="game-description">

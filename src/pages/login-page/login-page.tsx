@@ -3,6 +3,7 @@ import Header from "../../components/header/header";
 import "./login-page.scss";
 import { useForm } from 'react-hook-form';
 import {ERROR_MESSAGE, MAIL_REG_EXP} from "../../constans";
+import SettingsWindow from "../settings-page/settings-window";
 
 type FormData = {
   userName: string;
@@ -18,6 +19,7 @@ function LoginPage () {
   return (
     <div className="page page-login">
       <Header/>
+      <SettingsWindow/>
       <section className="login">
         <div className="login-form">
           <h1 className="login-title">Sign in</h1>
