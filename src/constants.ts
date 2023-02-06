@@ -20,7 +20,6 @@ export const DEVELOPERS = [
   }
 ];
 
-
 export const MAIL_REG_EXP = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
 
 export const ERROR_MESSAGE = {
@@ -28,3 +27,5 @@ export const ERROR_MESSAGE = {
   EMAIL: 'Invalid e-mail',
   PASSWORD: 'Should contain min 6 symbols',
 };
+
+export const serverURL = 'https://rsclone-backend.adaptable.app'

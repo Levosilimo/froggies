@@ -1,4 +1,5 @@
 import React, { ChangeEvent, useContext, useState } from "react";
+import { serverURL } from "../../constants";
 import { settingContext } from "../../context";
 import "./setting-window.scss";
 
@@ -12,7 +13,7 @@ function SettingsWindow(): JSX.Element {
   }
 
   const defaultSet: {theme: string, language: string, volume: string} = {
-    language: `${localStorage.getItem('language') || 'en'}`,
+    language: `${localStorage.getItem('language') || 'en_us'}`,
     theme: `${localStorage.getItem('theme') || 'green'}`,
     volume: `${localStorage.getItem('volume') || '50'}`,
   }
@@ -24,13 +25,13 @@ function SettingsWindow(): JSX.Element {
   const changeLanguage = (e: ChangeEvent) => {
     const currentLanguage = (e.target as HTMLInputElement).value
     setLanguage(currentLanguage);
-    localStorage.setItem('language', currentLanguage);
+    updateUserData({language: currentLanguage});
   }
 
   const changeTheme = (e: ChangeEvent) => {
     const currentTheme = (e.target as HTMLInputElement).value
     setTheme(currentTheme);
-    localStorage.setItem('theme', currentTheme);
+    // localStorage.setItem('theme', currentTheme);
   }
 
   const changeVolume = (e: ChangeEvent) => {
@@ -39,23 +40,45 @@ function SettingsWindow(): JSX.Element {
     localStorage.setItem('volume', currentVolume);
   }
 
+  type UpdateBody = {
+    language?: "en_us" | "es_es" | "ru" | "uk" | string;
+    levelFlexbox?: number;
+  }
+
+  async function updateUserData(preferences: UpdateBody): Promise<UpdateBody> {
+    const response = await fetch(`${serverURL}/user`, {
+      method: 'PATCH',
+      body: JSON.stringify(preferences),
+      headers: {
+        'Content-type': 'application/json',
+        // 'x-access-token': `${token}`,
+      },
+    });
+    const resBody: UpdateBody = await response.json();
+    return resBody;
+  }
+
   return (
     <div onClick={() => setIsVisible(false)} className={currentClass.join(' ')}>
-      <div className="overlay">
+      <div className="overlay" >
+        <div className="close">
+          <span className="close__line_toLeft">|</span>
+          <span className="close__line_toRight">|</span>
+        </div>
           <ul onClick={(e) => e.stopPropagation()} className="setting-list">
             <li className="language setting-list__item">
               <h3 className="title">Language:</h3>
               <label>
                 <input
-                  className={`language__input ${language ===  'en' ? 'active' : null}`}
-                  hidden type="radio" name="language" id="en" value="en" defaultChecked
+                  className={`language__input ${language ===  'en_us' ? 'active' : ''}`}
+                  hidden type="radio" name="language" id="en" value="en_us" defaultChecked
                   onChange={changeLanguage}
                 />
                 <span className="flag-en"></span>
               </label>
               <label>
                 <input
-                  className={`language__input ${language ===  'ru' ? 'active' : null}`}
+                  className={`language__input ${language ===  'ru' ? 'active' : ''}`}
                   hidden type="radio" name="language" id="ru" value="ru"
                   onChange={changeLanguage}
                 />
@@ -63,7 +86,7 @@ function SettingsWindow(): JSX.Element {
               </label>
               <label>
                 <input
-                  className={`language__input ${language ===  'ua' ? 'active' : null}`}
+                  className={`language__input ${language ===  'ua' ? 'active' : ''}`}
                   hidden type="radio" name="language" id="ua" value="ua"
                   onChange={changeLanguage}
                   />
@@ -71,8 +94,8 @@ function SettingsWindow(): JSX.Element {
               </label>
               <label>
                 <input
-                  className={`language__input ${language ===  'es' ? 'active' : null}`}
-                  hidden type="radio" name="language" id="es" value="es"
+                  className={`language__input ${language ===  'es_es' ? 'active' : ''}`}
+                  hidden type="radio" name="language" id="es" value="es_es"
                     onChange={changeLanguage}
                   />
                 <span className="flag-es"></span>
@@ -94,7 +117,7 @@ function SettingsWindow(): JSX.Element {
               <h3 className="title">Theme:</h3>
               <label>
                 <input
-                  className={`theme__input ${theme ===  'green' ? 'active' : null}`}
+                  className={`theme__input ${theme ===  'green' ? 'active' : ''}`}
                   hidden type="radio" name="theme" id="green" value="green" defaultChecked
                   onChange={changeTheme}
                 />
@@ -102,7 +125,7 @@ function SettingsWindow(): JSX.Element {
                 </label>
               <label>
                 <input
-                  className={`theme__input ${theme ===  'red' ? 'active' : null}`}
+                  className={`theme__input ${theme ===  'red' ? 'active' : ''}`}
                   hidden type="radio" name="theme" id="red" value="red"
                   onChange={changeTheme}
                 />
@@ -110,7 +133,7 @@ function SettingsWindow(): JSX.Element {
               </label>
               <label>
               <input
-                className={`theme__input ${theme ===  'yellow' ? 'active' : null}`}
+                className={`theme__input ${theme ===  'yellow' ? 'active' : ''}`}
                 hidden type="radio" name="theme" id="yellow" value="yellow"
                 onChange={changeTheme}
                 />

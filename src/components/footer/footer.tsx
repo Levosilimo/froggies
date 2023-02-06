@@ -1,6 +1,6 @@
 import './footer.scss';
 import DeveloperInfo from "../developer-info/developer-info";
-import {DEVELOPERS} from "../../constans";
+import {DEVELOPERS} from "../../constants";
 
 function Footer(): JSX.Element {
   return  (

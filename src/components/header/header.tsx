@@ -1,6 +1,6 @@
 import './header.scss';
 import {Link} from "react-router-dom";
-import {AppRoute} from "../../constans";
+import {AppRoute} from "../../constants";
 import { useContext } from 'react';
 import { settingContext } from '../../context';
 
@@ -15,7 +15,7 @@ function Header(): JSX.Element {
           <li><Link to={AppRoute.Main}>Main page</Link></li>
           <li><Link to={AppRoute.Login}>Login</Link></li>
           <li><Link to={AppRoute.Game}>Game</Link></li>
-          <li onClick={() => setIsVisible(true)}>Settings</li>
+          <li onClick={() => setIsVisible(true)}><img className="gear" src="../../../images/gear.png" alt="settings"/></li>
         </ul>
       </header>
   )

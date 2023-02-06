@@ -2,7 +2,7 @@ import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
 import "./login-page.scss";
 import { useForm } from 'react-hook-form';
-import {ERROR_MESSAGE, MAIL_REG_EXP} from "../../constans";
+import {ERROR_MESSAGE, MAIL_REG_EXP} from "../../constants";
 import SettingsWindow from "../settings-page/settings-window";
 
 type FormData = {
