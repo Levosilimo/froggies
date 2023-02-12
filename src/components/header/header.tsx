@@ -4,12 +4,13 @@ import {AppRoute, AuthorizationStatus} from "../../constans";
 import {useAppSelector} from "../../hooks";
 import {getUserData} from "../../services/local-storage";
 import {store} from "../../store";
-import {getAuthorizationStatus} from "../../store/user/selectors";
+import {getAuthorizationStatus, getIsAdmin} from "../../store/user/selectors";
 import {logOutAction} from "../../store/user/user-data";
 
 
 function Header(): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
+  const isAdmin = useAppSelector(getIsAdmin);
 
   const userName = getUserData()?.username || '';
 
@@ -23,6 +24,7 @@ function Header(): JSX.Element {
         <ul className='header-menu'>
           <li><Link to={AppRoute.Main}>Main page</Link></li>
           <li><Link to={AppRoute.Game}>Game</Link></li>
+          {(isAdmin)?(<li><Link to={AppRoute.Dashboard}>Admin Dashboard</Link></li>):''}
         </ul>
         <div className="header-user">
           {authorizationStatus !== AuthorizationStatus.Auth
@@ -32,7 +34,7 @@ function Header(): JSX.Element {
                   <img src={urlForUserImage} width="30" height="30" alt="User avatar"/>
                 </div>
                 <span className="header-username">{userName}</span>
-                <button className="header-singout" onClick={logOut}>Sign out</button>
+                <button className="header-signout" onClick={logOut}>Sign out</button>
               </div>)
           }
         </div>
