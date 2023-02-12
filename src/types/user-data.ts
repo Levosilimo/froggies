@@ -5,11 +5,19 @@ export type UserRecordsReq = {
   limit?: number;
   sorting?: string;
   order?: SortingOrder;
+  fullInfo?: boolean;
 };
+
+interface UserRecordsAuthData {
+  email: string;
+  isAdmin: boolean;
+}
 
 export interface UserRecordsItem {
   username: string;
   records: Record<string, Array<number>>;
+  language?: string;
+  authData?: UserRecordsAuthData;
 }
 
 export interface UserRecordRes {

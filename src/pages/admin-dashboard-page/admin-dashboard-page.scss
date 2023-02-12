@@ -21,14 +21,48 @@
   margin: 0.5rem 0;
 }
 
+.user-record-user-data-title {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.user-record-admin {
+  display: inline-block;
+  padding: .1rem;
+  border: 2px solid red;
+  margin: 0 .3rem;
+}
+
+.user-record-user-data {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  h4{
+    font-family: Arial;
+    margin: .1rem;
+  }
+}
+
 .level-checkbox {
   &.achieved {
     background: #97dc99;
   }
 }
 
-.user-record-wrapper {
-  margin: 2rem;
+.user-record-info-wrapper {
+  margin: 1.1rem;
   display: flex;
   flex-direction: column;
+}
+
+.user-record-form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-record-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
