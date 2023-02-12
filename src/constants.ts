@@ -1,5 +1,6 @@
 export enum AppRoute {
   Login = '/login',
+  Dashboard = '/dashboard',
   Main = '/',
   Game = '/game',
   Settings = '/settings',
@@ -42,6 +43,10 @@ export enum APIRoute {
   Login = '/login',
   CheckAuth = '/check-auth',
   Registration = '/register',
+  GetRecords = '/records',
+  Levels = '/levels',
+  Avatar = '/avatar',
+  User = '/user'
 }
 
 export enum NameSpace {

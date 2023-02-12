@@ -1,0 +1,34 @@
+@import "./src/scss/all";
+
+.user-game-record-wrapper {
+  display: flex;
+}
+
+.user-record-user-wrapper {
+  display: flex;
+  align-items: center;
+  h3 {
+    margin: 0 0.5rem;
+  }
+}
+
+.user-record-form-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.user-record-checkboxes-wrapper {
+  margin: 0.5rem 0;
+}
+
+.level-checkbox {
+  &.achieved {
+    background: #97dc99;
+  }
+}
+
+.user-record-wrapper {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+}
