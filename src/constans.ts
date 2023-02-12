@@ -26,6 +26,7 @@ export const MAIL_REG_EXP = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?
 export const ERROR_MESSAGE = {
   USERNAME: 'This field is required',
   EMAIL: 'Invalid e-mail',
+  LOGIN: 'This field is required',
   PASSWORD: 'Should contain min 6 symbols',
 };
 
