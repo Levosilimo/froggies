@@ -1,3 +1,4 @@
+import { type } from "os";
 import React, { ChangeEvent, useContext, useState } from "react";
 import { serverURL } from "../../constants";
 import { settingContext } from "../../context";
@@ -5,16 +6,25 @@ import "./setting-window.scss";
 
 function SettingsWindow(): JSX.Element {
 
-  const currentClass:string[] = ['setting'];
+  const currentClass: string[] = ['setting'];
   const {isVisible, setIsVisible} = useContext(settingContext);
 
   if (isVisible) {
     currentClass.push('active')
   }
 
-  const defaultSet: {theme: string, language: string, volume: string} = {
-    language: `${localStorage.getItem('language') || 'en_us'}`,
-    theme: `${localStorage.getItem('theme') || 'green'}`,
+  type themes = "green" |'red' | 'yellow';
+  type languages = 'en_us' | 'ru' | 'ua' | 'es_es';
+
+  interface settings {
+    theme: themes,
+    language: languages,
+    volume: string
+  }
+
+  const defaultSet: settings = {
+    language: `${localStorage.getItem('language') || 'en_us'}` as languages,
+    theme: `${localStorage.getItem('theme') || 'green'}` as themes,
     volume: `${localStorage.getItem('volume') || '50'}`,
   }
 
@@ -23,13 +33,13 @@ function SettingsWindow(): JSX.Element {
   const [theme, setTheme] = useState(defaultSet.theme);
 
   const changeLanguage = (e: ChangeEvent) => {
-    const currentLanguage = (e.target as HTMLInputElement).value
+    const currentLanguage = (e.target as HTMLInputElement).value as languages;
     setLanguage(currentLanguage);
     updateUserData({language: currentLanguage});
   }
 
   const changeTheme = (e: ChangeEvent) => {
-    const currentTheme = (e.target as HTMLInputElement).value
+    const currentTheme = (e.target as HTMLInputElement).value as themes
     setTheme(currentTheme);
     // localStorage.setItem('theme', currentTheme);
   }
@@ -40,8 +50,8 @@ function SettingsWindow(): JSX.Element {
     localStorage.setItem('volume', currentVolume);
   }
 
-  type UpdateBody = {
-    language?: "en_us" | "es_es" | "ru" | "uk" | string;
+  interface UpdateBody {
+    language?: languages;
     levelFlexbox?: number;
   }
 
