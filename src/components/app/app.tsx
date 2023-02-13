@@ -1,10 +1,15 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import MainPage from "../../pages/main-page/main-page";
 import LoginPage from "../../pages/login-page/login-page";
 import SettingsWindow from "../../pages/settings-page/settings-window";
 import {AppRoute} from "../../constants";
 import "../../scss/main.scss";
 import GamePage from "../../pages/game-page/game-page";
+import PageNotFound from "../../pages/page-not-found/page-not-found";
+import PrivateRoute from "../private-route/private-route";
+import { useAppSelector } from "../../hooks";
+import { getIsDataLoadedValue } from "../../store/user/selectors";
+import LoadingScreen from "../loading-screen/loading-screen";
 import { settingContext } from "../../context";
 import { useState } from "react";
 
@@ -12,18 +17,25 @@ function App(): JSX.Element {
 
   const [isVisible, setIsVisible] = useState(false);
 
+  const isDataLoaded = useAppSelector(getIsDataLoadedValue);
+
+  if (isDataLoaded) {
+    return (
+      <LoadingScreen />
+    );
+  }
+
   return (
     <settingContext.Provider value = {{
       isVisible,
       setIsVisible,
     }}>
-      <BrowserRouter>
         <Routes>
           <Route path={AppRoute.Main} element={<MainPage/>}/>
-          <Route path={AppRoute.Game} element={<GamePage/>}/>
           <Route path={AppRoute.Login} element={<LoginPage/>}/>
-        </Routes>
-      </BrowserRouter>
+          <Route path={AppRoute.Game} element={<PrivateRoute><GamePage/></PrivateRoute>}/>
+          <Route path="*" element={<PageNotFound />}/>
+      </Routes>
     </settingContext.Provider>
   )
 }

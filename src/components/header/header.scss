@@ -45,3 +45,59 @@
 .gear {
   width: 60%;
 }
+
+.header-login {
+  font-size: 22px;
+  list-style: none;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: $white;
+
+  &:hover {
+    text-decoration: underline;
+    opacity: 0.6;
+  }
+}
+
+.header-user-data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+
+  .header-username,
+  .header-level-game {
+    margin-right: 10px;
+    font-size: 22px;
+  }
+
+  .header-username {
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-style: italic;
+    cursor: pointer;
+  }
+
+  .header-singout {
+    font-size: 18px;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+      opacity: 0.8;
+    }
+  }
+
+  .header-avatar {
+    margin-right: 10px;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+}

@@ -103,3 +103,15 @@
   color: $red;
   font-size: 15px;
 }
+
+.button-account {
+  font-size: 18px;
+  background-color: inherit;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+
+  &:hover {
+    color: $green-light;
+  }
+}
