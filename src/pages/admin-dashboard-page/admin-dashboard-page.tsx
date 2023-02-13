@@ -71,7 +71,7 @@ function AdminDashboardPage() {
   }
 
   return (
-    <div className="">
+    <div className="page">
       <Header/>
       <section className="">
         <h1>Users</h1>
