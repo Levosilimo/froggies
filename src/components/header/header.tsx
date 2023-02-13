@@ -1,6 +1,6 @@
 import './header.scss';
 import {Link} from "react-router-dom";
-import {AppRoute, AuthorizationStatus} from "../../constans";
+import {AppRoute, AuthorizationStatus} from "../../constants";
 import {useAppSelector} from "../../hooks";
 import {getUserData} from "../../services/local-storage";
 import {store} from "../../store";
@@ -32,7 +32,7 @@ function Header(): JSX.Element {
                   <img src={urlForUserImage} width="30" height="30" alt="User avatar"/>
                 </div>
                 <span className="header-username">{userName}</span>
-                <button className="header-singout" onClick={logOut}>Sign out</button>
+                <button className="header-signout" onClick={logOut}>Sign out</button>
               </div>)
           }
         </div>

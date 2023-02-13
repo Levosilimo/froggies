@@ -1,6 +1,6 @@
 import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
-import {AppRoute} from "../../constans";
+import {AppRoute} from "../../constants";
 import {Link} from "react-router-dom";
 import "./main-page.scss";
 

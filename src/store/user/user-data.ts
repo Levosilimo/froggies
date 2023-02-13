@@ -1,18 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { AuthorizationStatus, NameSpace } from "../../constans";
+import { AuthorizationStatus, NameSpace } from "../../constants";
 import { checkAuthAction, loginAction, registrationAction } from "../api-action";
 import { dropToken, saveUserData } from "../../services/local-storage";
 
 type InitialState = {
   authorizationStatus: AuthorizationStatus;
-  isDataLoaded: boolean;
+  isDataLoading: boolean;
   userAvatar: string | null;
   isLoadingError: boolean,
 }
 
 const initialState: InitialState = {
   authorizationStatus: AuthorizationStatus.Unknown,
-  isDataLoaded: false,
+  isDataLoading: false,
   userAvatar: null,
   isLoadingError: false,
 };
@@ -30,21 +30,21 @@ export const userProcess = createSlice({
   extraReducers(builder) {
     builder
       .addCase(checkAuthAction.pending, (state) => {
-        state.isDataLoaded = true;
+        state.isDataLoading = true;
       })
       .addCase(checkAuthAction.fulfilled, (state) => {
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
       })
       .addCase(checkAuthAction.rejected, (state) => {
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
       })
       .addCase(registrationAction.pending, (state) => {
-        state.isDataLoaded = true;
+        state.isDataLoading = true;
       })
       .addCase(registrationAction.fulfilled, (state, action) => {
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
         saveUserData({
           username: action.payload.username,
@@ -53,14 +53,14 @@ export const userProcess = createSlice({
       })
       .addCase(registrationAction.rejected, (state) => {
         state.isLoadingError = true;
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
       })
       .addCase(loginAction.pending, (state) => {
-        state.isDataLoaded = true;
+        state.isDataLoading = true;
       })
       .addCase(loginAction.fulfilled, (state, action) => {
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
         saveUserData({
           username: action.payload.username,
@@ -69,7 +69,7 @@ export const userProcess = createSlice({
       })
       .addCase(loginAction.rejected, (state) => {
         state.isLoadingError = true;
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
       })
   }

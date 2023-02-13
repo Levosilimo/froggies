@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosInstance } from 'axios';
-import { APIRoute, AppRoute } from '../constans';
+import axios, { AxiosInstance } from 'axios';
+import { APIRoute, AppRoute } from '../constants';
 import { getToken, saveToken } from '../services/local-storage';
 import { AuthData, LoginData, RegistrationData } from '../types/auth-data';
 import { redirectToRoute } from './action';
@@ -62,3 +62,15 @@ export const loginAction = createAsyncThunk<AuthData, LoginData, {
     return data;
   },
 );
+
+export const checkUsernameEligibility = async (username: string): Promise<string> => {
+  const response = await axios.post(`https://rsclone-backend.adaptable.app${APIRoute.Registration}/check-username`, {username});
+  if (response.status !== 200) return Promise.reject(response.data.message);
+  return Promise.resolve(response.data);
+}
+
+export const checkEmailEligibility = async (email: string): Promise<string> => {
+  const response = await axios.post(`https://rsclone-backend.adaptable.app${APIRoute.Registration}/check-email`, {email});
+  if (response.status !== 200) return Promise.reject(response.data.message);
+  return Promise.resolve(response.data);
+}
