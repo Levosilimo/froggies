@@ -18,4 +18,4 @@ export const mockTasks = [
     "type2Quantity":0,
     "type3Quantity":0
   }
-]
+];

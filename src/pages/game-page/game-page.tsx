@@ -1,16 +1,11 @@
 import Footer from "../../components/footer/footer";
 import Header from "../../components/header/header";
-import {mockTasks} from "../../mock/tasks";
 import "./game-page.scss";
 import {TaskModel} from "../../types/task-model";
 import React, {useEffect, useRef, useState} from "react";
-import ReactDOM from "react-dom/client";
 import {getLevelAction} from "../../store/api-action";
 import LoadingScreen from "../../components/loading-screen/loading-screen";
 
-// type GamePageProps = {
-//   tasks: TaskModel;
-// }
 const preFirst = "#pond {\n display: flex;";
 const preLast = "}";
 
