@@ -10,6 +10,9 @@ import PrivateRoute from "../private-route/private-route";
 import { useAppSelector } from "../../hooks";
 import { getIsDataLoadedValue } from "../../store/user/selectors";
 import LoadingScreen from "../loading-screen/loading-screen";
+import React from "react";
+import Header from "../header/header";
+import Layout from "../layout/layout";
 
 function App(): JSX.Element {
   const isDataLoaded = useAppSelector(getIsDataLoadedValue);
@@ -21,13 +24,15 @@ function App(): JSX.Element {
   }
 
   return (
-      <Routes>
+    <Routes>
+      <Route path="/" element={<Layout />}>
         <Route path={AppRoute.Main} element={<MainPage/>}/>
         <Route path={AppRoute.Login} element={<LoginPage/>}/>
         <Route path={AppRoute.Game} element={<PrivateRoute><GamePage/></PrivateRoute>}/>
         <Route path={AppRoute.Settings} element={<SettingsPage/>}/>
         <Route path="*" element={<PageNotFound />}/>
-      </Routes>
+      </Route>
+    </Routes>
   )
 }
 

@@ -1,12 +1,7 @@
-import Footer from "../../components/footer/footer";
-import Header from "../../components/header/header";
-
 function SettingsPage () {
   return (
-    <div className="page page-settings">
-      <Header/>
+    <div className="page-settings">
       <p>Settings Page</p>
-      <Footer/>
     </div>
   )
 }

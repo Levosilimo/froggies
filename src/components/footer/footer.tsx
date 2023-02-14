@@ -15,7 +15,9 @@ function Footer(): JSX.Element {
           </ul>
 
         </div>
-        <p className="footer-copyright">All rights reserved © 2023</p>
+        <div className="footer-block copyright-wrapper">
+          <p className="footer-copyright">All rights reserved © 2023</p>
+        </div>
         <a className="footer-link" href="https://rs.school/js/">
           <svg xmlns="http://www.w3.org/2000/svg" height="50" width="60" viewBox="0 0 552.8 205.3"
                fill="#B5C7E1">

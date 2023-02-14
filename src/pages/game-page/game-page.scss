@@ -1,5 +1,9 @@
 @import "./src/scss/all";
 
+.page-game {
+  height: 100%;
+}
+
 .game {
   display: flex;
   justify-content: space-between;
@@ -10,12 +14,30 @@
   section {
     width: 50vw;
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
   }
 }
 
 .game-desc {
   padding: 20px;
   background-color: $green-bg;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.level-selector{
+  display: inline-block;
+  background: $green-light;
+  border: 2px $black;
+  span {
+    display: block;
+    padding: .5rem;
+  }
 }
 
 .question-block {
@@ -66,6 +88,7 @@ pre {
 }
 
 code {
+  display: inline-block;
   border-radius: .2rem;
   padding: .1rem;
   background-color: $gray-light;
@@ -91,21 +114,36 @@ code {
 
 .frog, .background {
   display: flex;
+  z-index: 4;
+}
+
+.items-wrapper {
   position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
+  display: flex;
+}
+
+.frog {
+  z-index: 5;
 }
 
 .background-item {
   width: 100px;
   height: 100px;
   background-color: transparent;
-  background-image: url(../../../public/images/leafy.svg);
   background-repeat: no-repeat;
   background-size: contain;
   z-index: 1;
+  &.item-1 {
+    background-image: url(../../../public/images/leafy.svg);
+  }
+  &.item-2 {
+    background-image: url(../../../public/images/leafy2.svg);
+  }
+  &.item-3 {
+    background-image: url(../../../public/images/leafy3.svg);
+  }
 }
 
 .frog-item {
@@ -116,12 +154,20 @@ code {
   height: 100px;
   z-index: 2;
 
-  .frog-image {
+  div {
     width: 100%;
     height: 100%;
     background-color: transparent;
-    background-image: url("../../../public/images/frog.svg");
     background-repeat: no-repeat;
     background-size: 100%;
+    &.frog-image-1 {
+      background-image: url("../../../public/images/frog.svg");
+    }
+    &.frog-image-2 {
+      background-image: url("../../../public/images/frog2.svg");
+    }
+    &.frog-image-3 {
+      background-image: url("../../../public/images/frog3.svg");
+    }
   }
 }

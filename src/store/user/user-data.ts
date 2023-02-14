@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { AuthorizationStatus, NameSpace } from "../../constans";
-import { checkAuthAction, loginAction, registrationAction } from "../api-action";
+import {checkAuthAction, loginAction, registrationAction} from "../api-action";
 import { dropToken, saveUserData } from "../../services/local-storage";
 
 type InitialState = {
@@ -72,6 +72,16 @@ export const userProcess = createSlice({
         state.isDataLoaded = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
       })
+      /*.addCase(getLevelAction.pending, (state) => {
+        state.isDataLoaded = true;
+      })
+      .addCase(getLevelAction.fulfilled, (state) => {
+        state.isDataLoaded = false;
+      })
+      .addCase(getLevelAction.rejected, (state) => {
+        state.isLoadingError = true;
+        state.isDataLoaded = false;
+      })*/
   }
 })
 

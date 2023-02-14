@@ -1,9 +1,7 @@
-import Footer from "../../components/footer/footer";
-import Header from "../../components/header/header";
 import "./game-page.scss";
 import {TaskModel} from "../../types/task-model";
 import React, {useEffect, useRef, useState} from "react";
-import {getLevelAction} from "../../store/api-action";
+import {getLevelActionf} from "../../store/api-action";
 import LoadingScreen from "../../components/loading-screen/loading-screen";
 
 const preFirst = "#pond {\n display: flex;";
@@ -13,21 +11,15 @@ function GamePage(): JSX.Element {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [levelNumber, setLevelNumber] = useState<number>(1);
   const [level, setLevel] = useState<TaskModel>();
-  const backgroundContainer = useRef<HTMLDivElement>(null);
-  const greenFrogContainer = useRef<HTMLDivElement>(null);
-  const yellowFrogContainer = useRef<HTMLDivElement>(null);
-  const redFrogContainer = useRef<HTMLDivElement>(null);
+  const backgroundsContainer = useRef<HTMLDivElement>(null);
+  const frogsContainer = useRef<HTMLDivElement>(null);
 
   const valueChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (greenFrogContainer.current && backgroundContainer.current) {
-      greenFrogContainer.current.setAttribute("style", event.target.value);
-      const frogStyle = (greenFrogContainer.current.getAttribute("style") ?? '').trim().split(';').filter((str) => str!=='').map(el => el.trim());
-      const lilypadStyle = (backgroundContainer.current.getAttribute("style") ?? '').trim().split(';').filter((str) => str!=='').map(el => el.trim());
-      const compareArrays = (a: Array<any>, b: Array<any>) =>
-        a.length === b.length && a.every((element, index) => element === b[index]);
-      if (compareArrays(frogStyle, lilypadStyle)) {
-        setIsButtonDisabled(!compareArrays(frogStyle, lilypadStyle));
-      }
+    if (frogsContainer.current && backgroundsContainer.current) {
+      frogsContainer.current.setAttribute("style", event.target.value);
+      const frogStyle = (frogsContainer.current.getAttribute("style") ?? '').split(';').map(el => el.trim()).filter(str => str!=='').sort().join('; ')+';';
+      const lilypadStyle = (backgroundsContainer.current.getAttribute("style") ?? '').split(';').map(el => el.trim()).filter(str => str!=='').sort().join('; ')+';';
+      setIsButtonDisabled(frogStyle !== lilypadStyle)
     }
   }
 
@@ -36,29 +28,34 @@ function GamePage(): JSX.Element {
     setLevelNumber(prevState => prevState + 1);
   }
 
+
   useEffect(() => {
     setLevel(undefined);
-    getLevelAction("flexbox", levelNumber)
-      .then(level => setLevel(level));
+    getLevelActionf({game: "flexbox", levelNumber})
+      .then(level => {setLevel(level);});
   }, [levelNumber]);
 
   useEffect(() => {
-    if (backgroundContainer.current) {
-      const container = backgroundContainer.current;
-      if(level) level.winCondition.split(';').filter((str) => str!=='').map(el => el.trim()).forEach(answer => {
-        console.log(answer);
-        container.setAttribute("style", answer);
-      })
+    if (level && backgroundsContainer.current) {
+      const style = level.winCondition.split(';').map(el => el.trim()).filter(str => str!=='').sort().join('; ')+';';
+      backgroundsContainer.current.setAttribute("style", style);
     }
   });
 
   if(!level) return (<LoadingScreen />)
 
   return (
-    <div className="page page-main">
-      <Header/>
+    <div className="page-game">
       <main className="game">
         <section className="game-desc">
+          <div className="title">
+            <h4>{level.name}</h4>
+            <div className="level-selector">
+              <button onClick={() => setLevelNumber(prevState => prevState - 1)}>{"<"}</button>
+              <span>{levelNumber}</span>
+              <button onClick={() => setLevelNumber(prevState => prevState + 1)}>{">"}</button>
+            </div>
+          </div>
           <p className="task-desc" dangerouslySetInnerHTML={{__html: level.description.paragraph}}></p>
           <ul className="rules-list">
             {level.description.rulesList.map((rule, index) => (<li dangerouslySetInnerHTML={{__html: rule}} key={index}></li>))}
@@ -73,26 +70,54 @@ function GamePage(): JSX.Element {
               </div>
               <pre>{preLast}</pre>
             </div>
-            <button className="answer-button" type="button" disabled={isButtonDisabled} onClick={onButtonClick}>Next
-            </button>
+            <button className="answer-button" type="button" disabled={isButtonDisabled} onClick={onButtonClick}>{level.submitText}</button>
           </div>
         </section>
         <section className="view">
           <div className="board">
-            <div className="frog" ref={greenFrogContainer}>
+            <div className="items-wrapper frogs" ref={frogsContainer}>
               {Array(level.type1Quantity).fill(0).map((x, i) => (
-                <div className="frog-item" key={i}>
-                  <div className="frog-image"></div>
+                <div className="frog" key={i}>
+                  <div className="frog-item" >
+                    <div className="frog-image-1"></div>
+                  </div>
+                </div>
+              ))}
+              {Array(level.type2Quantity).fill(0).map((x, i) => (
+                <div className="frog" key={i}>
+                  <div className="frog-item" >
+                    <div className="frog-image-2"></div>
+                  </div>
+                </div>
+              ))}
+              {Array(level.type3Quantity).fill(0).map((x, i) => (
+                <div className="frog" key={i}>
+                  <div className="frog-item" >
+                    <div className="frog-image-3"></div>
+                  </div>
                 </div>
               ))}
             </div>
-            <div ref={backgroundContainer} className="background">
-              <div className="background-item"></div>
+            <div className="items-wrapper lilypads" ref={backgroundsContainer}>
+              {Array(level.type1Quantity).fill(0).map((x, i) => (
+                <div className="background" key={i}>
+                    <div className="background-item item-1"></div>
+                </div>
+              ))}
+              {Array(level.type2Quantity).fill(0).map((x, i) => (
+                <div className="background" key={i}>
+                  <div className="background-item item-2"></div>
+                </div>
+              ))}
+              {Array(level.type3Quantity).fill(0).map((x, i) => (
+                <div className="background" key={i}>
+                  <div className="background-item item-3"></div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
       </main>
-      <Footer/>
     </div>
   )
 }
