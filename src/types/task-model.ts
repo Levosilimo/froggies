@@ -1,10 +1,15 @@
 export interface TaskModel {
-  desc: Description;
-  answer: string[];
+  winCondition: string;
+  name: string;
+  description: Description;
+  submitText: string;
+  type1Quantity: number;
+  type2Quantity: number;
+  type3Quantity: number;
 }
 
 interface Description {
-  preview: string;
+  paragraph: string;
   rulesList: string[];
   example: string;
 }

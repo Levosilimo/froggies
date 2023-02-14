@@ -3,12 +3,13 @@
 .game {
   display: flex;
   justify-content: space-between;
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 20px 15px  15px;
+  max-width: 100%;
+  height: 100%;
+  margin: 0 15px;
 
   section {
-    width: 50%;
+    width: 50vw;
+    padding: 1rem;
   }
 }
 
@@ -17,10 +18,27 @@
   background-color: $green-bg;
 }
 
-.answer-block {
+.question-block {
   padding: 10px;
-  background-color: $white;
+  background-color: $gray-light;
   margin-bottom: 15px;
+  .answer-block {
+    display: inline-flex;
+    width: 100%;
+    textarea {
+      padding: 0;
+      resize: none;
+      border: none;
+      background-color: $white;
+      width: 100%;
+      &:focus-visible {
+        outline: none;
+      }
+    }
+  }
+}
+pre {
+  margin: 0;
 }
 
 .answer-button {
@@ -29,25 +47,46 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $green;
+  background-color: $green-light;
   color: $white;
   font-size: 18px;
   text-decoration: none;
   text-transform: uppercase;
+  box-shadow: 0 0 10px -3px $black;
   border-radius: 8px;
   cursor: pointer;
+  transition: 1s;
+  border: none;
+  &:disabled{
+    background-color: $green-light;
+    box-shadow: inset 0 1px 10px -3px $black;
+    cursor: auto;
+    transition: 1s;
+  }
+}
+
+code {
+  border-radius: .2rem;
+  padding: .1rem;
+  background-color: $gray-light;
+}
+
+.rules-list > li > code {
+  font-size: 1rem;
+  display: inline-block;
+  margin: .1rem;
+  border-radius: .3rem;
+  background-color: $green-light;
 }
 
 .view {
-  height: 500px;
   background-color: $blue-light;
 }
 
 .board {
-  position: relative;
+  position: sticky;
   height: 100%;
   width: 100%;
-
 }
 
 .frog, .background {
@@ -63,7 +102,7 @@
   width: 100px;
   height: 100px;
   background-color: transparent;
-  background-image: url("../../../public/images/leafy.svg");
+  background-image: url(../../../public/images/leafy.svg);
   background-repeat: no-repeat;
   background-size: contain;
   z-index: 1;
@@ -78,11 +117,11 @@
   z-index: 2;
 
   .frog-image {
-    width: 60px;
-    height: 60px;
+    width: 100%;
+    height: 100%;
     background-color: transparent;
     background-image: url("../../../public/images/frog.svg");
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: 100%;
   }
 }

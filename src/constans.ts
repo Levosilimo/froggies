@@ -40,6 +40,7 @@ export enum APIRoute {
   Login = '/login',
   CheckAuth = '/check-auth',
   Registration = '/register',
+  Levels = '/levels'
 }
 
 export enum NameSpace {

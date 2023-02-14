@@ -1,10 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosInstance } from 'axios';
+import axios, { AxiosInstance } from 'axios';
 import { APIRoute, AppRoute } from '../constans';
 import { getToken, saveToken } from '../services/local-storage';
 import { AuthData, LoginData, RegistrationData } from '../types/auth-data';
 import { redirectToRoute } from './action';
 import { AppDispatch, State } from './state';
+import {TaskModel} from "../types/task-model";
 
 export const checkAuthAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch,
@@ -48,7 +49,6 @@ export const registrationAction = createAsyncThunk<AuthData, RegistrationData,  
   },
 );
 
-
 export const loginAction = createAsyncThunk<AuthData, LoginData, {
   dispatch: AppDispatch,
   state: State,
@@ -62,3 +62,10 @@ export const loginAction = createAsyncThunk<AuthData, LoginData, {
     return data;
   },
 );
+
+export const getLevelAction = async (game: string, levelNumber: number): Promise<TaskModel> => {
+  const token = getToken()
+  const {data} = await axios.get<TaskModel>(`https://rsclone-backend.adaptable.app${APIRoute.Levels}/${game}/${levelNumber}`, {headers: {'x-access-token': token}});
+  return data;
+};
+
