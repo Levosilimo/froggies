@@ -4,7 +4,7 @@ import "./login-page.scss";
 import {useState} from "react";
 import Login from "../../components/login/login";
 import Registration from "../../components/registration/registration";
-import SettingsWindow from "../settings-page/settings-window";
+import SettingsWindow from "../../components/setting-window/settings-window";
 
 function LoginPage () {
   const [isLoginForm, setIsLoginForm] = useState(true);

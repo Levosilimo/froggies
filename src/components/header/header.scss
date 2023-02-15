@@ -39,11 +39,15 @@
       text-decoration: underline;
       opacity: 0.8;
     }
+
+    &:last-child {
+      margin-right: 20px;
+    }
   }
 }
 
 .gear {
-  width: 60%;
+  width: 30px;
 }
 
 .header-login {

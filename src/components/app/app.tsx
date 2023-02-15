@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import MainPage from "../../pages/main-page/main-page";
 import LoginPage from "../../pages/login-page/login-page";
-import SettingsWindow from "../../pages/settings-page/settings-window";
+import SettingsWindow from "../setting-window/settings-window";
 import {AppRoute} from "../../constants";
 import "../../scss/main.scss";
 import GamePage from "../../pages/game-page/game-page";

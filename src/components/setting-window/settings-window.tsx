@@ -1,7 +1,7 @@
-import { type } from "os";
 import React, { ChangeEvent, useContext, useState } from "react";
 import { serverURL } from "../../constants";
 import { settingContext } from "../../context";
+import { getToken } from "../../services/local-storage";
 import "./setting-window.scss";
 
 function SettingsWindow(): JSX.Element {
@@ -41,7 +41,7 @@ function SettingsWindow(): JSX.Element {
   const changeTheme = (e: ChangeEvent) => {
     const currentTheme = (e.target as HTMLInputElement).value as themes
     setTheme(currentTheme);
-    // localStorage.setItem('theme', currentTheme);
+    localStorage.setItem('theme', currentTheme);
   }
 
   const changeVolume = (e: ChangeEvent) => {
@@ -61,9 +61,10 @@ function SettingsWindow(): JSX.Element {
       body: JSON.stringify(preferences),
       headers: {
         'Content-type': 'application/json',
-        // 'x-access-token': `${token}`,
+        'x-access-token': `${getToken()}`,
       },
     });
+    console.log(1)
     const resBody: UpdateBody = await response.json();
     return resBody;
   }

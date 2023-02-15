@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { ERROR_MESSAGE } from "../../constans";
+import { ERROR_MESSAGE } from "../../constants";
 import { useAppDispatch } from "../../hooks";
 import { loginAction } from "../../store/api-action";
 

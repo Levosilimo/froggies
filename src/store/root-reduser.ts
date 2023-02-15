@@ -1,5 +1,5 @@
 import { combineReducers } from '@reduxjs/toolkit';
-import { NameSpace } from '../constans';
+import { NameSpace } from '../constants';
 import { userProcess } from "./user/user-data";
 
 

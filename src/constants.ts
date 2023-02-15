@@ -29,7 +29,7 @@ export const ERROR_MESSAGE = {
   PASSWORD: 'Should contain min 6 symbols',
 };
 
-export const serverURL = 'https://rsclone-backend.adaptable.app'
+export const serverURL: string = 'https://rsclone-backend.adaptable.app'
 
 export enum AuthorizationStatus {
   Auth = 'AUTH',

@@ -3,7 +3,7 @@ import Header from "../../components/header/header";
 import {AppRoute} from "../../constants";
 import {Link} from "react-router-dom";
 import "./main-page.scss";
-import SettingsWindow from "../settings-page/settings-window";
+import SettingsWindow from "../../components/setting-window/settings-window";
 
 function MainPage () {
   return (
