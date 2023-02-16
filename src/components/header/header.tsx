@@ -2,16 +2,15 @@ import './header.scss';
 import {Link} from "react-router-dom";
 import {AppRoute, AuthorizationStatus} from "../../constans";
 import {useAppSelector} from "../../hooks";
-import {getUserData} from "../../services/local-storage";
 import {store} from "../../store";
-import {getAuthorizationStatus} from "../../store/user/selectors";
+import {getAuthorizationStatus, getUsername} from "../../store/user/selectors";
 import {logOutAction} from "../../store/user/user-data";
 
 
 function Header(): JSX.Element {
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
-  const userName = getUserData()?.username || '';
+  const userName = useAppSelector(getUsername) ?? '';
 
   const urlForUserImage = `https://rsclone-backend.adaptable.app/avatar/${userName}`;
 

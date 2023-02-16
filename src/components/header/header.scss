@@ -55,7 +55,8 @@
 
 .header-user-data {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   text-align: center;
   width: 100%;

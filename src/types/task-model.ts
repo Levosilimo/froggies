@@ -6,6 +6,7 @@ export interface TaskModel {
   type1Quantity: number;
   type2Quantity: number;
   type3Quantity: number;
+  levelsCount: number;
 }
 
 interface Description {

@@ -8,16 +8,15 @@ import GamePage from "../../pages/game-page/game-page";
 import PageNotFound from "../../pages/page-not-found/page-not-found";
 import PrivateRoute from "../private-route/private-route";
 import { useAppSelector } from "../../hooks";
-import { getIsDataLoadedValue } from "../../store/user/selectors";
+import { getIsDataLoadingValue } from "../../store/user/selectors";
 import LoadingScreen from "../loading-screen/loading-screen";
 import React from "react";
-import Header from "../header/header";
 import Layout from "../layout/layout";
 
 function App(): JSX.Element {
-  const isDataLoaded = useAppSelector(getIsDataLoadedValue);
+  const isDataLoading = useAppSelector(getIsDataLoadingValue);
 
-  if (isDataLoaded) {
+  if (isDataLoading) {
     return (
       <LoadingScreen />
     );

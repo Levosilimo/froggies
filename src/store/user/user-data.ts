@@ -1,21 +1,34 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { AuthorizationStatus, NameSpace } from "../../constans";
-import {checkAuthAction, loginAction, registrationAction} from "../api-action";
-import { dropToken, saveUserData } from "../../services/local-storage";
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {AuthorizationStatus, NameSpace} from "../../constans";
+import {checkAuthAction, getUserDataAction, loginAction, registrationAction, setUserDataAction} from "../api-action";
+import {dropToken, getLevel, getToken, saveLevel} from "../../services/local-storage";
+import {TokenPayload} from "../../types/auth-data";
 
 type InitialState = {
   authorizationStatus: AuthorizationStatus;
-  isDataLoaded: boolean;
-  userAvatar: string | null;
+  isDataLoading: boolean;
+  username?: string;
+  email?: string;
+  records?: Record<string, Array<number>>;
+  currentLevel: number
   isLoadingError: boolean,
 }
 
 const initialState: InitialState = {
   authorizationStatus: AuthorizationStatus.Unknown,
-  isDataLoaded: false,
-  userAvatar: null,
+  isDataLoading: false,
   isLoadingError: false,
+  currentLevel: getLevel(),
 };
+
+function parseJwt(token: string): TokenPayload {
+  const base64Url = token.split('.')[1];
+  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+  const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
+    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+  }).join(''));
+  return JSON.parse(jsonPayload);
+}
 
 export const userProcess = createSlice({
   name: NameSpace.User,
@@ -23,67 +36,84 @@ export const userProcess = createSlice({
   reducers: {
     logOutAction: (state) => {
       dropToken();
-      state.userAvatar = null;
+      state.records = undefined;
+      state.username = undefined;
+      state.email = undefined;
       state.authorizationStatus = AuthorizationStatus.NoAuth;
     },
+    setLevelAction: (state, action: PayloadAction<number>) => {
+      saveLevel(action.payload);
+      state.currentLevel = action.payload;
+    }
   },
   extraReducers(builder) {
     builder
       .addCase(checkAuthAction.pending, (state) => {
-        state.isDataLoaded = true;
+        state.username = parseJwt(getToken()).username;
+        state.isDataLoading = true;
       })
       .addCase(checkAuthAction.fulfilled, (state) => {
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
       })
       .addCase(checkAuthAction.rejected, (state) => {
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
       })
       .addCase(registrationAction.pending, (state) => {
-        state.isDataLoaded = true;
+        state.isDataLoading = true;
       })
       .addCase(registrationAction.fulfilled, (state, action) => {
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
-        saveUserData({
-          username: action.payload.username,
-          email: action.payload.email
-        })
+        state.username = action.payload.username;
+        state.records = action.payload.records;
+        state.email = action.payload.email;
       })
       .addCase(registrationAction.rejected, (state) => {
         state.isLoadingError = true;
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
       })
       .addCase(loginAction.pending, (state) => {
-        state.isDataLoaded = true;
+        state.isDataLoading = true;
       })
       .addCase(loginAction.fulfilled, (state, action) => {
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
-        saveUserData({
-          username: action.payload.username,
-          email: action.payload.email
-        })
+        state.username = action.payload.username;
+        state.records = action.payload.records;
+        state.email = action.payload.email;
       })
       .addCase(loginAction.rejected, (state) => {
         state.isLoadingError = true;
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
       })
+      .addCase(getUserDataAction.pending, (state) => {})
+      .addCase(getUserDataAction.fulfilled, (state, action) => {
+        state.records = action.payload.records;
+      })
+      .addCase(getUserDataAction.rejected, (state) => {})
+      .addCase(setUserDataAction.pending, (state, action) => {
+        state.records = action.meta.arg.records;
+      })
+      .addCase(setUserDataAction.fulfilled, (state, action) => {
+        state.records = action.payload.records;
+      })
+      .addCase(setUserDataAction.rejected, (state) => {})
       /*.addCase(getLevelAction.pending, (state) => {
-        state.isDataLoaded = true;
+        state.isDataLoading = true;
       })
       .addCase(getLevelAction.fulfilled, (state) => {
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
       })
       .addCase(getLevelAction.rejected, (state) => {
         state.isLoadingError = true;
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
       })*/
   }
 })
 
-export const { logOutAction } = userProcess.actions;
+export const { logOutAction, setLevelAction } = userProcess.actions;
 

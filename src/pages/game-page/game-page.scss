@@ -30,13 +30,52 @@
   align-items: flex-start;
 }
 
-.level-selector{
+.level-selector {
   display: inline-block;
-  background: $green-light;
-  border: 2px $black;
+  background: $aqua;
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   span {
+    cursor: pointer;
     display: block;
     padding: .5rem;
+  }
+}
+
+.level-selector-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  translate: 35% -50%;
+  transition: 200ms;
+  padding: .5rem;
+  background-color: $gray-light;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 1;
+  box-sizing: border-box;
+  box-shadow: 0 1px 8px rgba($black, 50%);
+  button {
+    background-color: $green-bg;
+    color: $white;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+    &.passed {
+      background-color: $green-light;
+      color: $black;
+    }
+    &.current {
+      border-color: $red;
+      border-width: .3rem;
+    }
   }
 }
 
@@ -114,7 +153,14 @@ code {
 
 .frog, .background {
   display: flex;
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
   z-index: 4;
+}
+
+.background {
+  z-index: 1;
 }
 
 .items-wrapper {
@@ -135,15 +181,6 @@ code {
   background-repeat: no-repeat;
   background-size: contain;
   z-index: 1;
-  &.item-1 {
-    background-image: url(../../../public/images/leafy.svg);
-  }
-  &.item-2 {
-    background-image: url(../../../public/images/leafy2.svg);
-  }
-  &.item-3 {
-    background-image: url(../../../public/images/leafy3.svg);
-  }
 }
 
 .frog-item {
@@ -160,14 +197,5 @@ code {
     background-color: transparent;
     background-repeat: no-repeat;
     background-size: 100%;
-    &.frog-image-1 {
-      background-image: url("../../../public/images/frog.svg");
-    }
-    &.frog-image-2 {
-      background-image: url("../../../public/images/frog2.svg");
-    }
-    &.frog-image-3 {
-      background-image: url("../../../public/images/frog3.svg");
-    }
   }
 }
