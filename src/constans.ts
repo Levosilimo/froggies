@@ -56,7 +56,7 @@ export enum NameSpace {
   Player = 'PLAYER'
 }
 
-export const frogsStyleText = '.background-item,.frog-item div{background-color:transparent;background-repeat:no-repeat}.background,.frog{display:flex;z-index:4}.items-wrapper{position:absolute;width:100%;height:100%;display:flex}.frog{z-index:5}.background-item{width:100px;height:100px;background-size:contain;z-index:1}.background-item.item-1{background-image:url(../../../public/images/leafy.svg)}.background-item.item-2{background-image:url(../../../public/images/leafy2.svg)}.background-item.item-3{background-image:url(../../../public/images/leafy3.svg)}.frog-item{display:flex;justify-content:center;align-items:center;width:100px;height:100px;z-index:2}.frog-item div{width:100%;height:100%;background-size:100%}'
+export const frogsStyleText = '.background-item,.frog-item div{background-color:transparent;background-repeat:no-repeat}.background,.frog{display:flex;z-index:4}.items-wrapper{position:absolute;width:100%;height:100%;display:flex}.frog{z-index:5}.background-item{width:100px;height:100px;background-size:contain;z-index:1}.frog-item{display:flex;justify-content:flex-start;align-items:center;width:5.21vw;height:10.5vh;z-index:2}.frog-item div{width:100%;height:100%;background-size:100%}'
 
 export const getFrogSvg = (mainColor: string = "#59A47B", subColor: string = "#BFE078") => `<svg xmlns="http://www.w3.org/2000/svg" fill="none" preserveAspectRatio="none" viewBox="-20 -10 120 120">
 <path fill=${mainColor} d="M79 58c0 14.3 20.3 32.5-33.7 32.5C-19.5 90.5 5 72.3 5 58s12.3-26 37-26 37 11.8 37 26Z"/>
