@@ -2,7 +2,8 @@ export enum AppRoute {
   Login = '/login',
   Main = '/',
   Game = '/game',
-  Settings = '/settings'
+  Settings = '/settings',
+  User = '/user',
 }
 
 export const DEVELOPERS = [
