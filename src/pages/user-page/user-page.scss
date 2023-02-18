@@ -1,0 +1,35 @@
+@import "./src/scss/all";
+
+.user {
+  min-height: calc(100vh - $header-min-height - $footer-min-height);
+  display: grid;
+  grid-template-areas: "A A"
+                       "B D"
+                       "B D";
+  justify-content: space-around;
+  gap: 20px 20px;
+}
+
+.user__title {
+  margin: 0;
+  padding: 0;
+}
+
+.section {
+  background-color: gray;
+  height: 200px;
+}
+
+.user__title {
+  grid-area: A;
+  align-self: center;
+  justify-self: center;
+}
+
+.user__info {
+  grid-area: B;
+}
+
+.user__score {
+  grid-area: D;
+}

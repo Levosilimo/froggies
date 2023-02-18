@@ -1,7 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import MainPage from "../../pages/main-page/main-page";
 import LoginPage from "../../pages/login-page/login-page";
-import SettingsWindow from "../setting-window/settings-window";
 import {AppRoute} from "../../constants";
 import "../../scss/main.scss";
 import GamePage from "../../pages/game-page/game-page";
@@ -12,6 +11,7 @@ import { getIsDataLoadedValue } from "../../store/user/selectors";
 import LoadingScreen from "../loading-screen/loading-screen";
 import { settingContext } from "../../context";
 import { useState } from "react";
+import UserPage from "../../pages/user-page/user-page";
 
 function App(): JSX.Element {
 
@@ -33,6 +33,7 @@ function App(): JSX.Element {
         <Routes>
           <Route path={AppRoute.Main} element={<MainPage/>}/>
           <Route path={AppRoute.Login} element={<LoginPage/>}/>
+          <Route path={AppRoute.User} element={<UserPage/>}/>
           <Route path={AppRoute.Game} element={<PrivateRoute><GamePage/></PrivateRoute>}/>
           <Route path="*" element={<PageNotFound />}/>
       </Routes>
