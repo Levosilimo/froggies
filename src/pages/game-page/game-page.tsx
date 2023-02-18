@@ -13,7 +13,7 @@ import {setLevelAction} from "../../store/user/user-data";
 import {frogsStyleText, getLilypadSvg} from "../../constans";
 import FrogsContainer from "../../components/frogs-container/frogs-container";
 
-const preFirst = "#frogs {\n display: flex;";
+const preFirst = "#frogs {\n  display: flex;";
 const preLast = "}";
 
 function GamePage(): JSX.Element {
@@ -24,7 +24,6 @@ function GamePage(): JSX.Element {
   const questionBlock = useRef<HTMLDivElement>(null);
   const records = useAppSelector(getRecords);
   const levelNumber = useAppSelector(getCurrentLevel)
-  const [frogsMainStyle, setFrogsMainStyle] = useState<CSSStyleSheet>();
   const [frogsUserStyle, setFrogsUserStyle] = useState<string>('');
   const [userInput, setUserInput] = useState<string>('');
   const [linesCount, setLinesCount] = useState<number>(0);
@@ -53,12 +52,16 @@ function GamePage(): JSX.Element {
       setFrogsUserStyle(frogsStyleText+preFirst+preLast);
     }
     else alert('Hooray! Finish!');
-
   }
+
+  const onSelectLevelButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    store.dispatch(setLevelAction(Number(event.currentTarget.value)));
+    setShow(false);
+  }
+
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getUserDataAction());
-    new CSSStyleSheet().replace(frogsStyleText).then(sheet => setFrogsMainStyle(sheet));
   }, [])
 
   useEffect(() => {
@@ -83,7 +86,7 @@ function GamePage(): JSX.Element {
     }
   });
 
-  if(!level || !frogsMainStyle) return (<LoadingScreen />)
+  if(!level) return (<LoadingScreen />)
 
   function countLines(target: HTMLDivElement) {
     const getStyle = (element: HTMLElement, styleProp: string): string => {
@@ -111,7 +114,7 @@ function GamePage(): JSX.Element {
   }
 
   function highlightMultiline(str: string) {
-    return str.split("\n").map(e => highlight(e, languages.css, "css")).join("<br/><span>&nbsp;</span>");
+    return str.split("\n").map(e => highlight(e, languages.css, "css")).join("<br/>");
   }
 
   return (
@@ -125,7 +128,7 @@ function GamePage(): JSX.Element {
               {show?(
                 <div className="level-selector-buttons">
                   {Array(level.levelsCount).fill(0).map((x, i) => (
-                    <button key={i+1} value={i+1} onClick={(e) => {store.dispatch(setLevelAction(Number(e.currentTarget.value))); setShow(false);}} className={`${(i+1===levelNumber ? 'current': '')} ${records && records["flexbox"].includes(i+1) ? 'passed': ''}`}>{i+1}</button>
+                    <button key={i+1} value={i+1} onClick={onSelectLevelButtonClick} className={`${(i+1===levelNumber ? 'current': '')} ${records && records["flexbox"].includes(i+1) ? 'passed': ''}`}>{i+1}</button>
                   ))}
                 </div>
               ):''}

@@ -59,6 +59,7 @@ export enum NameSpace {
 export const frogsStyleText = '.background-item,.frog-item div{background-color:transparent;background-repeat:no-repeat}.background,.frog{display:flex;z-index:4}.items-wrapper{position:absolute;width:100%;height:100%;display:flex}.frog{z-index:5}.background-item{width:100px;height:100px;background-size:contain;z-index:1}.frog-item{display:flex;justify-content:flex-start;align-items:center;width:5.21vw;height:10.5vh;z-index:2}.frog-item div{width:100%;height:100%;background-size:100%}'
 
 export const getFrogSvg = (mainColor: string = "#59A47B", subColor: string = "#BFE078") => `<svg xmlns="http://www.w3.org/2000/svg" fill="none" preserveAspectRatio="none" viewBox="-20 -10 120 120">
+<animateTransform attributeType="XML" attributeName="transform" type="scale" values="1;1.08;1.07;1" additive="sum" begin="0s" dur="0.8s" repeatCount="indefinite"/>
 <path fill=${mainColor} d="M79 58c0 14.3 20.3 32.5-33.7 32.5C-19.5 90.5 5 72.3 5 58s12.3-26 37-26 37 11.8 37 26Z"/>
 <path fill=${subColor} d="M72 59.8c0 11.7 16.8 26.6-27.8 26.6-53.4 0-33.2-15-33.2-26.6 0-11.6 10-21.3 30.5-21.3 20.4 0 30.5 9.7 30.5 21.3Z"/>
 <ellipse cx="42" cy="29.2" fill=${mainColor} rx="42" ry="24.5"/>
@@ -74,8 +75,8 @@ export const getFrogSvg = (mainColor: string = "#59A47B", subColor: string = "#B
 <path fill="#387252" d="M24.4 82c21.2-18.4 5.7 12-3.2 12s-15-9.1-15-15.6 7.3 2.2 9.4 4.2c3-10.6 6.3-11.7 8.8-.6ZM68 82c20.7-18.4 5.6 12-3.1 12S50 84.9 50 78.4s7.2 2.2 9.2 4.2c3-10.6 6.2-11.7 8.7-.6Z"/>
 </svg>
 `
-export const getLilypadSvg = (mainColor: string = "#82D73F") => `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 160 155">
-  <g filter="url(#a)">
+export const getLilypadSvg = (mainColor: string = "#82D73F") => `<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 160 155" >
+  <g filter="url(#a)" >
     <path fill=${mainColor} d="M151 73c2 1 4 2 5 5 9 15-1 34-11 46a84 84 0 0 1-47 26c-16 3-32 7-47 2l-9-3c-15-3-28-23-35-37-6-16-8-40-3-56 5-17 19-33 34-42C53 4 73 0 91 2c16 2 33 6 47 20 3 2 5 5 5 9l1 3v9l-1 5-2 5-1 3c-3 4-6 7-11 9l-6 2-3 1-22 5 34-4h4l6 1 8 2 1 1Z"/></g>
   <g filter="url(#b)"><path stroke="#000" d="m64 5 13 71"/></g>
   <g filter="url(#b)"><path stroke="#000" d="m17 35 59 41"/></g>
