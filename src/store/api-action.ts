@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { APIRoute, AppRoute } from '../constans';
+import { APIRoute, AppRoute } from '../constants';
 import { getToken, saveToken } from '../services/local-storage';
 import { AuthData, LoginData, RegistrationData } from '../types/auth-data';
 import { redirectToRoute } from './action';
