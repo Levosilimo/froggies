@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ada52791.css",
+    "main.js": "/static/js/main.945ed597.js",
+    "static/media/frog-bg-3.jpg": "/static/media/frog-bg-3.67ba8773de3fc09146ba.jpg",
+    "static/media/frog-bg-4.jpg": "/static/media/frog-bg-4.3ae6ee33252badc60c21.jpg",
+    "static/media/rubik-medium.woff": "/static/media/rubik-medium.5b3204b7545adcbf9132.woff",
+    "static/media/rubik-regular.woff": "/static/media/rubik-regular.d345c4fc73bedc3c24c2.woff",
+    "static/media/rubik-bold.woff": "/static/media/rubik-bold.96967e61939e7613f2a7.woff",
+    "static/media/rubik-medium.woff2": "/static/media/rubik-medium.3a5399bc89c12709d4fc.woff2",
+    "static/media/rubik-regular.woff2": "/static/media/rubik-regular.fca675c08c9ff7e3b1a4.woff2",
+    "static/media/rubik-bold.woff2": "/static/media/rubik-bold.2d835efd31ab863db792.woff2",
+    "index.html": "/index.html",
+    "main.ada52791.css.map": "/static/css/main.ada52791.css.map",
+    "main.945ed597.js.map": "/static/js/main.945ed597.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ada52791.css",
+    "static/js/main.945ed597.js"
+  ]
+}
