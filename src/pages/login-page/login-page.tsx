@@ -4,6 +4,7 @@ import "./login-page.scss";
 import {useState} from "react";
 import Login from "../../components/login/login";
 import Registration from "../../components/registration/registration";
+import SettingsWindow from "../../components/setting-window/settings-window";
 
 function LoginPage () {
   const [isLoginForm, setIsLoginForm] = useState(true);
@@ -13,6 +14,7 @@ function LoginPage () {
   return (
     <div className="page page-login">
       <Header/>
+      <SettingsWindow/>
       <section className="login">
         <div className="login-form">
           <h1 className="login-title">{isLoginForm ? "Sign in" : "Create account"}</h1>

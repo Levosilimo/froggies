@@ -23,7 +23,7 @@ type FieldAvailability = {
 }
 
 function Registration () {
-  const { register, handleSubmit, watch, formState: { errors }, setError, clearErrors } = useForm<FormData>();
+  const { register, handleSubmit, watch, formState: { errors } } = useForm<FormData>();
   const [ usernameAvailability, setUsernameAvailability ] = useState<FieldAvailability>();
   const [ emailAvailability, setEmailAvailability ] = useState<FieldAvailability>();
 
@@ -37,11 +37,9 @@ function Registration () {
     checkUsernameEligibility(watch("username"))
       .then((msg) => {
         setUsernameAvailability({msg, isError: false});
-        //clearErrors("username")
       })
       .catch((error: AxiosError) => {
         setUsernameAvailability({msg: error.response?.data as string ?? '', isError: true});
-        //setError("username", {message: error.response?.data as string ?? '', type: "value"}, {shouldFocus: true})
       })
   }
 
@@ -49,11 +47,9 @@ function Registration () {
     checkEmailEligibility(watch("email"))
       .then((msg) => {
         setEmailAvailability({msg, isError: false});
-        //clearErrors("email");
       })
       .catch((error: AxiosError) => {
         setEmailAvailability({msg: error.response?.data as string ?? '', isError: true});
-        //setError("email", {message: error.response?.data as string ?? '', type: "value"}, {shouldFocus: true})
       })
   }
 
