@@ -4,7 +4,7 @@ import {TaskModel} from "../../types/task-model";
 import React, {useEffect, useRef, useState} from "react";
 import Editor from 'react-simple-code-editor';
 import {highlight, languages} from 'prismjs';
-import {getLevelActionf, getUserDataAction, setUserDataAction} from "../../store/api-action";
+import {getLevelAction, getUserDataAction, setUserDataAction} from "../../store/api-action";
 import LoadingScreen from "../../components/loading-screen/loading-screen";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {getCurrentLevel, getRecords} from "../../store/user/selectors";
@@ -51,9 +51,15 @@ function GamePage(): JSX.Element {
     if(levelNumber !== level?.levelsCount) {
       store.dispatch(setLevelAction(levelNumber+1));
       setFrogsUserStyle(frogsStyleText+preFirst+preLast);
-    } else if(recordsCopy['flexbox'] && recordsCopy['flexbox'].length === level?.levelsCount) {
+    } else if(recordsCopy['flexbox'] && recordsCopy['flexbox'].length === level.levelsCount) {
       alert('Hooray! Finish!');
     } else {
+      for(let i = 1; i<=level.levelsCount; i++) {
+        if(!recordsCopy['flexbox'].includes(i)) {
+          store.dispatch(setLevelAction(i));
+          return;
+        }
+      }
       store.dispatch(setLevelAction(1));
     }
   }
@@ -143,9 +149,10 @@ function GamePage(): JSX.Element {
 
   useEffect(() => {
     setLevel(undefined);
-    getLevelActionf({game: "flexbox", levelNumber})
+    getLevelAction({game: "flexbox", levelNumber})
       .then(level => {
         setUserInput('');
+        setFrogsUserStyle('');
         setPreFirst(level.pre);
         setPreLast(level.post);
         setLevel(level);
@@ -172,7 +179,9 @@ function GamePage(): JSX.Element {
 
   function countLines(target: HTMLDivElement) {
     const getStyle = (element: HTMLElement, styleProp: string): string => {
-      if (document.defaultView) return document.defaultView.getComputedStyle(element).getPropertyValue(styleProp);
+      if (document.defaultView) {
+        return document.defaultView.getComputedStyle(element).getPropertyValue(styleProp);
+      }
       return '';
     }
     let lineHeight = parseInt(getStyle(target, 'line-height'), 10);
@@ -194,7 +203,9 @@ function GamePage(): JSX.Element {
     const regex = /<code>(.*?)<\/code>/gs;
     return str.replace(regex, (match, content: string) => {
       let addClass = false;
-      if (level?.description.tooltips.find((tooltip) => tooltip.key===content)) addClass = true;
+      if (level?.description.tooltips.find((tooltip) => tooltip.key===content)) {
+        addClass = true;
+      }
       return `<pre class="game-desc-code ${addClass ? "tooltip-code" : ''}" data-tooltip=${content}>${(content.split("\n").map(e => highlight(e, languages.css, "css")).join("\n"))}</pre>`
     })
   }

@@ -94,16 +94,6 @@ export const userProcess = createSlice({
         state.records = action.payload.records;
       })
       .addCase(setUserDataAction.rejected, (state) => {})
-      /*.addCase(getLevelAction.pending, (state) => {
-        state.isDataLoading = true;
-      })
-      .addCase(getLevelAction.fulfilled, (state) => {
-        state.isDataLoading = false;
-      })
-      .addCase(getLevelAction.rejected, (state) => {
-        state.isLoadingError = true;
-        state.isDataLoading = false;
-      })*/
   }
 })
 

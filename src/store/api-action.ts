@@ -89,20 +89,7 @@ export const setUserDataAction = createAsyncThunk<UserData, Partial<UserData>, {
 
 interface LevelDataReq {game: string; levelNumber: number;}
 
-/*export const getLevelAction = createAsyncThunk<TaskModel, LevelDataReq, {
-  dispatch: AppDispatch,
-  state: State,
-  extra: AxiosInstance
-}>(
-  'levels/game/level',
-  async ({game, levelNumber}, { extra: api}): Promise<TaskModel> => {
-    const token = getToken()
-    const { data } = await api.get<TaskModel>(`${APIRoute.Levels}/${game}/${levelNumber}`, {headers: {'x-access-token': token}});
-    return data;
-  },
-);*/
-
-export const getLevelActionf = async ({game, levelNumber}: LevelDataReq): Promise<TaskModel> => {
+export const getLevelAction = async ({game, levelNumber}: LevelDataReq): Promise<TaskModel> => {
   const token = getToken()
   const {data} = await axios.get<TaskModel>(`https://rsclone-backend.adaptable.app${APIRoute.Levels}/${game}/${levelNumber}`, {headers: {'x-access-token': token}});
   return data;
