@@ -7,7 +7,6 @@ import { redirectToRoute } from './action';
 import { AppDispatch, State } from './state';
 import {UserRecordRes, UserRecordsItem, UserRecordsReq} from "../types/user-data";
 
-
 export const checkAuthAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch,
   state: State,

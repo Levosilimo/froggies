@@ -1,7 +1,7 @@
 import { useForm } from 'react-hook-form';
-import {ERROR_MESSAGE, MAIL_REG_EXP} from "../../constans";
-import {useAppDispatch} from "../../hooks";
-import {loginAction} from "../../store/api-action";
+import { ERROR_MESSAGE } from "../../constans";
+import { useAppDispatch } from "../../hooks";
+import { loginAction } from "../../store/api-action";
 
 type LoginData = {
   login: string;
@@ -19,10 +19,10 @@ function Login () {
   return (
     <form className="form" onSubmit={onSubmit}>
       <div className="form-block ">
-        <label className="form-label">E-mail</label>
-        <input className="form-input" placeholder="Enter your email"
-               {...register("login",  { required: true, pattern: MAIL_REG_EXP })} />
-        {errors.login && <span className="error">{ ERROR_MESSAGE.EMAIL }</span>}
+        <label className="form-label">Login</label>
+        <input className="form-input" placeholder="Enter your login of email"
+               {...register("login",  { required: true})} />
+        {errors.login && <span className="error">{ ERROR_MESSAGE.LOGIN }</span>}
       </div>
       <div className="form-block ">
         <label className="form-label">Password</label>

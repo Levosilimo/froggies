@@ -1,6 +1,6 @@
-import {createSlice} from '@reduxjs/toolkit';
-import {AuthorizationStatus, NameSpace} from "../../constans";
-import {checkAuthAction, loginAction, registrationAction} from "../api-action";
+import { createSlice } from '@reduxjs/toolkit';
+import { AuthorizationStatus, NameSpace } from "../../constans";
+import { checkAuthAction, loginAction, registrationAction } from "../api-action";
 import {dropToken, getToken, saveUserData} from "../../services/local-storage";
 
 type InitialState = {
@@ -8,6 +8,7 @@ type InitialState = {
   isDataLoaded: boolean;
   userAvatar: string | null;
   isAdmin: boolean | undefined;
+  isLoadingError: boolean,
 }
 
 const initialState: InitialState = {
@@ -15,6 +16,7 @@ const initialState: InitialState = {
   isDataLoaded: false,
   userAvatar: null,
   isAdmin: false
+  isLoadingError: false,
 };
 
 function parseJwt(token: string) {
@@ -39,15 +41,24 @@ export const userProcess = createSlice({
   },
   extraReducers(builder) {
     builder
+      .addCase(checkAuthAction.pending, (state) => {
+        state.isDataLoaded = true;
+      })
       .addCase(checkAuthAction.fulfilled, (state) => {
+        state.isDataLoaded = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
         state.isAdmin = Boolean(parseJwt(getToken()).isAdmin);
       })
       .addCase(checkAuthAction.rejected, (state) => {
+        state.isDataLoaded = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
         state.isAdmin = false;
       })
+      .addCase(registrationAction.pending, (state) => {
+        state.isDataLoaded = true;
+      })
       .addCase(registrationAction.fulfilled, (state, action) => {
+        state.isDataLoaded = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
         saveUserData({
           username: action.payload.username,
@@ -56,10 +67,16 @@ export const userProcess = createSlice({
         state.isAdmin = Boolean(parseJwt(getToken()).isAdmin);
       })
       .addCase(registrationAction.rejected, (state) => {
+        state.isLoadingError = true;
+        state.isDataLoaded = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
         state.isAdmin = false;
       })
+      .addCase(loginAction.pending, (state) => {
+        state.isDataLoaded = true;
+      })
       .addCase(loginAction.fulfilled, (state, action) => {
+        state.isDataLoaded = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
         saveUserData({
           username: action.payload.username,
@@ -68,6 +85,8 @@ export const userProcess = createSlice({
         state.isAdmin = Boolean(parseJwt(getToken()).isAdmin);
       })
       .addCase(loginAction.rejected, (state) => {
+        state.isLoadingError = true;
+        state.isDataLoaded = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
         state.isAdmin = false;
       })
