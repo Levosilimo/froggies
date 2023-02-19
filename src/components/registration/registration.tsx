@@ -1,7 +1,9 @@
 import {useForm} from "react-hook-form";
-import {useAppDispatch} from "../../hooks";
-import {registrationAction} from "../../store/api-action";
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {registrationAction, setUserDataAction} from "../../store/api-action";
 import {ERROR_MESSAGE, MAIL_REG_EXP} from "../../constants";
+import {getLanguage} from "../../store/user/selectors";
+import {useTranslation} from "react-i18next";
 
 type FormData = {
   username: string;
@@ -12,39 +14,43 @@ type FormData = {
 
 function Registration () {
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>();
-
+  const { t } = useTranslation();
   const dispatch = useAppDispatch();
-
+  const language = useAppSelector(getLanguage);
   const onSubmit = handleSubmit(data => {
-    dispatch(registrationAction(data));
+    dispatch(registrationAction(data)).then(() => {
+      if(language) {
+        dispatch(setUserDataAction({language}));
+      }
+    });
   });
 
   return (
     <form className="form" onSubmit={onSubmit}>
       <div className="form-block">
-        <label className="form-label">User name</label>
-        <input className="form-input" placeholder="Enter your username"
+        <label className="form-label">{t("usernameLabel")}</label>
+        <input className="form-input" placeholder={t("usernamePlaceholder").toString()}
                {...register("username",  { required: true })} />
-        {errors.username && <span className="error">{ ERROR_MESSAGE.USERNAME }</span>}
+        {errors.username && <span className="error">{t("usernameErrorMessage")}</span>}
       </div>
       <div className="form-block ">
-        <label className="form-label">E-mail</label>
-        <input className="form-input" placeholder="Enter your email"
+        <label className="form-label">{t("emailLabel")}</label>
+        <input className="form-input" placeholder={t("emailPlaceholder").toString()}
                {...register("email",  { required: true, pattern: MAIL_REG_EXP })} />
-        {errors.email && <span className="error">{ ERROR_MESSAGE.EMAIL }</span>}
+        {errors.email && <span className="error">{t("emailErrorMessage")}</span>}
       </div>
       <div className="form-block ">
-        <label className="form-label">Password</label>
-        <input className="form-input" type="password" placeholder="Should contains min 6 symbols"
+        <label className="form-label">{t("passwordLabel")}</label>
+        <input className="form-input" type="password" placeholder={t("passwordPlaceholder").toString()}
                {...register("password",  { required: true, minLength: 6 })} />
-        {errors.password && <span className="error">{ ERROR_MESSAGE.PASSWORD }</span>}
+        {errors.password && <span className="error">{t("passwordPlaceholder")}</span>}
       </div>
       <div className="form-block ">
-        <label className="form-label">Admin password <span>(If you have, enter it)</span></label>
-        <input className="form-input" placeholder="Enter your administrator password"
+        <label className="form-label">{t("adminPasswordLabel")} <span>({t("adminPasswordRemark")})</span></label>
+        <input className="form-input" placeholder={t("adminPasswordPlaceholder").toString()}
                {...register("adminPassword")} />
       </div>
-      <button className="form-submit button" type="submit">Create account</button>
+      <button className="form-submit button" type="submit">{t("createAccount")}</button>
     </form>
   )
 }

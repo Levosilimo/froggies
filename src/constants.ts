@@ -41,6 +41,7 @@ export enum APIRoute {
   Login = '/login',
   CheckAuth = '/check-auth',
   Registration = '/register',
+  GetUserData = '/user',
 }
 
 export enum NameSpace {

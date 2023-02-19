@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import { checkAuthAction } from "./store/api-action";
 import { browserHistory } from "./browser-history";
 import { HistoryRouter } from './components/history-route/history-route';
+import './i18n';
 
 store.dispatch(checkAuthAction());
 
