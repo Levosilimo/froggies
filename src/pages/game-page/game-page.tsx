@@ -82,16 +82,58 @@ function GamePage(): JSX.Element {
     const target = event.target as HTMLElement;
     const tooltipsKeys = level.description.tooltips.map(e => e.key);
     if(target.hasAttribute("data-tooltip")){
-      console.log(target);
+      event.stopPropagation();
+      const divElement = tooltipsKeys.find((key) => target.getAttribute("data-tooltip") === key);
       for (const key of tooltipsKeys) {
         if (target.getAttribute("data-tooltip") === key){
           const divElement = tooltipsRef.current.find((htmlElement) => htmlElement && htmlElement.hasAttribute("data-tooltip") && htmlElement.getAttribute("data-tooltip") === key);
           if(divElement) {
+            if (tooltipContainerRef.current.style.top === target.getBoundingClientRect().bottom+10+"px"
+            && tooltipContainerRef.current.getAttribute("data-tooltip") === key) {
+              closeTooltip();
+              return;
+            }
+            tooltipContainerRef.current.style.top = target.getBoundingClientRect().bottom+10+"px";
+            tooltipContainerRef.current.style.left = target.getBoundingClientRect().left-20+"px";
+            tooltipContainerRef.current.hidden = false;
+            tooltipContainerRef.current.setAttribute("data-tooltip", key);
             tooltipContainerRef.current.innerHTML = divElement.innerHTML;
+            return;
           }
         }
       }
     }
+  }
+
+  const onTooltipContainerClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    event.stopPropagation();
+    const target = event.target as HTMLElement;
+    if(target.tagName.toLowerCase()==="code"){
+      let newCode: string | null = event.currentTarget.getAttribute("data-tooltip");
+      if (!newCode || target.classList.contains("off")) return;
+      const codeWordsArr = target.innerText.split(' ');
+      if(codeWordsArr.length>1){
+        const defaultIndex = codeWordsArr.findIndex((str) => str.startsWith("(default)"));
+        if (defaultIndex>0){
+          newCode += `: ${codeWordsArr[defaultIndex-1]};`
+        }
+      } else {
+        newCode += `: ${codeWordsArr[0]};`;
+      }
+      valueChange(newCode);
+    }
+  }
+
+  const closeTooltip = () => {
+    if(tooltipContainerRef.current) {
+      tooltipContainerRef.current.hidden=true;
+      tooltipContainerRef.current.setAttribute("style", "");
+    }
+  }
+
+  const closeModals = () => {
+    closeTooltip();
+    closeLevelButtonsModal();
   }
 
   const dispatch = useAppDispatch();
@@ -119,11 +161,11 @@ function GamePage(): JSX.Element {
     }
     const close = (e: KeyboardEvent) => {
       if(e.keyCode === 27){
-        closeLevelButtonsModal();
+        closeModals();
       }
     };
     window.addEventListener('keydown', close);
-    window.addEventListener('click', closeLevelButtonsModal);
+    window.addEventListener('click', closeModals);
   });
 
   if(!level) return (<LoadingScreen />)
@@ -214,7 +256,7 @@ function GamePage(): JSX.Element {
             </div>
             <button className="answer-button" type="button" disabled={isButtonDisabled} onClick={onButtonClick}>{level.submitText}</button>
           </div>
-          <div className="tooltip-container" ref={el => tooltipContainerRef.current = el}></div>
+          <div className="tooltip-container" hidden={true} onClick={onTooltipContainerClick} ref={el => tooltipContainerRef.current = el}></div>
           {level.description.tooltips.map((tooltip, i) => (
             <div key={i} data-tooltip={tooltip.key} ref={el => tooltipsRef.current[i] = el} className="tooltip" style={{display: "none"}}>
               <h5>{tooltip.key}</h5>
