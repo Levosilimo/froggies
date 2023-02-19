@@ -15,7 +15,7 @@ const initialState: InitialState = {
   authorizationStatus: AuthorizationStatus.Unknown,
   isDataLoaded: false,
   userAvatar: null,
-  isAdmin: false
+  isAdmin: false,
   isLoadingError: false,
 };
 

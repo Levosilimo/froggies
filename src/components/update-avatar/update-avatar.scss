@@ -1,15 +1,17 @@
+@import "./src/scss/all";
+
 .drop-container {
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0;
   height: 100%;
-  border: 4px dashed #4aa1f3;
+  border: 4px dashed $blue;
   span {
     cursor: pointer;
   }
   &.dragover{
-    background: #aabbcc;
+    background: $gray-light;
   }
 }
 
@@ -40,9 +42,9 @@
   margin-top: 25px;
   padding: 0 4px;
   border-radius: 2px;
-  box-shadow: 1px 1px 2px #abc;
-  color: #fff;
-  background: #0080c8;
+  box-shadow: 1px 1px 2px $gray-light;
+  color: $white;
+  background: $blue;
   text-transform: uppercase;
 }
 
@@ -50,13 +52,13 @@
   display: inline-block;
   vertical-align:top;
   margin-left: 50px;
-  color: #4aa1f3;
+  color: $blue;
 }
 
 .file-type-logo {
   width: 50px;
   height: 50px;
-  background: #97dc99;
+  background: $green-light;
   background-size: 100%;
   position: absolute;
 }
@@ -66,7 +68,7 @@
   vertical-align:top;
   margin-left:10px;
   margin-right:5px;
-  color: #444242;
+  color: $gray;
   font-weight: 700;
   font-size: 14px;
 }
@@ -92,7 +94,7 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  background: white;
+  background: $white;
   width: 50vw;
   height: 70vh;
   position: fixed;
@@ -115,7 +117,7 @@
   cursor: pointer;
   top: 15px;
   right: 35px;
-  color: #f1f1f1;
+  color: $gray-light;
   font-size: 40px;
   font-weight: bold;
   transition: 0.3s;
@@ -127,7 +129,7 @@
 
 .file-upload-btn {
   cursor: pointer;
-  color: white;
+  color: $white;
   text-transform: uppercase;
   outline: none;
   background-color: #4aa1f3;

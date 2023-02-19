@@ -30,7 +30,7 @@
 .user-record-admin {
   display: inline-block;
   padding: .1rem;
-  border: 2px solid red;
+  border: 2px solid $red;
   margin: 0 .3rem;
 }
 
@@ -39,14 +39,14 @@
   flex-direction: column;
   width: 100%;
   h4{
-    font-family: Arial;
+    font-family: Arial, serif;
     margin: .1rem;
   }
 }
 
 .level-checkbox {
   &.achieved {
-    background: #97dc99;
+    background: $green-light;
   }
 }
 
