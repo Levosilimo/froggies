@@ -38,7 +38,10 @@ function Header(): JSX.Element {
             : (<div className="header-user-data">
                 <div className="header-avatar">
                   <Link to={AppRoute.User}><img src={urlForUserImage} width="30" height="30" alt="User avatar"/></Link>
+                  <Link to={AppRoute.User}><img src={urlForUserImage} width="30" height="30" alt="User avatar"/></Link>
                 </div>
+                <span className="header-username"><Link to={AppRoute.User}>{userName}</Link></span>
+                <button className="header-singout" onClick={logOut}>Sign out</button>
                 <span className="header-username"><Link to={AppRoute.User}>{userName}</Link></span>
                 <button className="header-signout" onClick={logOut}>Sign out</button>
               </div>)

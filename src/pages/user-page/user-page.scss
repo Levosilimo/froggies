@@ -11,16 +11,6 @@
 }
 
 .user__title {
-  margin: 0;
-  padding: 0;
-}
-
-.section {
-  background-color: gray;
-  height: 200px;
-}
-
-.user__title {
   grid-area: A;
   align-self: center;
   justify-self: center;
@@ -32,4 +22,4 @@
 
 .user__score {
   grid-area: D;
-}
+} 
