@@ -1,11 +1,3 @@
-export enum AppRoute {
-  Login = '/login',
-  Main = '/',
-  Game = '/game',
-  Settings = '/settings',
-  User = '/user',
-}
-
 export const DEVELOPERS = [
   {
     name: 'Ivanou Andrei',
@@ -42,6 +34,10 @@ export enum APIRoute {
   Login = '/login',
   CheckAuth = '/check-auth',
   Registration = '/register',
+  GetRecords = '/records',
+  Levels = '/levels',
+  Avatar = '/avatar',
+  User = '/user'
 }
 
 export enum NameSpace {
