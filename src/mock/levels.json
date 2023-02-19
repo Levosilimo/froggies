@@ -2,7 +2,7 @@
   {
     "levelNumber": 1,
     "game": "flexbox",
-    "pre": "#frogs {\n display: flex;",
+    "pre": "#frogs {\n  display: flex;",
     "post": "}",
     "winCondition": "justify-content: flex-end;",
     "name": {
@@ -53,10 +53,10 @@
       "tooltips": [
         {
           "key": "justify-content",
-          "en_us": "",
+          "en_us": "Aligns flex items along the main axis. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
           "es_es": "Alinea los elementos flex a lo largo del eje principal. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
-          "ru": "",
-          "uk": ""
+          "ru": "Выравнивает flex-элементы вдоль главной оси. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "uk": "Вирівнює flex-елементи вздовж головної осі. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>"
         }
       ],
       "example": {
@@ -77,7 +77,7 @@
   {
     "levelNumber": 2,
     "game": "flexbox",
-    "pre": "#frogs {\n display: flex;",
+    "pre": "#frogs {\n  display: flex;",
     "post": "}",
     "winCondition": "justify-content: center;",
     "name": {
@@ -128,10 +128,10 @@
       "tooltips": [
         {
           "key": "justify-content",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns flex items along the main axis. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "es_es": "Alinea los elementos flex a lo largo del eje principal. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "ru": "Выравнивает flex-элементы вдоль главной оси. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "uk": "Вирівнює flex-елементи вздовж головної осі. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>"
         }
       ],
       "example": {
@@ -152,7 +152,7 @@
   {
     "levelNumber": 3,
     "game": "flexbox",
-    "pre": "#frogs {\n display: flex;",
+    "pre": "#frogs {\n  display: flex;",
     "post": "}",
     "winCondition": "justify-content: space-around;",
     "name": {
@@ -203,10 +203,10 @@
       "tooltips": [
         {
           "key": "justify-content",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns flex items along the main axis. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "es_es": "Alinea los elementos flex a lo largo del eje principal. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "ru": "Выравнивает flex-элементы вдоль главной оси. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "uk": "Вирівнює flex-елементи вздовж головної осі. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>"
         }
       ],
       "example": {
@@ -227,7 +227,7 @@
   {
     "levelNumber": 4,
     "game": "flexbox",
-    "pre": "#frogs {\n display: flex;",
+    "pre": "#frogs {\n  display: flex;",
     "post": "}",
     "winCondition": "justify-content: space-between;",
     "name": {
@@ -278,10 +278,10 @@
       "tooltips": [
         {
           "key": "justify-content",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns flex items along the main axis. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "es_es": "Alinea los elementos flex a lo largo del eje principal. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "ru": "Выравнивает flex-элементы вдоль главной оси. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "uk": "Вирівнює flex-елементи вздовж головної осі. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>"
         }
       ],
       "example": {
@@ -302,7 +302,7 @@
   {
     "levelNumber": 5,
     "game": "flexbox",
-    "pre": "#frogs {\n display: flex;",
+    "pre": "#frogs {\n  display: flex;",
     "post": "}",
     "winCondition": "align-items: flex-end;",
     "name": {
@@ -353,10 +353,10 @@
       "tooltips": [
         {
           "key": "align-items",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns flex items along the cross axis. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "es_es": "Alinea elementos Flex a lo largo del eje transversal. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "ru": "Выравнивает flex-элементы вдоль пересекаемой оси. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "uk": "Вирівнює flex-елементи вздовж перетинної осі. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>"
         }
       ],
       "example": {
@@ -377,9 +377,9 @@
   {
     "levelNumber": 6,
     "game": "flexbox",
-    "pre": "#frogs {\n display: flex;",
+    "pre": "#frogs {\n  display: flex;",
     "post": "}",
-    "winCondition": "justify-content: сenter; align-items: center;",
+    "winCondition": "justify-content: center; align-items: center;",
     "name": {
       "en_us": "Aligning content in a Flex Сontainer on both axes",
       "es_es": "Alineación de contenido en Flex Сontenedor en ambos ejes",
@@ -428,17 +428,17 @@
       "tooltips": [
         {
           "key": "justify-content",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns flex items along the main axis. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "es_es": "Alinea los elementos flex a lo largo del eje principal. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "ru": "Выравнивает flex-элементы вдоль главной оси. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "uk": "Вирівнює flex-елементи вздовж головної осі. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>"
         },
         {
           "key": "align-items",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns flex items along the cross axis. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "es_es": "Alinea elementos Flex a lo largo del eje transversal. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "ru": "Выравнивает flex-элементы вдоль пересекаемой оси. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "uk": "Вирівнює flex-елементи вздовж перетинної осі. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>"
         }
       ],
       "example": {
@@ -459,7 +459,7 @@
   {
     "levelNumber": 7,
     "game": "flexbox",
-    "pre": "#frogs {\n display: flex;",
+    "pre": "#frogs {\n  display: flex;",
     "post": "}",
     "winCondition": "justify-content: space-around; align-items: flex-end;",
     "name": {
@@ -510,17 +510,17 @@
       "tooltips": [
         {
           "key": "justify-content",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns flex items along the main axis. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "es_es": "Alinea los elementos flex a lo largo del eje principal. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "ru": "Выравнивает flex-элементы вдоль главной оси. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "uk": "Вирівнює flex-елементи вздовж головної осі. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>"
         },
         {
           "key": "align-items",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns flex items along the cross axis. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "es_es": "Alinea elementos Flex a lo largo del eje transversal. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "ru": "Выравнивает flex-элементы вдоль пересекаемой оси. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "uk": "Вирівнює flex-елементи вздовж перетинної осі. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>"
         }
       ],
       "example": {
@@ -541,7 +541,7 @@
   {
     "levelNumber": 8,
     "game": "flexbox",
-    "pre": "#frogs {\n display: flex;",
+    "pre": "#frogs {\n  display: flex;",
     "post": "}",
     "winCondition": "flex-direction: row-reverse;",
     "name": {
@@ -584,12 +584,12 @@
         }
       ],
       "tooltips": [
-        {
+         {
           "key": "flex-direction",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Defines the direction of the main axis. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "es_es": "Define la dirección del eje principal. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "ru": "Задает направление основной оси. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "uk": "Визначає напрямок головної осі. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>"
         }
       ],
       "example": {
@@ -610,7 +610,7 @@
   {
     "levelNumber": 9,
     "game": "flexbox",
-    "pre": "#frogs {\n display: flex;",
+    "pre": "#frogs {\n  display: flex;",
     "post": "}",
     "winCondition": "flex-direction: column;",
     "name": {
@@ -653,12 +653,12 @@
         }
       ],
       "tooltips": [
-        {
+         {
           "key": "flex-direction",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Defines the direction of the main axis. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "es_es": "Define la dirección del eje principal. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "ru": "Задает направление основной оси. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "uk": "Визначає напрямок головної осі. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>"
         }
       ],
       "example": {
@@ -679,7 +679,7 @@
   {
     "levelNumber": 10,
     "game": "flexbox",
-    "pre": "#frogs {\n display: flex;",
+    "pre": "#frogs {\n  display: flex;",
     "post": "}",
     "winCondition": "flex-direction: row-reverse; justify-content: flex-end;",
     "name": {
@@ -722,19 +722,19 @@
         }
       ],
       "tooltips": [
-        {
+         {
           "key": "flex-direction",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Defines the direction of the main axis. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "es_es": "Define la dirección del eje principal. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "ru": "Задает направление основной оси. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "uk": "Визначає напрямок головної осі. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>"
         },
         {
           "key": "justify-content",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns flex items along the main axis. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "es_es": "Alinea los elementos flex a lo largo del eje principal. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "ru": "Выравнивает flex-элементы вдоль главной оси. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "uk": "Вирівнює flex-елементи вздовж головної осі. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>"
         }
       ],
       "example": {
@@ -755,7 +755,7 @@
   {
     "levelNumber": 11,
     "game": "flexbox",
-    "pre": "#frogs {\n display: flex;",
+    "pre": "#frogs {\n  display: flex;",
     "post": "}",
     "winCondition": "flex-direction: column; justify-content: flex-end;",
     "name": {
@@ -798,26 +798,26 @@
         }
       ],
       "tooltips": [
-        {
+         {
           "key": "flex-direction",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Defines the direction of the main axis. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "es_es": "Define la dirección del eje principal. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "ru": "Задает направление основной оси. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "uk": "Визначає напрямок головної осі. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>"
         },
         {
           "key": "justify-content",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns flex items along the main axis. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "es_es": "Alinea los elementos flex a lo largo del eje principal. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "ru": "Выравнивает flex-элементы вдоль главной оси. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "uk": "Вирівнює flex-елементи вздовж головної осі. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>"
         },
         {
           "key": "align-items",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns flex items along the cross axis. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "es_es": "Alinea elementos Flex a lo largo del eje transversal. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "ru": "Выравнивает flex-элементы вдоль пересекаемой оси. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "uk": "Вирівнює flex-елементи вздовж перетинної осі. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>"
         }
       ],
       "example": {
@@ -838,7 +838,7 @@
   {
     "levelNumber": 12,
     "game": "flexbox",
-    "pre": "#frogs {\n display: flex;",
+    "pre": "#frogs {\n  display: flex;",
     "post": "}",
     "winCondition": "flex-direction: column-reverse; justify-content: space-between;",
     "name": {
@@ -881,19 +881,19 @@
         }
       ],
       "tooltips": [
-        {
+         {
           "key": "flex-direction",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Defines the direction of the main axis. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "es_es": "Define la dirección del eje principal. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "ru": "Задает направление основной оси. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "uk": "Визначає напрямок головної осі. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>"
         },
         {
           "key": "justify-content",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns flex items along the main axis. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "es_es": "Alinea los elementos flex a lo largo del eje principal. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "ru": "Выравнивает flex-элементы вдоль главной оси. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "uk": "Вирівнює flex-елементи вздовж головної осі. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>"
         }
       ],
       "example": {
@@ -914,7 +914,7 @@
   {
     "levelNumber": 13,
     "game": "flexbox",
-    "pre": "#frogs {\n display: flex;",
+    "pre": "#frogs {\n  display: flex;",
     "post": "}",
     "winCondition": "flex-direction: row-reverse; justify-content: center; align-items: flex-end",
     "name": {
@@ -957,26 +957,26 @@
         }
       ],
       "tooltips": [
-        {
+         {
           "key": "flex-direction",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Defines the direction of the main axis. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "es_es": "Define la dirección del eje principal. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "ru": "Задает направление основной оси. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "uk": "Визначає напрямок головної осі. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>"
         },
         {
           "key": "justify-content",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns flex items along the main axis. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "es_es": "Alinea los elementos flex a lo largo del eje principal. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "ru": "Выравнивает flex-элементы вдоль главной оси. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>",
+          "uk": "Вирівнює flex-елементи вздовж головної осі. <code>flex-start (default)</code> <code>flex-end</code> <code>center</code> <code>space-between</code> <code>space-around</code> <code>space-evenly</code>"
         },
         {
           "key": "align-items",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns flex items along the cross axis. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "es_es": "Alinea elementos Flex a lo largo del eje transversal. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "ru": "Выравнивает flex-элементы вдоль пересекаемой оси. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "uk": "Вирівнює flex-елементи вздовж перетинної осі. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>"
         }
       ],
       "example": {
@@ -997,7 +997,7 @@
   {
     "levelNumber": 14,
     "game": "flexbox",
-    "pre": "#frogs {\n  display: flex;\n}\n\n.yellow {",
+    "pre": "#frogs {\n  display: flex;\n}\n\n.red {",
     "post": "}",
     "winCondition": "order: 2",
     "name": {
@@ -1015,37 +1015,19 @@
       },
       "rulesList": [
         {
-          "en_us": "<code>row</code>: Items are placed the same as the text direction.",
-          "es_es": "<code>row</code>: Elementos son colocados en la misma dirección del texto.",
-          "ru": "<code>row</code>: элементы размещаются по направлению текста.",
-          "uk": "<code>row</code>: елементи розташовані так само, як напрямок тексту."
-        },
-        {
-          "en_us": "<code>row-reverse</code>: Items are placed opposite to the text direction.",
-          "es_es": "<code>row-reverse</code>: Elementos son colocados en la dirección opuesta al texto.",
-          "ru": "<code>row-reverse</code>: элементы отображаются в обратном порядке к направлению текста.",
-          "uk": "<code>row-reverse</code>: елементи розташовані протилежно напрямку тексту."
-        },
-        {
-          "en_us": "<code>column</code>: Items are placed top to bottom.",
-          "es_es": "<code>column</code>: Elementos se colocan de arriba hacia abajo.",
-          "ru": "<code>column</code>: элементы располагаются сверху вниз.",
-          "uk": "<code>column</code>: елементи розташовані зверху вниз."
-        },
-        {
-          "en_us": "<code>column-reverse</code>: Items are placed bottom to top.",
-          "es_es": "<code>column-reverse</code>: Elementos se colocan de abajo hacia arriba.",
-          "ru": "<code>column-reverse</code>: элементы располагаются снизу вверх.",
-          "uk": "<code>column-reverse</code>: елементи розташовані знизу вгору."
+          "en_us": "<code>&lt;integer&gt;</code>: Elements are placed in the same ordinal group as other elements placed according to their source code order or the same value of <code>order</code>",
+          "es_es": "<code>&lt;integer&gt;</code>: Los elementos se colocan en el mismo grupo ordinal que otros elementos colocados según el orden de su código fuente o el mismo valor de <code>order</code>",
+          "ru": "<code>&lt;integer&gt;</code>: Элементы помещаются в ту же порядковую группу, что и другие элементы, размещённые в эту группу в соответствии с их порядком в исходном коде или тем же значением <code>order</code>.",
+          "uk": "<code>&lt;integer&gt;</code>: Елементи поміщаються у ту ж порядкову групу, що й інші елементи, розміщені в цій групі відповідно до їх порядку у програмному коді або того ж значення <code>order</code>."
         }
       ],
       "tooltips": [
         {
           "key": "order",
-          "en_us": "",
+          "en_us": "Specifies the order of the flex item.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
           "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "ru": "Указывает порядок flex-элемента.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
+          "uk": "Вказує порядок flex-елементу.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>"
         }
       ],
       "example": {
@@ -1070,51 +1052,33 @@
     "post": "}",
     "winCondition": "order: -1",
     "name": {
-      "en_us": "Main axis direction and aligning content on both axes in Flex Container",
-      "es_es": "Dirección del eje principal y alineación de contenido en ambos ejes en Flex Contenedor",
-      "ru": "Направление главной оси и выравнивание содержимого по обоим осям в Flex Контейнере",
-      "uk": "Напрямок головної осі та вирівнювання змісту по обом осям у Flex контейнері"
+      "en_us": "Ordering elements in Flex Container 2",
+      "es_es": "Dispuesto los elementos en Flex Contenedor 2",
+      "ru": "Порядок размещения Flex элементов в Flex контейнере 2",
+      "uk": "Порядок розміщення Flex елементів у Flex контейнері 2"
     },
     "description": {
       "paragraph": {
-        "en_us": "Help the frogs find their lilypads using <code>flex-direction</code>, <code>justify-content</code>, and <code>align-items</code>.",
-        "es_es": "Ayuda a las ranas a encontrar sus hojas de lirio usando <code>flex-direction</code>, <code>justify-content</code>, y <code>align-items</code>.",
-        "ru": "Помоги лягушатам найти их лилии с помощью <code>flex-direction</code>, <code>justify-content</code> и <code>align-items</code>.",
-        "uk": "Допоможи жабенятам знайти своє листя латаття скориставшись <code>flex-direction</code>, <code>justify-content</code>, та <code>align-items</code>."
+        "en_us": "Use the <code>order</code> property to send the blue frog to his lilypad.",
+        "es_es": "Usa la propiedad <code>order</code> para enviar la rana de color rojo a su hoja de lirio.",
+        "ru": "Используй свойство <code>order</code>, чтобы отправить красного лягушонка на его лилию.",
+        "uk": "Скористайся властивістю <code>order</code>, щоб всадити червоне жабеня на свій лист латаття."
       },
       "rulesList": [
         {
-          "en_us": "<code>row</code>: Items are placed the same as the text direction.",
-          "es_es": "<code>row</code>: Elementos son colocados en la misma dirección del texto.",
-          "ru": "<code>row</code>: элементы размещаются по направлению текста.",
-          "uk": "<code>row</code>: елементи розташовані так само, як напрямок тексту."
-        },
-        {
-          "en_us": "<code>row-reverse</code>: Items are placed opposite to the text direction.",
-          "es_es": "<code>row-reverse</code>: Elementos son colocados en la dirección opuesta al texto.",
-          "ru": "<code>row-reverse</code>: элементы отображаются в обратном порядке к направлению текста.",
-          "uk": "<code>row-reverse</code>: елементи розташовані протилежно напрямку тексту."
-        },
-        {
-          "en_us": "<code>column</code>: Items are placed top to bottom.",
-          "es_es": "<code>column</code>: Elementos se colocan de arriba hacia abajo.",
-          "ru": "<code>column</code>: элементы располагаются сверху вниз.",
-          "uk": "<code>column</code>: елементи розташовані зверху вниз."
-        },
-        {
-          "en_us": "<code>column-reverse</code>: Items are placed bottom to top.",
-          "es_es": "<code>column-reverse</code>: Elementos se colocan de abajo hacia arriba.",
-          "ru": "<code>column-reverse</code>: элементы располагаются снизу вверх.",
-          "uk": "<code>column-reverse</code>: елементи розташовані знизу вгору."
+          "en_us": "<code>&lt;integer&gt;</code>: Elements are placed in the same ordinal group as other elements placed according to their source code order or the same value of <code>order</code>",
+          "es_es": "<code>&lt;integer&gt;</code>: Los elementos se colocan en el mismo grupo ordinal que otros elementos colocados según el orden de su código fuente o el mismo valor de <code>order</code>",
+          "ru": "<code>&lt;integer&gt;</code>: Элементы помещаются в ту же порядковую группу, что и другие элементы, размещённые в эту группу в соответствии с их порядком в исходном коде или тем же значением <code>order</code>.",
+          "uk": "<code>&lt;integer&gt;</code>: Елементи поміщаються у ту ж порядкову групу, що й інші елементи, розміщені в цій групі відповідно до їх порядку у програмному коді або того ж значення <code>order</code>."
         }
       ],
       "tooltips": [
         {
           "key": "order",
-          "en_us": "",
+          "en_us": "Specifies the order of the flex item.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
           "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "ru": "Указывает порядок flex-элемента.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
+          "uk": "Вказує порядок flex-елементу.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>"
         }
       ],
       "example": {
@@ -1130,74 +1094,80 @@
       "ru": "Следующий Уровень",
       "uk": "Наступний Рівень"
     },
-    "items": [0,0,0,3,0]
+    "items": [0,0,0,2,0]
   },
   {
     "levelNumber": 16,
     "game": "flexbox",
-    "pre": "#frogs {\\n  display: flex;\\n  align-items: flex-start;\\n}\\n\\n.yellow {\\n",
+    "pre": "#frogs {\n  display: flex;\n  align-items: flex-start;\n}\n\n.red {\n",
     "post": "}",
-    "winCondition": "flex-direction: row-reverse; justify-content: center; align-items: flex-end",
+    "winCondition": "align-self: flex-end;",
     "name": {
-      "en_us": "Main axis direction and aligning content on both axes in Flex Container",
-      "es_es": "Dirección del eje principal y alineación de contenido en ambos ejes en Flex Contenedor",
-      "ru": "Направление главной оси и выравнивание содержимого по обоим осям в Flex Контейнере",
-      "uk": "Напрямок головної осі та вирівнювання змісту по обом осям у Flex контейнері"
+      "en_us": "align-self",
+      "es_es": "align-self",
+      "ru": "align-self",
+      "uk": "align-self"
     },
     "description": {
       "paragraph": {
-        "en_us": "Help the frogs find their lilypads using <code>flex-direction</code>, <code>justify-content</code>, and <code>align-items</code>.",
-        "es_es": "Ayuda a las ranas a encontrar sus hojas de lirio usando <code>flex-direction</code>, <code>justify-content</code>, y <code>align-items</code>.",
-        "ru": "Помоги лягушатам найти их лилии с помощью <code>flex-direction</code>, <code>justify-content</code> и <code>align-items</code>.",
-        "uk": "Допоможи жабенятам знайти своє листя латаття скориставшись <code>flex-direction</code>, <code>justify-content</code>, та <code>align-items</code>."
+        "en_us": "Another property you can apply to individual items is <code>align-self</code>. This property accepts the same values as <code>align-items</code> and its value for the specific item.",
+        "es_es": "Otra propiedad que puedes aplicar a elementos individuales es <code>align-self</code>. Esta propiedad acepta los mismos valores de <code>align-items</code> y sus valores son usados para un elemento específico.",
+        "ru": "Ещё одно свойство, которое ты можешь применить к определенному элементу — это <code>align-self</code>. Это свойство принимает те же значения, что и <code>align-items</code>.",
+        "uk": "Ще одна властивість, котру ти зможеш застосувати до окремого елементу - це <code>align-self</code>. Ця властивість набуває тих самих значень, що й <code>align-items</code>."
       },
       "rulesList": [
         {
-          "en_us": "<code>row</code>: Items are placed the same as the text direction.",
-          "es_es": "<code>row</code>: Elementos son colocados en la misma dirección del texto.",
-          "ru": "<code>row</code>: элементы размещаются по направлению текста.",
-          "uk": "<code>row</code>: елементи розташовані так само, як напрямок тексту."
+          "en_us": "<code>flex-start</code>: Items align to the top of the container.",
+          "es_es": "<code>flex-start</code>: Alinea elementos a la parte superior del contenedor.",
+          "ru": "<code>flex-start</code>: Элементы выравниваются по верхнему краю контейнера.",
+          "uk": "<code>flex-start</code>: Елементи вирівнюються за верхнім краєм контейнеру."
         },
         {
-          "en_us": "<code>row-reverse</code>: Items are placed opposite to the text direction.",
-          "es_es": "<code>row-reverse</code>: Elementos son colocados en la dirección opuesta al texto.",
-          "ru": "<code>row-reverse</code>: элементы отображаются в обратном порядке к направлению текста.",
-          "uk": "<code>row-reverse</code>: елементи розташовані протилежно напрямку тексту."
+          "en_us": "<code>flex-end</code>: Items align to the bottom of the container.",
+          "es_es": "<code>flex-end</code>: Alinea elementos a la parte inferior del contenedor.",
+          "ru": "<code>flex-end</code>: Элементы выравниваются по нижнему краю контейнера.",
+          "uk": "<code>flex-end</code>: Елементи вирівнюються за нижнім краєм контейнеру."
         },
         {
-          "en_us": "<code>column</code>: Items are placed top to bottom.",
-          "es_es": "<code>column</code>: Elementos se colocan de arriba hacia abajo.",
-          "ru": "<code>column</code>: элементы располагаются сверху вниз.",
-          "uk": "<code>column</code>: елементи розташовані зверху вниз."
+          "en_us": "<code>center</code>: Items align at the vertical center of the container.",
+          "es_es": "<code>center</code>: Alinea elementos en el centro (verticalmente hablando) del contenedor.",
+          "ru": "<code>center</code>: Элементы выравниваются вертикально по центру контейнера.",
+          "uk": "<code>center</code>: Елементи вирівнюються вертикально по середині контейнера."
         },
         {
-          "en_us": "<code>column-reverse</code>: Items are placed bottom to top.",
-          "es_es": "<code>column-reverse</code>: Elementos se colocan de abajo hacia arriba.",
-          "ru": "<code>column-reverse</code>: элементы располагаются снизу вверх.",
-          "uk": "<code>column-reverse</code>: елементи розташовані знизу вгору."
+          "en_us": "<code>baseline</code>: Items display at the baseline of the container.",
+          "es_es": "<code>baseline</code>: Muestra elementos en la línea base del contenedor.",
+          "ru": "<code>baseline</code>: Элементы отображаются на базовой линии контейнера.",
+          "uk": "<code>baseline</code>: Елементи зображуються на базовій лінії контейнера."
+        },
+        {
+          "en_us": "<code>stretch</code>: Items are stretched to fit the container.",
+          "es_es": "<code>stretch</code>: Elementos se estiran para ajustarse al contenedor.",
+          "ru": "<code>stretch</code>: Элементы растягиваются, чтобы заполнить контейнер.",
+          "uk": "<code>stretch</code>: Елементи розтягуються заповнюючи контейнер."
         }
       ],
       "tooltips": [
         {
           "key": "align-self",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns a flex item along the cross axis, overriding the <code>align-items</code> value. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch</code>",
+          "es_es": "Alinea un elemento flex a lo largo del eje transversal, anulando el valor de <code>align-items</code>. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch</code>",
+          "ru": "Выравнивает flex-элемент вдоль пересекаемой оси, перекрывая значения свойства <code>align-items</code>. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch</code>",
+          "uk": "Вирівнює flex-елемент вздовж перетинної осі, перекриваючи значення властивості <code>align-items</code>. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch</code>"
         },
         {
           "key": "align-items",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns flex items along the cross axis. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "es_es": "Alinea elementos Flex a lo largo del eje transversal. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "ru": "Выравнивает flex-элементы вдоль пересекаемой оси. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "uk": "Вирівнює flex-елементи вздовж перетинної осі. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>"
         }
       ],
       "example": {
-        "en_us": "For example, <code>flex-direction: row-reverse;</code> will place the frogs in the direction opposite to the text direction.",
-        "es_es": "Por ejemplo, <code>flex-direction: row-reverse;</code> colocará las ranas en la dirección opuesta a la dirección del texto.",
-        "ru": "Например, <code>flex-direction: row-reverse;</code> расположит лягушат в направлении, противоположном направлению текста.",
-        "uk": "Наприклад, <code>flex-direction: row-reverse;</code> розмістить жабенят у напрямку, протилежному напрямку тексту."
+        "en_us": "For example, <code>align-self: flex-end;</code> will move the frog to the bottom.",
+        "es_es": "Por ejemplo, <code>align-self: flex-end;</code> moverá la rana al fondo.",
+        "ru": "Например, <code>align-self: flex-end;</code> переместит лягушонка вниз.",
+        "uk": "Наприклад, <code>align-self: flex-end;</code> пересуне жабеня вниз."
       }
     },
     "submitText": {
@@ -1211,7 +1181,7 @@
   {
     "levelNumber": 17,
     "game": "flexbox",
-    "pre": "#frogs {\\n  display: flex;\\n  align-items: flex-start;\\n}\\n\\n.yellow {\\n",
+    "pre": "#frogs {\\n  display: flex;\\n  align-items: flex-start;\\n}\\n\\n.red {\\n",
     "post": "}",
     "winCondition": "flex-direction: row-reverse; justify-content: center; align-items: flex-end",
     "name": {
@@ -1256,17 +1226,17 @@
       "tooltips": [
         {
           "key": "order",
-          "en_us": "",
+          "en_us": "Specifies the order of the flex item.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
           "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "ru": "Указывает порядок flex-элемента.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
+          "uk": "Вказує порядок flex-елементу.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>"
         },
         {
           "key": "align-self",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns a flex item along the cross axis, overriding the <code>align-items</code> value. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch</code>",
+          "es_es": "Alinea un elemento flex a lo largo del eje transversal, anulando el valor de <code>align-items</code>. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch</code>",
+          "ru": "Выравнивает flex-элемент вдоль пересекаемой оси, перекрывая значения свойства <code>align-items</code>. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch</code>",
+          "uk": "Вирівнює flex-елемент вздовж перетинної осі, перекриваючи значення властивості <code>align-items</code>. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch</code>"
         }
       ],
       "example": {
@@ -1287,7 +1257,7 @@
   {
     "levelNumber": 18,
     "game": "flexbox",
-    "pre": "#frogs {\n display: flex;",
+    "pre": "#frogs {\n  display: flex;",
     "post": "}",
     "winCondition": "flex-direction: row-reverse; justify-content: center; align-items: flex-end",
     "name": {
@@ -1356,7 +1326,7 @@
   {
     "levelNumber": 19,
     "game": "flexbox",
-    "pre": "#frogs {\n display: flex;",
+    "pre": "#frogs {\n  display: flex;",
     "post": "}",
     "winCondition": "flex-direction: row-reverse; justify-content: center; align-items: flex-end",
     "name": {
@@ -1406,12 +1376,12 @@
           "ru": "",
           "uk": ""
         },
-        {
+         {
           "key": "flex-direction",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Defines the direction of the main axis. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "es_es": "Define la dirección del eje principal. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "ru": "Задает направление основной оси. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "uk": "Визначає напрямок головної осі. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>"
         }
       ],
       "example": {
@@ -1432,7 +1402,7 @@
   {
     "levelNumber": 20,
     "game": "flexbox",
-    "pre": "#frogs {\n display: flex;",
+    "pre": "#frogs {\n  display: flex;",
     "post": "}",
     "winCondition": "flex-direction: row-reverse; justify-content: center; align-items: flex-end",
     "name": {
@@ -1482,12 +1452,12 @@
           "ru": "",
           "uk": ""
         },
-        {
+         {
           "key": "flex-direction",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Defines the direction of the main axis. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "es_es": "Define la dirección del eje principal. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "ru": "Задает направление основной оси. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "uk": "Визначає напрямок головної осі. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>"
         },
         {
           "key": "flex-flow",
@@ -1567,10 +1537,10 @@
         },
         {
           "key": "align-items",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Aligns flex items along the cross axis. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "es_es": "Alinea elementos Flex a lo largo del eje transversal. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "ru": "Выравнивает flex-элементы вдоль пересекаемой оси. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>",
+          "uk": "Вирівнює flex-елементи вздовж перетинної осі. <code>flex-start</code> <code>flex-end</code> <code>center</code> <code>baseline</code> <code>stretch (default)</code>"
         }
       ],
       "example": {
@@ -1703,12 +1673,12 @@
         }
       ],
       "tooltips": [
-        {
+         {
           "key": "flex-direction",
-          "en_us": "",
-          "es_es": "Especifica el orden de los elementos flex.<code>&lt;integer&gt; (... -1, 0 (default), 1, ...)</code>",
-          "ru": "",
-          "uk": ""
+          "en_us": "Defines the direction of the main axis. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "es_es": "Define la dirección del eje principal. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "ru": "Задает направление основной оси. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>",
+          "uk": "Визначає напрямок головної осі. <code>row (default)</code> <code>row-reverse</code> <code>column</code> <code>column-reverse</code>"
         },
         {
           "key": "align-content",

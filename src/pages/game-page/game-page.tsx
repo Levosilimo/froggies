@@ -10,37 +10,38 @@ import {useAppDispatch, useAppSelector} from "../../hooks";
 import {getCurrentLevel, getRecords} from "../../store/user/selectors";
 import {store} from "../../store";
 import {setLevelAction} from "../../store/user/user-data";
-import {frogsStyleText, getLilypadSvg} from "../../constans";
+import {frogsStyleText} from "../../constans";
 import FrogsContainer from "../../components/frogs-container/frogs-container";
-
-const preFirst = "#frogs {\n  display: flex;";
-const preLast = "}";
+import LilypadsContainer from "../../components/lilypads-container/lilypads-container";
 
 function GamePage(): JSX.Element {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [level, setLevel] = useState<TaskModel>();
   const [show, setShow] = useState<boolean>(false);
-  const backgroundsContainer = useRef<HTMLDivElement>(null);
   const questionBlock = useRef<HTMLDivElement>(null);
-  const records = useAppSelector(getRecords);
+  const records: Record<string, Array<number>> | undefined = useAppSelector(getRecords);
   const levelNumber = useAppSelector(getCurrentLevel)
+  const [preFirst, setPreFirst] = useState<string>("#frogs {\n  display: flex;");
+  const [preLast, setPreLast] = useState<string>("}");
+  const tooltipsRef = useRef<Array<HTMLDivElement | null>>([]);
+  const tooltipContainerRef = useRef<HTMLDivElement | null>();
   const [frogsUserStyle, setFrogsUserStyle] = useState<string>('');
   const [userInput, setUserInput] = useState<string>('');
   const [linesCount, setLinesCount] = useState<number>(0);
 
   const valueChange = (code: string) => {
     setUserInput(code);
-    if (backgroundsContainer.current) {
-      setFrogsUserStyle(frogsStyleText+preFirst+code+preLast);
-      const frogStyle = code.split(';').map(el => el.trim()).filter(str => str!=='').sort().join('; ')+';';
-      const lilypadStyle = (backgroundsContainer.current.getAttribute("style") ?? '').split(';').map(el => el.trim()).filter(str => str!=='').sort().join('; ')+';';
-      setIsButtonDisabled(frogStyle !== lilypadStyle)
+    setFrogsUserStyle(frogsStyleText+preFirst+code+preLast);
+    if(level){
+      const userStyle = code.split(';').map(el => el.trim()).filter(str => str!=='').sort().join('; ')+';';
+      const winningStyle = level.winCondition.split(';').map(el => el.trim()).filter(str => str!=='').sort().join('; ')+';';
+      setIsButtonDisabled(userStyle !== winningStyle)
     }
   }
 
   const onButtonClick = () => {
+    const recordsCopy: Record<string, number[]> = {};
     if (records) {
-      const recordsCopy: Record<string, number[]> = {};
       Object.assign(recordsCopy, records);
       if (!recordsCopy["flexbox"].includes(levelNumber)) {
         recordsCopy["flexbox"] = [...recordsCopy["flexbox"], levelNumber]
@@ -50,13 +51,47 @@ function GamePage(): JSX.Element {
     if(levelNumber !== level?.levelsCount) {
       store.dispatch(setLevelAction(levelNumber+1));
       setFrogsUserStyle(frogsStyleText+preFirst+preLast);
+    } else if(recordsCopy['flexbox'] && recordsCopy['flexbox'].length === level?.levelsCount) {
+      alert('Hooray! Finish!');
+    } else {
+      store.dispatch(setLevelAction(1));
     }
-    else alert('Hooray! Finish!');
+  }
+
+  const onLevelNumberClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.stopPropagation();
+    toggleLevelButtonsModal();
   }
 
   const onSelectLevelButtonClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setFrogsUserStyle('');
     store.dispatch(setLevelAction(Number(event.currentTarget.value)));
+    closeLevelButtonsModal();
+  }
+
+  const toggleLevelButtonsModal = () => {
+    setShow(!show);
+  }
+
+  const closeLevelButtonsModal = () => {
     setShow(false);
+  }
+
+  const onDescriptionClick = (event: React.MouseEvent<HTMLParagraphElement>) => {
+    if(!level || !tooltipContainerRef.current) return;
+    const target = event.target as HTMLElement;
+    const tooltipsKeys = level.description.tooltips.map(e => e.key);
+    if(target.hasAttribute("data-tooltip")){
+      console.log(target);
+      for (const key of tooltipsKeys) {
+        if (target.getAttribute("data-tooltip") === key){
+          const divElement = tooltipsRef.current.find((htmlElement) => htmlElement && htmlElement.hasAttribute("data-tooltip") && htmlElement.getAttribute("data-tooltip") === key);
+          if(divElement) {
+            tooltipContainerRef.current.innerHTML = divElement.innerHTML;
+          }
+        }
+      }
+    }
   }
 
   const dispatch = useAppDispatch();
@@ -69,6 +104,8 @@ function GamePage(): JSX.Element {
     getLevelActionf({game: "flexbox", levelNumber})
       .then(level => {
         setUserInput('');
+        setPreFirst(level.pre);
+        setPreLast(level.post);
         setLevel(level);
         if (questionBlock.current){
           setLinesCount(countLines(questionBlock.current));
@@ -80,10 +117,13 @@ function GamePage(): JSX.Element {
     if (questionBlock.current){
       setLinesCount(countLines(questionBlock.current));
     }
-    if (level && backgroundsContainer.current) {
-      const style = level.winCondition.split(';').map(el => el.trim()).filter(str => str !== '').sort().join('; ') + ';';
-      backgroundsContainer.current.setAttribute("style", style);
-    }
+    const close = (e: KeyboardEvent) => {
+      if(e.keyCode === 27){
+        closeLevelButtonsModal();
+      }
+    };
+    window.addEventListener('keydown', close);
+    window.addEventListener('click', closeLevelButtonsModal);
   });
 
   if(!level) return (<LoadingScreen />)
@@ -110,7 +150,11 @@ function GamePage(): JSX.Element {
 
   function highlightCode(str: string) {
     const regex = /<code>(.*?)<\/code>/gs;
-    return str.replace(regex, (match, content: string) => {return `<pre class="game-desc-code">${(content.split("\n").map(e => highlight(e, languages.css, "css")).join("\n"))}</pre>`})
+    return str.replace(regex, (match, content: string) => {
+      let addClass = false;
+      if (level?.description.tooltips.find((tooltip) => tooltip.key===content)) addClass = true;
+      return `<pre class="game-desc-code ${addClass ? "tooltip-code" : ''}" data-tooltip=${content}>${(content.split("\n").map(e => highlight(e, languages.css, "css")).join("\n"))}</pre>`
+    })
   }
 
   function highlightMultiline(str: string) {
@@ -124,9 +168,9 @@ function GamePage(): JSX.Element {
           <div className="title">
             <h4>{level.name}</h4>
             <div className="level-selector">
-              <span unselectable={"on"} onClick={() => setShow(!show)}>{levelNumber}</span>
+              <span unselectable={"on"} onClick={onLevelNumberClick}>{levelNumber}</span>
               {show?(
-                <div className="level-selector-buttons">
+                <div className="level-selector-buttons" onClick={(e) => e.stopPropagation()}>
                   {Array(level.levelsCount).fill(0).map((x, i) => (
                     <button key={i+1} value={i+1} onClick={onSelectLevelButtonClick} className={`${(i+1===levelNumber ? 'current': '')} ${records && records["flexbox"].includes(i+1) ? 'passed': ''}`}>{i+1}</button>
                   ))}
@@ -134,7 +178,7 @@ function GamePage(): JSX.Element {
               ):''}
             </div>
           </div>
-          <p className="task-desc" dangerouslySetInnerHTML={{__html: highlightCode(level.description.paragraph)}}></p>
+          <p className="task-desc" onClick={onDescriptionClick} dangerouslySetInnerHTML={{__html: highlightCode(level.description.paragraph)}}></p>
           <ul className="rules-list">
             {level.description.rulesList.map((rule, index) => (<li dangerouslySetInnerHTML={{__html: rule}} key={index}></li>))}
           </ul>
@@ -154,7 +198,7 @@ function GamePage(): JSX.Element {
                     style={{
                       fontFamily: '"Fira code", "Fira Mono", monospace',
                       fontSize: 12,
-                      lineHeight: "15px",
+                      lineHeight: "1rem",
                       width: "100%",
                       background: "#FFF",
                     }}
@@ -170,21 +214,18 @@ function GamePage(): JSX.Element {
             </div>
             <button className="answer-button" type="button" disabled={isButtonDisabled} onClick={onButtonClick}>{level.submitText}</button>
           </div>
+          <div className="tooltip-container" ref={el => tooltipContainerRef.current = el}></div>
+          {level.description.tooltips.map((tooltip, i) => (
+            <div key={i} data-tooltip={tooltip.key} ref={el => tooltipsRef.current[i] = el} className="tooltip" style={{display: "none"}}>
+              <h5>{tooltip.key}</h5>
+              <p dangerouslySetInnerHTML={{__html: tooltip.text}}></p>
+            </div>
+          ))}
         </section>
         <section className="view">
           <div className="board">
             <FrogsContainer level={level} userCss={frogsUserStyle}/>
-            <div className="items-wrapper lilypads" ref={backgroundsContainer}>
-              {Array(level.type1Quantity).fill(0).map((x, i) => (
-                <div className="background" key={i} dangerouslySetInnerHTML={{__html: getLilypadSvg("#82D73F")}} />
-              ))}
-              {Array(level.type2Quantity).fill(0).map((x, i) => (
-                <div className="background" key={i} dangerouslySetInnerHTML={{__html: getLilypadSvg("#F7623F")}} />
-              ))}
-              {Array(level.type3Quantity).fill(0).map((x, i) => (
-                <div className="background" key={i} dangerouslySetInnerHTML={{__html: getLilypadSvg("#528FFF")}} />
-              ))}
-            </div>
+            <LilypadsContainer level={level}/>
           </div>
         </section>
       </main>
