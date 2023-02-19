@@ -1,5 +1,5 @@
 import { State } from "../state";
-import { AuthorizationStatus, NameSpace } from "../../constans";
+import { AuthorizationStatus, NameSpace } from "../../constants";
 
 export const getAuthorizationStatus = (state: State): AuthorizationStatus => state[NameSpace.User].authorizationStatus;
 export const getUsername = (state: State): string | undefined => state[NameSpace.User].username;

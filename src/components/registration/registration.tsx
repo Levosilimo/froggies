@@ -1,7 +1,7 @@
 import {useForm} from "react-hook-form";
 import {useAppDispatch} from "../../hooks";
 import {registrationAction} from "../../store/api-action";
-import {ERROR_MESSAGE, MAIL_REG_EXP} from "../../constans";
+import {ERROR_MESSAGE, MAIL_REG_EXP} from "../../constants";
 
 type FormData = {
   username: string;

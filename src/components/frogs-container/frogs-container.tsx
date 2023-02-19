@@ -1,7 +1,7 @@
 import root from 'react-shadow';
-import React, {useEffect} from "react";
+import React from "react";
 import {TaskModel} from "../../types/task-model";
-import {frogsStyleText, getFrogSvg} from "../../constans";
+import {frogsStyleText, getFrogSvg} from "../../constants";
 
 function FrogsContainer(props: {level: TaskModel; userCss: string;}): JSX.Element {
   return(

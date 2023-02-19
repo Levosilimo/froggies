@@ -1,9 +1,8 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {AuthorizationStatus, NameSpace} from "../../constans";
 import {checkAuthAction, getUserDataAction, loginAction, registrationAction, setUserDataAction} from "../api-action";
 import {dropToken, getLevel, getToken, saveLevel} from "../../services/local-storage";
-import {TokenPayload} from "../../types/auth-data";
 import {parseJwt} from "../../utils";
+import { AuthorizationStatus, NameSpace } from "../../constants";
 
 type InitialState = {
   authorizationStatus: AuthorizationStatus;

@@ -10,7 +10,7 @@ import {useAppDispatch, useAppSelector} from "../../hooks";
 import {getCurrentLevel, getRecords} from "../../store/user/selectors";
 import {store} from "../../store";
 import {setLevelAction} from "../../store/user/user-data";
-import {frogsStyleText} from "../../constans";
+import {frogsStyleText} from "../../constants";
 import FrogsContainer from "../../components/frogs-container/frogs-container";
 import LilypadsContainer from "../../components/lilypads-container/lilypads-container";
 
@@ -89,7 +89,6 @@ function GamePage(): JSX.Element {
     const tooltipsKeys = level.description.tooltips.map(e => e.key);
     if(target.hasAttribute("data-tooltip")){
       event.stopPropagation();
-      const divElement = tooltipsKeys.find((key) => target.getAttribute("data-tooltip") === key);
       for (const key of tooltipsKeys) {
         if (target.getAttribute("data-tooltip") === key){
           const divElement = tooltipsRef.current.find((htmlElement) => htmlElement && htmlElement.hasAttribute("data-tooltip") && htmlElement.getAttribute("data-tooltip") === key);

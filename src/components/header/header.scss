@@ -25,18 +25,29 @@
   align-items: center;
   justify-content: space-between;
 
-  a {
-    display: inline-block;
+  li {
     margin-left: 20px;
     font-size: 22px;
-    color: $white;
-    text-decoration: none;
+    cursor: pointer;
+
+    a {
+      color: $white;
+      text-decoration: none;
+    }
 
     &:hover {
       text-decoration: underline;
       opacity: 0.8;
     }
+
+    &:last-child {
+      margin-right: 20px;
+    }
   }
+}
+
+.gear {
+  width: 30px;
 }
 
 .header-login {

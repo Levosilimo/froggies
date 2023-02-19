@@ -1,7 +1,7 @@
 import root from 'react-shadow';
 import React from "react";
 import {TaskModel} from "../../types/task-model";
-import {getLilypadSvg, lilypadsStyleText} from "../../constans";
+import {getLilypadSvg, lilypadsStyleText} from "../../constants";
 
 function LilypadsContainer(props: {level: TaskModel;}): JSX.Element {
   return(

@@ -1,4 +1,4 @@
-import {AppRoute} from "../../constans";
+import {AppRoute} from "../../constants";
 import {Link} from "react-router-dom";
 import "./main-page.scss";
 
