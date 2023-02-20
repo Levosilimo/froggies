@@ -4,9 +4,8 @@ import {AppRoute, AuthorizationStatus} from "../../constants";
 import { useContext } from 'react';
 import { settingContext } from '../../context';
 import {useAppSelector} from "../../hooks";
-import {getUserData} from "../../services/local-storage";
 import {store} from "../../store";
-import {getAuthorizationStatus} from "../../store/user/selectors";
+import {getAuthorizationStatus, getUsername} from "../../store/user/selectors";
 import {logOutAction} from "../../store/user/user-data";
 import {useTranslation} from "react-i18next";
 
@@ -19,7 +18,7 @@ function Header(): JSX.Element {
 
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
 
-  const userName = getUserData()?.username || '';
+  const userName = useAppSelector(getUsername) ?? '';
 
   const urlForUserImage = `https://rsclone-backend.adaptable.app/avatar/${userName}`;
 

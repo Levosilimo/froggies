@@ -1,26 +1,31 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import { AuthorizationStatus, NameSpace } from "../../constants";
 import {checkAuthAction, getUserDataAction, loginAction, registrationAction, setUserDataAction} from "../api-action";
-import { dropToken, saveUserData } from "../../services/local-storage";
 import {language, theme} from "../../types/user-data";
 import i18n from "../../i18n";
+import {dropToken, getLevel, getToken, saveLevel} from "../../services/local-storage";
+import {parseJwt} from "../../utils";
 
 type InitialState = {
   authorizationStatus: AuthorizationStatus;
-  isDataLoaded: boolean;
+  isDataLoading: boolean;
+  username?: string;
+  email?: string;
+  records?: Record<string, Array<number>>;
+  currentLevel: number
   isLoadingError: boolean,
   language?: language;
   volume: number;
   theme: theme;
-  records?: Record<string, Array<number>>;
 }
 
 const initialState: InitialState = {
   authorizationStatus: AuthorizationStatus.Unknown,
-  isDataLoaded: false,
   isLoadingError: false,
   volume: 50,
   theme: "green",
+  isDataLoading: false,
+  currentLevel: getLevel(),
 };
 
 export const userProcess = createSlice({
@@ -37,50 +42,53 @@ export const userProcess = createSlice({
     setTheme: (state, action: PayloadAction<theme>) => {
       state.theme = action.payload;
     },
+    setLevelAction: (state, action: PayloadAction<number>) => {
+      saveLevel(action.payload);
+      state.currentLevel = action.payload;
+    }
   },
   extraReducers(builder) {
     builder
       .addCase(checkAuthAction.pending, (state) => {
-        state.isDataLoaded = true;
+        state.username = parseJwt(getToken()).username;
+        state.isDataLoading = true;
       })
       .addCase(checkAuthAction.fulfilled, (state) => {
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
       })
       .addCase(checkAuthAction.rejected, (state) => {
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
       })
       .addCase(registrationAction.pending, (state) => {
-        state.isDataLoaded = true;
+        state.isDataLoading = true;
       })
       .addCase(registrationAction.fulfilled, (state, action) => {
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
-        saveUserData({
-          username: action.payload.username,
-          email: action.payload.email
-        })
+        state.username = action.payload.username;
+        state.records = action.payload.records;
+        state.email = action.payload.email;
       })
       .addCase(registrationAction.rejected, (state) => {
         state.isLoadingError = true;
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
       })
       .addCase(loginAction.pending, (state) => {
-        state.isDataLoaded = true;
+        state.isDataLoading = true;
       })
       .addCase(loginAction.fulfilled, (state, action) => {
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
-        saveUserData({
-          username: action.payload.username,
-          email: action.payload.email
-        })
+        state.username = action.payload.username;
+        state.records = action.payload.records;
+        state.email = action.payload.email;
       })
       .addCase(loginAction.rejected, (state) => {
         state.isLoadingError = true;
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
       })
       .addCase(getUserDataAction.fulfilled, (state, action) => {
@@ -101,5 +109,5 @@ export const userProcess = createSlice({
   }
 })
 
-export const { logOutAction, setVolume, setTheme } = userProcess.actions;
+export const { logOutAction, setVolume, setTheme, setLevelAction } = userProcess.actions;
 
