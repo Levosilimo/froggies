@@ -32,5 +32,9 @@ body {
 .page {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
   height: 100vh;
+  @media screen and (max-height: 472px) {
+    height: unset;
+  }
 }

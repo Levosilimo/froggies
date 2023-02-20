@@ -1,33 +1,24 @@
-import { UserData } from "../types/auth-data";
+const AUTH_TOKEN_KEY = 'token';
+const CURRENT_LEVEL_FLEXBOX_KEY = 'flexbox-level';
 
-const AUTH_TOKEN_KEY_NAME = 'rs-clone-token';
-const USER_DATA_KEY_NAME = 'rs-clone-user-data'
+export const getLevel = (): number => {
+  const level = Number(localStorage.getItem(CURRENT_LEVEL_FLEXBOX_KEY));
+  return !Number.isNaN(level) && level > 0 ? level : 1;
+};
 
-export type LocalStorage = string;
+export const saveLevel = (level: number): void => {
+  localStorage.setItem(CURRENT_LEVEL_FLEXBOX_KEY, level.toString(10));
+};
 
-export const getToken = (): LocalStorage => {
-  const token = localStorage.getItem(AUTH_TOKEN_KEY_NAME);
+export const getToken = (): string => {
+  const token = localStorage.getItem(AUTH_TOKEN_KEY);
   return token ?? '';
 };
 
-export const saveToken = (token: LocalStorage): void => {
-  localStorage.setItem(AUTH_TOKEN_KEY_NAME, token);
-};
-
-export const saveUserData = (userData: UserData): void => {
-  localStorage.setItem(USER_DATA_KEY_NAME, JSON.stringify(userData));
-};
-
-export const getUserData = (): UserData | null => {
-  const userData = localStorage.getItem(USER_DATA_KEY_NAME);
-
-  if (typeof userData === "string") {
-    return JSON.parse(userData);
-  }
-
-  return null;
+export const saveToken = (token: string): void => {
+  localStorage.setItem(AUTH_TOKEN_KEY, token);
 };
 
 export const dropToken = (): void => {
-  localStorage.removeItem(AUTH_TOKEN_KEY_NAME);
+  localStorage.removeItem(AUTH_TOKEN_KEY);
 };

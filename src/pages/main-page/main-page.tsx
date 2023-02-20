@@ -1,15 +1,10 @@
-import Footer from "../../components/footer/footer";
-import Header from "../../components/header/header";
 import {AppRoute} from "../../constants";
 import {Link} from "react-router-dom";
 import "./main-page.scss";
-import SettingsWindow from "../../components/setting-window/settings-window";
 
 function MainPage () {
   return (
-    <div className="page page-main">
-      <Header/>
-      <SettingsWindow/>
+    <div className="page-main">
       <main className="main">
         <section className="main-content">
           <div className="game-description">
@@ -22,7 +17,6 @@ function MainPage () {
           </div>
         </section>
       </main>
-      <Footer/>
     </div>
   )
 }

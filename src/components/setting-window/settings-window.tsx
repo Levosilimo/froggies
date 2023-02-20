@@ -71,7 +71,7 @@ function SettingsWindow(): JSX.Element {
 
   return (
     <div onClick={() => setIsVisible(false)} className={currentClass.join(' ')}>
-      <div className="overlay" >
+      <div className="overlay-settings" >
         <div className="close">
           <span className="close__line_toLeft">|</span>
           <span className="close__line_toRight">|</span>
