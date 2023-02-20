@@ -1,10 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AxiosInstance } from 'axios';
+import axios, {AxiosInstance, AxiosResponse} from 'axios';
 import { APIRoute, AppRoute } from '../constans';
 import { getToken, saveToken } from '../services/local-storage';
 import { AuthData, LoginData, RegistrationData } from '../types/auth-data';
 import { redirectToRoute } from './action';
 import { AppDispatch, State } from './state';
+import {UserRecordRes, UserRecordsItem, UserRecordsReq} from "../types/user-data";
 
 export const checkAuthAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch,
@@ -62,3 +63,32 @@ export const loginAction = createAsyncThunk<AuthData, LoginData, {
     return data;
   },
 );
+
+export async function getRecords({page, limit, sorting, order, fullInfo}: UserRecordsReq): Promise<UserRecordRes> {
+  const token = getToken();
+  //const data = await axios.get<Array<UserRecordsItem>>(`https://rsclone-backend.adaptable.app${APIRoute.GetRecords}?page=${page??1}&limit=${limit??0}&sort=${sorting??'username'}&order=${order??'asc'}`, {headers: { 'x-access-token': token}});
+  const data = (await fetch(`https://rsclone-backend.adaptable.app${APIRoute.GetRecords}?page=${page??1}&limit=${limit??0}&sort=${sorting??'username'}&order=${order??'asc'}&fullInfo=${fullInfo}`, {method: 'GET',headers: { 'x-access-token': token}}))
+  const items: Array<UserRecordsItem> = await data.json();
+  return { items, totalCount: Number(data.headers.get('X-Total-Count')) };
+}
+
+export async function getLevelCount(level: string): Promise<number> {
+  const token = getToken();
+  //const data = await axios.get<Array<UserRecordsItem>>(`https://rsclone-backend.adaptable.app${APIRoute.GetRecords}?page=${page??1}&limit=${limit??0}&sort=${sorting??'username'}&order=${order??'asc'}`, {headers: { 'x-access-token': token}});
+  const data = (await fetch(`https://rsclone-backend.adaptable.app${APIRoute.Levels}/${level}`, {method: 'GET',headers: { 'x-access-token': token}}));
+  const obj: {levelsCount: number} = await data.json();
+  return obj.levelsCount;
+}
+
+export async function updateUserData({records, username}: {records: Record<string, Array<number>>, username: string}): Promise<AxiosResponse> {
+  const token = getToken();
+  return axios.patch<void>(`https://rsclone-backend.adaptable.app${APIRoute.User}/${username}`, {records: records}, {headers: { 'x-access-token': token }})
+}
+
+export async function setAvatar({file,username}: {file: File, username: string}): Promise<AxiosResponse> {
+  const token = getToken();
+  const formData = new FormData();
+  formData.append('file', file);
+  formData.append('username', username);
+  return axios.patch<void>(`https://rsclone-backend.adaptable.app${APIRoute.Avatar}/${username}`, formData, {headers: { 'x-access-token': token }})
+}

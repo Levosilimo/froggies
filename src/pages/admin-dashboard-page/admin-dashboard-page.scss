@@ -1,0 +1,68 @@
+@import "./src/scss/all";
+
+.user-game-record-wrapper {
+  display: flex;
+}
+
+.user-record-user-wrapper {
+  display: flex;
+  align-items: center;
+  h3 {
+    margin: 0 0.5rem;
+  }
+}
+
+.user-record-form-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.user-record-checkboxes-wrapper {
+  margin: 0.5rem 0;
+}
+
+.user-record-user-data-title {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.user-record-admin {
+  display: inline-block;
+  padding: .1rem;
+  border: 2px solid $red;
+  margin: 0 .3rem;
+}
+
+.user-record-user-data {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  h4{
+    font-family: Arial, serif;
+    margin: .1rem;
+  }
+}
+
+.level-checkbox {
+  &.achieved {
+    background: $green-light;
+  }
+}
+
+.user-record-info-wrapper {
+  margin: 1.1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-record-form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-record-wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
