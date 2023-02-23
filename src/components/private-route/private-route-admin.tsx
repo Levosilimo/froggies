@@ -1,4 +1,4 @@
-import { AuthorizationStatus } from '../../constans';
+import { AuthorizationStatus } from '../../constants';
 import {useAppSelector} from "../../hooks";
 import {getAuthorizationStatus, getIsAdmin} from "../../store/user/selectors";
 import PageNotFound from "../../pages/page-not-found/page-not-found";

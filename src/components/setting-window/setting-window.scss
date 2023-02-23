@@ -1,0 +1,165 @@
+@import "./src/scss/all";
+
+.setting {
+  position: fixed;
+  top: -200%;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all .2s linear;
+  text-align: center;
+}
+
+.setting.active {
+  top: 0;
+}
+
+
+.overlay-settings {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  padding: 40px;
+  background: $green-bg;
+  border: 4px solid $green-light;
+  border-radius: 15px;
+}
+
+.close {
+  position: absolute;
+  right: 5%;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  margin-top: -25px;
+  transition: all .2s;
+    &:hover {
+      cursor: pointer;
+      color: $green;
+    }
+}
+
+.close__line_toLeft {
+  display: block;
+  transform: rotate(-45deg);
+}
+.close__line_toRight {
+  display: block;
+  transform: translate(-1px, -100%) rotate(45deg);;
+}
+
+.setting-list {
+   text-align: center;
+   padding: 20px;
+   margin: 0;
+   background: $white;
+   border: 2px solid $green;
+   border-radius: 6px;
+   min-width: 220px;
+   font-size: 18px;
+   line-height: 18px;
+   color: $green;
+}
+
+.setting-list__item {
+  list-style-type: none;
+  .title {
+    margin-bottom: 12px;
+    font-size: 22px;
+    line-height: 20px;
+    color: $green;
+    font-weight: 400;
+  }
+}
+
+.volume-range {
+  -webkit-appearance: none;
+  width: 100%;
+}
+
+.volume-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: 2px solid $green;
+  border-radius: 50%;
+  height: 16px;
+  width: 16px;
+  background: white;
+  cursor: pointer;
+  transform: translateY(-25%);
+}
+
+.volume-range::-webkit-slider-runnable-track {
+  width: 80%;
+  height: 8px;
+  cursor: pointer;
+  background: $green-bg;
+  border-radius: 3px;
+  border: 1px solid $green;
+}
+
+.flag-en,
+.flag-ru,
+.flag-ua,
+.flag-es {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 42px;
+  height: 34px;
+  border: 2px solid $green;
+  border-radius: 10px;
+  background-size: cover;
+  margin: 0 10px;
+  transition: all .2s;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0 0 0 5px $green-bg;
+  }
+  &.disabled {
+    cursor: auto;
+    transform: scale(1);
+    box-shadow: 0 0 0 5px $gray;
+  }
+}
+
+.flag-en {
+  background-image: url(../../../public/images/gb.svg);
+}
+
+.flag-ru {
+  background-image: url(../../../public/images/ru.svg);
+}
+
+.flag-ua {
+  background-image: url(../../../public/images/ua.svg);
+}
+
+.flag-es {
+  background-image: url(../../../public/images/es.svg);
+}
+
+.language__input.active ~ span {
+  box-shadow: 0 0 0 5px $green-bg;
+}
+
+.theme-color {
+  box-sizing: border-box;
+  display: inline-block;
+  border: 2px solid $green;
+  border-radius: 10px;
+  background-size: cover;
+  padding: 5px;
+  margin: 0 10px;
+  transition: all .2s;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+      box-shadow: 0 0 0 5px $green-bg;
+    }
+}
+
+.theme__input.active ~ span {
+  box-shadow: 0 0 0 5px $green-bg;
+}

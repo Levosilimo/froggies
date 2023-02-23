@@ -118,8 +118,8 @@ function UpdateAvatar({username, imageRef, onClose, show}: {username: string; im
   }
   return (
       <div className={`upload-modal ${show?'active':''}`} ref={uploadModalRef}>
-        <div className="overlay" onClick={(() => closeUploadModal())}></div>
-        <div className="close" onClick={(() => closeUploadModal())}>X</div>
+        <div className="update-avatar-overlay" onClick={(() => closeUploadModal())}></div>
+        <div className="update-avatar-close" onClick={(() => closeUploadModal())}>X</div>
         <div className='upload-modal-main'>
           { !unsupportedFile && validFile ? <button className="file-upload-btn" onClick={() => uploadFiles()}>Upload File</button> : '' }
           { unsupportedFile ? <p>Please remove the unsupported file.</p> : '' }

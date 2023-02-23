@@ -1,11 +1,10 @@
 import "./admin-dashboard-page.scss";
-import Footer from "../../components/footer/footer";
-import Header from "../../components/header/header";
 import InfiniteScroll from "react-infinite-scroll-component";
 import React, {useEffect, useRef, useState} from "react";
 import {UserRecordsItem, UserRecordsReq} from "../../types/user-data";
-import {getLevelCount, getRecords, updateUserData} from "../../store/api-action";
+import {getLevelCount, getRecords, setUserDataAction} from "../../store/api-action";
 import UpdateAvatar from "../../components/update-avatar/update-avatar";
+import {useAppDispatch} from "../../hooks";
 
 function AdminDashboardPage() {
 
@@ -42,6 +41,8 @@ function AdminDashboardPage() {
     setRecordsReqParams({...recordsReqParams, page: recordsReqParams.page+1});
   }
 
+  const dispatch = useAppDispatch();
+
   const onUserLevelsFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const checkedLevels: Record<string, Array<number>> = {};
@@ -62,7 +63,7 @@ function AdminDashboardPage() {
       submitElement.value = "Updating...";
       submitElement.disabled = true;
     }
-    updateUserData({records: checkedLevels, username: e.currentTarget.name}).then(() => {
+    dispatch(setUserDataAction({records: checkedLevels, username: e.currentTarget.name})).then(() => {
       if(submitElement) {
         submitElement.value = "Update user";
         submitElement.disabled = false;
@@ -72,7 +73,6 @@ function AdminDashboardPage() {
 
   return (
     <div className="page">
-      <Header/>
       <section className="">
         <h1>Users</h1>
         <hr/>
@@ -129,7 +129,6 @@ function AdminDashboardPage() {
           ))}
         </InfiniteScroll>
       </section>
-      <Footer/>
       <UpdateAvatar username={updateAvatarUsername} onClose={() => setShownUpdateAvatar(false)} imageRef={updateAvatarImageRef} show={isShownUpdateAvatar}></UpdateAvatar>
     </div>
   )

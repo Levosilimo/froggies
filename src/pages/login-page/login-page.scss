@@ -7,7 +7,7 @@
   box-sizing: border-box;
   padding: 0 50px 0 170px;
   margin: 0 auto;
-  background-image: linear-gradient(to right, #fff 651px, transparent 740px), url("../../../public/images/frog-bg-4.jpg");
+  background-image: linear-gradient(to right, $white 651px, transparent 740px), url("../../../public/images/frog-bg-4.jpg");
   background-position: top left,right top;
   background-size: auto,auto 100%;
   background-repeat: no-repeat,no-repeat;
@@ -102,6 +102,14 @@
   padding-top: 5px;
   color: $red;
   font-size: 15px;
+}
+
+.eligible {
+  color: #92c793;
+}
+
+.availability {
+  margin-top: 0.3rem;
 }
 
 .button-account {

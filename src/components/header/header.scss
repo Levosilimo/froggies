@@ -5,8 +5,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  border: 4px solid $green-light;
-  border-radius: 15px;
+  border-bottom: 4px solid $green-light;
+  border-radius: 0 0 15px 15px;
   background-color: $green-bg;
   color: $white;
 }
@@ -25,17 +25,29 @@
   align-items: center;
   justify-content: space-between;
 
-  a {
+  li {
     margin-left: 20px;
     font-size: 22px;
-    color: #ffffff;
-    text-decoration: none;
+    cursor: pointer;
+
+    a {
+      color: $white;
+      text-decoration: none;
+    }
 
     &:hover {
       text-decoration: underline;
       opacity: 0.8;
     }
+
+    &:last-child {
+      margin-right: 20px;
+    }
   }
+}
+
+.gear {
+  width: 30px;
 }
 
 .header-login {
@@ -54,10 +66,16 @@
 
 .header-user-data {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
   text-align: center;
   width: 100%;
+
+  .user {
+    display: flex;
+    align-items: center;
+  }
 
   .header-username,
   .header-level-game {
