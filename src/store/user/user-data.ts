@@ -12,7 +12,7 @@ type InitialState = {
   username?: string;
   email?: string;
   records?: Record<string, Array<number>>;
-  currentLevel: number
+  currentLevel: number;
   isLoadingError: boolean,
   language?: language;
   volume: number;
@@ -21,10 +21,10 @@ type InitialState = {
 
 const initialState: InitialState = {
   authorizationStatus: AuthorizationStatus.Unknown,
+  isDataLoading: false,
   isLoadingError: false,
   volume: 50,
   theme: "green",
-  isDataLoading: false,
   currentLevel: getLevel(),
 };
 

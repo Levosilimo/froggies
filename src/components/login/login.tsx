@@ -1,5 +1,4 @@
 import { useForm } from 'react-hook-form';
-import { ERROR_MESSAGE } from "../../constants";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {getUserDataAction, loginAction, setUserDataAction} from "../../store/api-action";
 import {getLanguage} from "../../store/user/selectors";
@@ -12,6 +11,7 @@ type LoginData = {
 
 function Login () {
   const { register, handleSubmit, formState: { errors } } = useForm<LoginData>();
+
   const dispatch = useAppDispatch();
   const language = useAppSelector(getLanguage);
   const { t } = useTranslation();

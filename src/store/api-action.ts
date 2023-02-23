@@ -24,19 +24,6 @@ export const checkAuthAction = createAsyncThunk<void, undefined, {
   },
 );
 
-export const getAvatarAction = createAsyncThunk<string, string, {
-  dispatch: AppDispatch,
-  state: State,
-  extra: AxiosInstance
-}>(
-  'avatar/:username',
-  async (username, {extra: api}) => {
-    const { data } = await api.get(`/avatar/${username}`);
-    console.log(data);
-    return data;
-  },
-);
-
 export const registrationAction = createAsyncThunk<AuthData, RegistrationData,  {
   dispatch: AppDispatch,
   state: State,
@@ -64,6 +51,18 @@ export const loginAction = createAsyncThunk<AuthData, LoginData, {
     return data;
   },
 );
+
+export const checkUsernameEligibility = async (username: string): Promise<string> => {
+  const response = await axios.post(`https://rsclone-backend.adaptable.app${APIRoute.Registration}/check-username`, {username});
+  if (response.status !== 200) return Promise.reject(response.data.message);
+  return Promise.resolve(response.data);
+}
+
+export const checkEmailEligibility = async (email: string): Promise<string> => {
+  const response = await axios.post(`https://rsclone-backend.adaptable.app${APIRoute.Registration}/check-email`, {email});
+  if (response.status !== 200) return Promise.reject(response.data.message);
+  return Promise.resolve(response.data);
+}
 
 export const setUserDataAction = createAsyncThunk<UserData, Partial<UserData>, {
   dispatch: AppDispatch,

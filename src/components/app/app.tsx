@@ -17,6 +17,7 @@ import { settingContext } from "../../context";
 function App(): JSX.Element {
   const isDataLoading = useAppSelector(getIsDataLoadingValue);
   const [isVisible, setIsVisible] = useState(false);
+
   if (isDataLoading) {
     return (
       <LoadingScreen />

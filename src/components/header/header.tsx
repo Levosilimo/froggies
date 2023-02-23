@@ -42,7 +42,7 @@ function Header(): JSX.Element {
                 </div>
                 <span className="header-username">{userName}</span>
               </div>
-              <button className="header-singout" onClick={logOut}>{t("logout")}</button>
+              <button className="header-signout" onClick={logOut}>{t("logout")}</button>
               </div>)
           }
         </div>
