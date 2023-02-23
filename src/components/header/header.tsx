@@ -31,7 +31,7 @@ function Header(): JSX.Element {
       <ul className='header-menu'>
         <li><Link to={AppRoute.Main}>{t("mainPage")}</Link></li>
         <li><Link to={AppRoute.Game}>{t("gamePage")}</Link></li>
-        {(isAdmin) ? (<li><Link to={AppRoute.Dashboard}>Admin Dashboard</Link></li>) : ''}
+        {(isAdmin) ? (<li><Link to={AppRoute.Dashboard}>{t("usersPage")}</Link></li>) : ''}
         <li onClick={() => setIsVisible(true)}><img className="gear" src="../../../images/gear.png" alt="settings"/>
         </li>
       </ul>
@@ -44,8 +44,8 @@ function Header(): JSX.Element {
                 <img src={urlForUserImage} width="30" height="30" alt="User avatar"/>
               </div>
               <span className="header-username">{userName}</span>
-              <button className="header-signout" onClick={logOut}>Sign out</button>
             </div>
+            <button className="header-signout" onClick={logOut}>{t("logout")}</button>
           </div>)}
       </div>
     </header>

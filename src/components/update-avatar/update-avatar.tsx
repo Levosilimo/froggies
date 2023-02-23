@@ -1,6 +1,7 @@
 import './update-avatar.scss';
 import React, {useEffect, useRef, useState} from "react";
 import {setAvatar} from "../../store/api-action";
+import {useTranslation} from "react-i18next";
 
 
 function UpdateAvatar({username, imageRef, onClose, show}: {username: string; imageRef: HTMLImageElement | null | undefined; onClose: () => void; show:boolean;}): JSX.Element {
@@ -12,6 +13,8 @@ function UpdateAvatar({username, imageRef, onClose, show}: {username: string; im
   const uploadModalRef = useRef<HTMLDivElement>(null);
   const uploadRef = useRef<HTMLSpanElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const {t} = useTranslation();
 
   useEffect(() => {
     const close = (e: KeyboardEvent) => {
@@ -92,11 +95,11 @@ function UpdateAvatar({username, imageRef, onClose, show}: {username: string; im
 
   const uploadFiles = () => {
     if(uploadModalRef.current && uploadRef.current){
-      uploadRef.current.innerHTML = 'File(s) Uploading...';
+      uploadRef.current.innerHTML = t("fileUploading");
       if (validFile) {
         setAvatar({file: validFile, username})
           .then(() => {
-            if(uploadRef.current) uploadRef.current.innerHTML = 'Drag & Drop file here or click to select file';
+            if(uploadRef.current) uploadRef.current.innerHTML = t("dragNdropHere");
             if (imageRef){
               const index = imageRef.src.lastIndexOf('?')
               let src = imageRef.src;
@@ -110,7 +113,7 @@ function UpdateAvatar({username, imageRef, onClose, show}: {username: string; im
           })
           .catch(() => {
             if(uploadRef.current){
-              uploadRef.current.innerHTML = `<span class="error">Error Uploading File</span>`;
+              uploadRef.current.innerHTML = `<span class="error">${t("errorUploadingFile")}</span>`;
             }
           });
       }
@@ -121,8 +124,8 @@ function UpdateAvatar({username, imageRef, onClose, show}: {username: string; im
         <div className="update-avatar-overlay" onClick={(() => closeUploadModal())}></div>
         <div className="update-avatar-close" onClick={(() => closeUploadModal())}>X</div>
         <div className='upload-modal-main'>
-          { !unsupportedFile && validFile ? <button className="file-upload-btn" onClick={() => uploadFiles()}>Upload File</button> : '' }
-          { unsupportedFile ? <p>Please remove the unsupported file.</p> : '' }
+          { !unsupportedFile && validFile ? <button className="file-upload-btn" onClick={() => uploadFiles()}>{t("uploadFile")}</button> : '' }
+          { unsupportedFile ? <p>{t("removeUnsupportedFile")}</p> : '' }
           <div className="drop-container"
                onDragOver={dragOver}
                onDragEnter={dragEnter}
@@ -130,7 +133,7 @@ function UpdateAvatar({username, imageRef, onClose, show}: {username: string; im
                onDragEnd={dragLeave}
                onDrop={fileDrop}
           >
-            <span onClick={() => fileInputClicked()} ref={uploadRef}>Drag & Drop file here or click to select file</span>
+            <span onClick={() => fileInputClicked()} ref={uploadRef}>{t("dragNdropHere")}</span>
             <input
               ref={fileInputRef}
               className="file-input"

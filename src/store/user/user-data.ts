@@ -106,14 +106,18 @@ export const userProcess = createSlice({
         i18n.changeLanguage(action.payload.language);
       })
       .addCase(setUserDataAction.pending, (state, action) => {
-        state.records = action.meta.arg.records;
-        state.language = action.meta.arg.language;
-        i18n.changeLanguage(action.meta.arg.language);
+        if(!action.meta.arg.username || action.meta.arg.username===state.username){
+          state.records = action.meta.arg.records;
+          state.language = action.meta.arg.language;
+          i18n.changeLanguage(action.meta.arg.language);
+        }
       })
       .addCase(setUserDataAction.fulfilled, (state, action) => {
-        state.records = action.payload.records;
-        state.language = action.payload.language;
-        i18n.changeLanguage(action.payload.language);
+        if(!action.meta.arg.username || action.meta.arg.username===state.username) {
+          state.records = action.payload.records;
+          state.language = action.payload.language;
+          i18n.changeLanguage(action.payload.language);
+        }
       })
   }
 })
