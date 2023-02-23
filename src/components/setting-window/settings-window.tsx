@@ -1,138 +1,124 @@
-import React, { ChangeEvent, useContext, useState } from "react";
-import { serverURL } from "../../constants";
+import React, {ChangeEvent, useContext, useEffect, useState} from "react";
 import { settingContext } from "../../context";
-import { getToken } from "../../services/local-storage";
 import "./setting-window.scss";
+import {language, theme} from "../../types/user-data";
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {setUserDataAction} from "../../store/api-action";
+import {getLanguage, getTheme, getVolume} from "../../store/user/selectors";
+import {setTheme, setVolume} from "../../store/user/user-data";
+import {useTranslation} from "react-i18next";
 
 function SettingsWindow(): JSX.Element {
 
   const currentClass: string[] = ['setting'];
   const {isVisible, setIsVisible} = useContext(settingContext);
+  const [buttonsBlocked, setButtonsBlocked] = useState<boolean>(false);
+  const { t } = useTranslation();
 
   if (isVisible) {
     currentClass.push('active')
   }
 
-  type themes = "green" |'red' | 'yellow';
-  type languages = 'en_us' | 'ru' | 'ua' | 'es_es';
+  const language = useAppSelector(getLanguage) ?? 'en_us';
+  const theme = useAppSelector(getTheme);
+  const volume = useAppSelector(getVolume);
 
-  interface settings {
-    theme: themes,
-    language: languages,
-    volume: string
-  }
-
-  const defaultSet: settings = {
-    language: `${localStorage.getItem('language') || 'en_us'}` as languages,
-    theme: `${localStorage.getItem('theme') || 'green'}` as themes,
-    volume: `${localStorage.getItem('volume') || '50'}`,
-  }
-
-  const [language, setLanguage] = useState(defaultSet.language);
-  const [volume, setVolume] = useState(defaultSet.volume);
-  const [theme, setTheme] = useState(defaultSet.theme);
+  const dispatch = useAppDispatch();
 
   const changeLanguage = (e: ChangeEvent) => {
-    const currentLanguage = (e.target as HTMLInputElement).value as languages;
-    setLanguage(currentLanguage);
-    updateUserData({language: currentLanguage});
+    const currentLanguage = (e.target as HTMLInputElement).value as language;
+    setButtonsBlocked(true);
+    dispatch(setUserDataAction({language: currentLanguage}))
+      .finally(()=>setButtonsBlocked(false));
   }
 
   const changeTheme = (e: ChangeEvent) => {
-    const currentTheme = (e.target as HTMLInputElement).value as themes
-    setTheme(currentTheme);
+    const currentTheme = (e.target as HTMLInputElement).value as theme
+    dispatch(setTheme(currentTheme));
     localStorage.setItem('theme', currentTheme);
   }
 
   const changeVolume = (e: ChangeEvent) => {
     const currentVolume = (e.target as HTMLInputElement).value
-    setVolume(currentVolume);
+    dispatch(setVolume(Number(currentVolume)));
     localStorage.setItem('volume', currentVolume);
   }
 
-  interface UpdateBody {
-    language?: languages;
-    levelFlexbox?: number;
-  }
-
-  async function updateUserData(preferences: UpdateBody): Promise<UpdateBody> {
-    const response = await fetch(`${serverURL}/user`, {
-      method: 'PATCH',
-      body: JSON.stringify(preferences),
-      headers: {
-        'Content-type': 'application/json',
-        'x-access-token': `${getToken()}`,
-      },
-    });
-    console.log(1)
-    const resBody: UpdateBody = await response.json();
-    return resBody;
-  }
+  useEffect(() => {
+    const close = (e: KeyboardEvent) => {
+      if(e.keyCode === 27){
+        setIsVisible(false);
+      }
+    }
+    window.addEventListener('keydown', close)
+  })
 
   return (
     <div onClick={() => setIsVisible(false)} className={currentClass.join(' ')}>
-      <div className="overlay" >
+      <div className="overlay-settings" >
         <div className="close">
           <span className="close__line_toLeft">|</span>
           <span className="close__line_toRight">|</span>
         </div>
           <ul onClick={(e) => e.stopPropagation()} className="setting-list">
             <li className="language setting-list__item">
-              <h3 className="title">Language:</h3>
+              <h3 className="title">{t('languageTitle')}</h3>
               <label>
                 <input
+                  disabled={buttonsBlocked}
                   className={`language__input ${language ===  'en_us' ? 'active' : ''}`}
                   hidden type="radio" name="language" id="en" value="en_us" defaultChecked
                   onChange={changeLanguage}
                 />
-                <span className="flag-en"></span>
+                <span className={`flag-en ${buttonsBlocked ? 'disabled' : ''}`}></span>
               </label>
               <label>
                 <input
+                  disabled={buttonsBlocked}
                   className={`language__input ${language ===  'ru' ? 'active' : ''}`}
                   hidden type="radio" name="language" id="ru" value="ru"
                   onChange={changeLanguage}
                 />
-                <span className="flag-ru"></span>
+                <span className={`flag-ru ${buttonsBlocked ? 'disabled' : ''}`}></span>
               </label>
               <label>
                 <input
-                  className={`language__input ${language ===  'ua' ? 'active' : ''}`}
-                  hidden type="radio" name="language" id="ua" value="ua"
+                  disabled={buttonsBlocked}
+                  className={`language__input ${language ===  'uk' ? 'active' : ''}`}
+                  hidden type="radio" name="language" id="uk" value="uk"
                   onChange={changeLanguage}
                   />
-                <span className="flag-ua"></span>
+                <span className={`flag-ua ${buttonsBlocked ? 'disabled' : ''}`}></span>
               </label>
               <label>
                 <input
+                  disabled={buttonsBlocked}
                   className={`language__input ${language ===  'es_es' ? 'active' : ''}`}
                   hidden type="radio" name="language" id="es" value="es_es"
                     onChange={changeLanguage}
                   />
-                <span className="flag-es"></span>
+                <span className={`flag-es ${buttonsBlocked ? 'disabled' : ''}`}></span>
               </label>
             </li>
             <li className="volume setting-list__item">
-              <h3 className="title">Volume:</h3>
+              <h3 className="title">{t("volumeTitle")}</h3>
               <div className="volume">
-                {/* <span className="min-volume"></span> */}
                 <input
                   className="volume-range" type="range" step={5} value={volume}
                   onChange={changeVolume}
                 />
                 <p className="currentVolume">{volume+'%'}</p>
-                {/* <span className="max-volume"></span> */}
               </div>
             </li>
             <li className="theme setting-list__item">
-              <h3 className="title">Theme:</h3>
+              <h3 className="title">{t("themeTitle")}</h3>
               <label>
                 <input
                   className={`theme__input ${theme ===  'green' ? 'active' : ''}`}
                   hidden type="radio" name="theme" id="green" value="green" defaultChecked
                   onChange={changeTheme}
                 />
-                <span className="theme-color">Green</span>
+                <span className="theme-color">{t("greenTheme")}</span>
                 </label>
               <label>
                 <input
@@ -140,7 +126,7 @@ function SettingsWindow(): JSX.Element {
                   hidden type="radio" name="theme" id="red" value="red"
                   onChange={changeTheme}
                 />
-                <span className="theme-color">Red</span>
+                <span className="theme-color">{t("redTheme")}</span>
               </label>
               <label>
               <input
@@ -148,7 +134,7 @@ function SettingsWindow(): JSX.Element {
                 hidden type="radio" name="theme" id="yellow" value="yellow"
                 onChange={changeTheme}
                 />
-                <span className="theme-color">Yellow</span>
+                <span className="theme-color">{t("yellowTheme")}</span>
               </label>
             </li>
           </ul>

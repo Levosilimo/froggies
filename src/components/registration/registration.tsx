@@ -1,14 +1,16 @@
 import {useForm} from "react-hook-form";
-import {useAppDispatch} from "../../hooks";
 import {
   checkEmailEligibility,
   checkUsernameEligibility,
-  registrationAction
+  registrationAction, setUserDataAction
 } from "../../store/api-action";
-import {ERROR_MESSAGE, MAIL_REG_EXP} from "../../constants";
+import {MAIL_REG_EXP} from "../../constants";
 import {AxiosError} from "axios";
 import {useRef, useState} from "react";
 import {debounce} from "../../utils";
+import {useAppDispatch, useAppSelector} from "../../hooks";
+import {getLanguage} from "../../store/user/selectors";
+import {useTranslation} from "react-i18next";
 
 type FormData = {
   username: string;
@@ -22,15 +24,19 @@ type FieldAvailability = {
   isError: boolean
 }
 
-function Registration () {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm<FormData>();
-  const [ usernameAvailability, setUsernameAvailability ] = useState<FieldAvailability>();
-  const [ emailAvailability, setEmailAvailability ] = useState<FieldAvailability>();
-
+function Registration() {
+  const {register, handleSubmit, watch, formState: {errors}} = useForm<FormData>();
+  const [usernameAvailability, setUsernameAvailability] = useState<FieldAvailability>();
+  const [emailAvailability, setEmailAvailability] = useState<FieldAvailability>();
+  const {t} = useTranslation();
   const dispatch = useAppDispatch();
-
+  const language = useAppSelector(getLanguage);
   const onSubmit = handleSubmit(data => {
-    dispatch(registrationAction(data));
+    dispatch(registrationAction(data)).then(() => {
+      if (language) {
+        dispatch(setUserDataAction({language}));
+      }
+    });
   });
 
   function fetchCheckUsername() {
@@ -56,12 +62,12 @@ function Registration () {
   const debouncedFetchCheckUsername = useRef(debounce(fetchCheckUsername, 250));
   const debouncedFetchCheckEmail = useRef(debounce(fetchCheckEmail, 250));
 
-  function checkUsernameAvailability(){
+  function checkUsernameAvailability() {
     setUsernameAvailability(undefined);
     debouncedFetchCheckUsername.current();
   }
 
-  function checkEmailAvailability(){
+  function checkEmailAvailability() {
     setEmailAvailability(undefined);
     debouncedFetchCheckEmail.current();
   }
@@ -69,31 +75,33 @@ function Registration () {
   return (
     <form className="form" onSubmit={onSubmit}>
       <div className="form-block">
-        <label className="form-label">Username</label>
-        <input className="form-input" placeholder="Enter your username"
-               {...register("username",  { onChange: checkUsernameAvailability, required: true })} />
-        {errors.username && <span className="error">{ ERROR_MESSAGE.USERNAME }</span>}
-        { usernameAvailability ? <span className={`availability ${usernameAvailability.isError ? 'error' : 'eligible'}`}>{ usernameAvailability.msg }</span> : ''}
+        <label className="form-label">{t("usernameLabel")}</label>
+        <input className="form-input" placeholder={t("usernamePlaceholder").toString()}
+               {...register("username", {onChange: checkUsernameAvailability, required: true})} />
+        {errors.username && <span className="error">{t("usernameErrorMessage")}</span>}
+        {usernameAvailability ? <span
+          className={`availability ${usernameAvailability.isError ? 'error' : 'eligible'}`}>{usernameAvailability.msg}</span> : ''}
       </div>
       <div className="form-block ">
-        <label className="form-label">E-mail</label>
-        <input className="form-input" placeholder="Enter your email"
-               {...register("email",  { onChange: checkEmailAvailability, required: true, pattern: MAIL_REG_EXP })} />
-        {errors.email && <span className="error">{ ERROR_MESSAGE.EMAIL }</span>}
-        { emailAvailability ? <span className={`availability ${emailAvailability.isError ? 'error' : 'eligible'}`}>{ emailAvailability.msg }</span> : ''}
+        <label className="form-label">{t("emailLabel")}</label>
+        <input className="form-input" placeholder={t("emailPlaceholder").toString()}
+               {...register("email", {onChange: checkEmailAvailability, required: true, pattern: MAIL_REG_EXP})} />
+        {errors.email && <span className="error">{t("emailErrorMessage")}</span>}
+        {emailAvailability ? <span
+          className={`availability ${emailAvailability.isError ? 'error' : 'eligible'}`}>{emailAvailability.msg}</span> : ''}
       </div>
       <div className="form-block ">
-        <label className="form-label">Password</label>
-        <input className="form-input" type="password" placeholder="Should contains min 6 symbols"
-               {...register("password",  { required: true, minLength: 6 })} />
-        {errors.password && <span className="error">{ ERROR_MESSAGE.PASSWORD }</span>}
+        <label className="form-label">{t("passwordLabel")}</label>
+        <input className="form-input" type="password" placeholder={t("passwordPlaceholder").toString()}
+               {...register("password", {required: true, minLength: 6})} />
+        {errors.password && <span className="error">{t("passwordPlaceholder")}</span>}
       </div>
       <div className="form-block ">
-        <label className="form-label">Admin password <span>(If you have, enter it)</span></label>
-        <input className="form-input" placeholder="Enter your administrator password"
+        <label className="form-label">{t("adminPasswordLabel")} <span>({t("adminPasswordRemark")})</span></label>
+        <input className="form-input" placeholder={t("adminPasswordPlaceholder").toString()}
                {...register("adminPassword")} />
       </div>
-      <button className="form-submit button" type="submit">Create account</button>
+      <button className="form-submit button" type="submit">{t("createAccount")}</button>
     </form>
   )
 }

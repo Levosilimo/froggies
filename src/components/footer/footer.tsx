@@ -1,13 +1,15 @@
 import './footer.scss';
 import DeveloperInfo from "../developer-info/developer-info";
 import {DEVELOPERS} from "../../constants";
+import {useTranslation} from "react-i18next";
 
 function Footer(): JSX.Element {
+  const { t } = useTranslation();
   return  (
     <footer className="footer">
       <div className="footer-block">
         <div className="footer-creator">
-          <h2>Developed by:</h2>
+          <h2>{t("developedBy")}</h2>
           <ul className="dev-list">
             {
               DEVELOPERS.map((link) => (<DeveloperInfo key={link.name} name={link.name} linkPath={link.linkPath}/>))
@@ -15,7 +17,7 @@ function Footer(): JSX.Element {
           </ul>
 
         </div>
-        <p className="footer-copyright">All rights reserved © 2023</p>
+        <p className="footer-copyright">{t("rightsReserved")}</p>
         <a className="footer-link" href="https://rs.school/js/">
           <svg xmlns="http://www.w3.org/2000/svg" height="50" width="60" viewBox="0 0 552.8 205.3"
                fill="#B5C7E1">
