@@ -3,10 +3,11 @@ import axios, { AxiosInstance } from 'axios';
 import { APIRoute, AppRoute } from '../constants';
 import { getToken, saveToken } from '../services/local-storage';
 import { AuthData, LoginData, RegistrationData } from '../types/auth-data';
+import { UserData } from "../types/user-data";
 import { redirectToRoute } from './action';
 import { AppDispatch, State } from './state';
 import {TaskModel} from "../types/task-model";
-import { UserData } from "../types/user-data";
+
 
 export const checkAuthAction = createAsyncThunk<void, undefined, {
   dispatch: AppDispatch,
@@ -64,17 +65,6 @@ export const loginAction = createAsyncThunk<AuthData, LoginData, {
   },
 );
 
-export const getUserDataAction = createAsyncThunk<UserData, undefined, {
-  dispatch: AppDispatch,
-  state: State,
-  extra: AxiosInstance
-}>('user/getData',
-  async (_arg, {dispatch, extra: api}) => {
-  const token = getToken();
-  const response = (await api.get<UserData>(`https://rsclone-backend.adaptable.app${APIRoute.GetUserData}`, {headers: { 'x-access-token': token}}))
-  return response.data;
-});
-
 export const setUserDataAction = createAsyncThunk<UserData, Partial<UserData>, {
   dispatch: AppDispatch,
   state: State,
@@ -86,6 +76,16 @@ export const setUserDataAction = createAsyncThunk<UserData, Partial<UserData>, {
     return response.data;
   });
 
+export const getUserDataAction = createAsyncThunk<UserData, undefined, {
+  dispatch: AppDispatch,
+  state: State,
+  extra: AxiosInstance
+}>('user/getData',
+  async (_arg, {dispatch, extra: api}) => {
+    const token = getToken();
+    const response = (await api.get<UserData>(`https://rsclone-backend.adaptable.app${APIRoute.GetUserData}`, {headers: { 'x-access-token': token}}))
+    return response.data;
+});
 
 interface LevelDataReq {game: string; levelNumber: number;}
 

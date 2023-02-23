@@ -7,12 +7,13 @@ import {highlight, languages} from 'prismjs';
 import {getLevelAction, getUserDataAction, setUserDataAction} from "../../store/api-action";
 import LoadingScreen from "../../components/loading-screen/loading-screen";
 import {useAppDispatch, useAppSelector} from "../../hooks";
-import {getCurrentLevel, getRecords} from "../../store/user/selectors";
+import {getCurrentLevel, getLanguage, getRecords} from "../../store/user/selectors";
 import {store} from "../../store";
 import {setLevelAction} from "../../store/user/user-data";
 import {frogsStyleText} from "../../constants";
 import FrogsContainer from "../../components/frogs-container/frogs-container";
 import LilypadsContainer from "../../components/lilypads-container/lilypads-container";
+import {language} from "../../types/user-data";
 
 function GamePage(): JSX.Element {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
@@ -20,6 +21,7 @@ function GamePage(): JSX.Element {
   const [show, setShow] = useState<boolean>(false);
   const questionBlock = useRef<HTMLDivElement>(null);
   const records: Record<string, Array<number>> | undefined = useAppSelector(getRecords);
+  const language: language = useAppSelector(getLanguage) ?? "en_us";
   const levelNumber = useAppSelector(getCurrentLevel)
   const [preFirst, setPreFirst] = useState<string>("#frogs {\n  display: flex;");
   const [preLast, setPreLast] = useState<string>("}");
@@ -159,7 +161,7 @@ function GamePage(): JSX.Element {
           setLinesCount(countLines(questionBlock.current));
         }
       });
-  }, [levelNumber]);
+  }, [levelNumber, language]);
 
   useEffect(() => {
     if (questionBlock.current){

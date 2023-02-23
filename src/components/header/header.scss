@@ -66,11 +66,16 @@
 
 .header-user-data {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
   width: 100%;
+
+  .user {
+    display: flex;
+    align-items: center;
+  }
 
   .header-username,
   .header-level-game {
