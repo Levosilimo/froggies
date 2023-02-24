@@ -1,9 +1,9 @@
 import './update-avatar.scss';
 import React, {useEffect, useRef, useState} from "react";
 import {setAvatar} from "../../store/api-action";
+import { IAvatar } from '../../types/user-data';
 
-
-function UpdateAvatar({username, imageRef, onClose, show}: {username: string; imageRef: HTMLImageElement | null | undefined; onClose: () => void; show:boolean;}): JSX.Element {
+function UpdateAvatar({username, imageRef, onClose, show}: IAvatar): JSX.Element {
 
   const [selectedFile, setSelectedFile] = useState<File | undefined>();
   const [unsupportedFile, setUnsupportedFile] = useState<File | undefined>();

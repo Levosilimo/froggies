@@ -24,3 +24,10 @@ export interface UserRecordRes {
   items: Array<UserRecordsItem>;
   totalCount: number;
 }
+
+export interface IAvatar {
+  username: string,
+  imageRef: HTMLImageElement | null | undefined,
+  onClose: () => void,
+  show: boolean,
+}

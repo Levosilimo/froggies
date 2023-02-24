@@ -1,29 +1,21 @@
-@import "./src/scss/all";
+@import "../../scss/all.scss";
 
 .user {
+  color: $green;
   min-height: calc(100vh - $header-min-height - $footer-min-height);
   display: grid;
   grid-template-areas: "A A"
-                       "B D"
                        "B D";
-  justify-content: space-around;
+  grid-template-rows: 100px 1fr;
   gap: 20px 20px;
-}
-
-.user__title {
-  margin: 0;
-  padding: 0;
-}
-
-.section {
-  background-color: gray;
-  height: 200px;
+  justify-content: space-evenly;
 }
 
 .user__title {
   grid-area: A;
   align-self: center;
   justify-self: center;
+  text-transform: uppercase;
 }
 
 .user__info {
@@ -32,4 +24,63 @@
 
 .user__score {
   grid-area: D;
+}
+
+.info__title,
+.score__title {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.avatar {
+  max-width: 400px;
+  width: 100%;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+    opacity: .9;
+  }
+   .avatar__img {
+    background-color: $green-bg;
+    padding: 10px;
+    border: 5px solid $green-light;
+    border-radius: 50%;
+  }
+}
+
+.info__item {
+  align-items: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $green-bg;
+  border: 5px solid $green-light;
+  border-radius: 10px;
+  padding-left: 10px;
+  color: $white;
+  text-transform: uppercase;
+  font-weight: 700;
+  span {
+    background-color: $white;
+    border-radius: 6px;
+    color: $green;
+    padding: 10px;
+    text-transform: none;
+    margin-left: 10px;
+  }
+}
+
+.score__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: $green-bg;
+  border: 5px solid $green-light;
+  border-radius: 10px;
+  padding: 10px 10px 10px 30px;
+  .score__item {
+    color: $white;
+    text-align: left;
+    line-height: 30px;
+  }
 }

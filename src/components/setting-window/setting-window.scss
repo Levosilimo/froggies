@@ -1,6 +1,7 @@
-@import "./src/scss/all";
+@import "../../scss/all";
 
 .setting {
+  background-color: rgba(0, 0, 0, .5);
   position: fixed;
   top: -200%;
   width: 100%;
@@ -8,15 +9,14 @@
   z-index: 1;
   transition: all .2s linear;
   text-align: center;
+  &.active {
+    top: 0;
+  }
 }
 
-.setting.active {
-  top: 0;
-}
-
-
-.overlay {
+.setting__overlay {
   position: absolute;
+  z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -27,7 +27,7 @@
   border-radius: 15px;
 }
 
-.close {
+.setting__close {
   position: absolute;
   right: 5%;
   font-weight: bold;
@@ -45,6 +45,7 @@
   display: block;
   transform: rotate(-45deg);
 }
+
 .close__line_toRight {
   display: block;
   transform: translate(-1px, -100%) rotate(45deg);;
@@ -66,9 +67,8 @@
 .setting-list__item {
   list-style-type: none;
   .title {
-    margin-bottom: 12px;
+    margin: 10px 0;
     font-size: 22px;
-    line-height: 20px;
     color: $green;
     font-weight: 400;
   }
@@ -110,7 +110,7 @@
   border: 2px solid $green;
   border-radius: 10px;
   background-size: cover;
-  margin: 0 10px;
+  margin: 5px 10px;
   transition: all .2s;
     &:hover {
       cursor: pointer;
@@ -146,7 +146,7 @@
   border-radius: 10px;
   background-size: cover;
   padding: 5px;
-  margin: 0 10px;
+  margin: 5px 10px;
   transition: all .2s;
     &:hover {
       cursor: pointer;

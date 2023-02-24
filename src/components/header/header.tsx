@@ -13,14 +13,10 @@ import {logOutAction} from "../../store/user/user-data";
 function Header(): JSX.Element {
 
   const {isVisible, setIsVisible} = useContext(settingContext)
-
   const authorizationStatus = useAppSelector(getAuthorizationStatus);
   const isAdmin = useAppSelector(getIsAdmin);
-
   const userName = getUserData()?.username || '';
-
   const urlForUserImage = `https://rsclone-backend.adaptable.app/avatar/${userName}`;
-
   const logOut = () => store.dispatch(logOutAction());
 
   return  (
@@ -37,7 +33,7 @@ function Header(): JSX.Element {
             ? ( <Link className="header-login" to={AppRoute.Login}>Login</Link>)
             : (<div className="header-user-data">
                 <div className="header-avatar">
-                  <Link to={AppRoute.User}><img src={urlForUserImage} width="30" height="30" alt="User avatar"/></Link>
+                  <Link to={AppRoute.User}><img src={urlForUserImage} width="40" height="40" alt="User avatar"/></Link>
                 </div>
                 <span className="header-username"><Link to={AppRoute.User}>{userName}</Link></span>
                 <button className="header-signout" onClick={logOut}>Sign out</button>

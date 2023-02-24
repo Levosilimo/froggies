@@ -1,7 +1,7 @@
 import {Route, Routes} from "react-router-dom";
 import MainPage from "../../pages/main-page/main-page";
 import LoginPage from "../../pages/login-page/login-page";
-import {AppRoute, AuthorizationStatus} from "../../constans";
+import {AppRoute, AuthorizationStatus} from "../../constants";
 import "../../scss/main.scss";
 import GamePage from "../../pages/game-page/game-page";
 import PageNotFound from "../../pages/page-not-found/page-not-found";
@@ -35,7 +35,7 @@ function App(): JSX.Element {
           <Route path={AppRoute.Main} element={<MainPage/>}/>
           <Route path={AppRoute.Login} element={<LoginPage/>}/>
           <Route path={AppRoute.Dashboard} element={<PrivateRouteAdmin><AdminDashboardPage/></PrivateRouteAdmin>}/>
-          <Route path={AppRoute.User} element={<UserPage/>}/>
+          <Route path={AppRoute.User} element={<PrivateRoute><UserPage/></PrivateRoute>}/>
           <Route path={AppRoute.Game} element={<PrivateRoute><GamePage/></PrivateRoute>}/>
           <Route path="*" element={<PageNotFound />}/>
       </Routes>

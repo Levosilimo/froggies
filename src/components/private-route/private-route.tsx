@@ -6,6 +6,7 @@ import { getAuthorizationStatus } from "../../store/user/selectors";
 type PrivateRouteProps = {
   children: JSX.Element;
 }
+
 export default function PrivateRoute(props: PrivateRouteProps): JSX.Element {
   const {children} = props;
   const authorizationStatus = useAppSelector(getAuthorizationStatus);

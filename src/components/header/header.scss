@@ -1,5 +1,10 @@
 @import "./src/scss/all";
 
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -83,6 +88,10 @@
     text-transform: capitalize;
     font-style: italic;
     cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+      opacity: 0.8;
+    }
   }
 
   .header-signout {
