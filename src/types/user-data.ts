@@ -26,7 +26,7 @@ export interface UserRecordRes {
 }
 
 export interface IAvatar {
-  username: string,
+  username?: string,
   imageRef: HTMLImageElement | null | undefined,
   onClose: () => void,
   show: boolean,

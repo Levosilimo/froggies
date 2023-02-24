@@ -85,10 +85,10 @@ export async function updateUserData({records, username}: {records: Record<strin
   return axios.patch<void>(`https://rsclone-backend.adaptable.app${APIRoute.User}/${username}`, {records: records}, {headers: { 'x-access-token': token }})
 }
 
-export async function setAvatar({file,username}: {file: File, username: string}): Promise<AxiosResponse> {
+export async function setAvatar({file,username}: {file: File, username?: string}): Promise<AxiosResponse> {
   const token = getToken();
   const formData = new FormData();
   formData.append('file', file);
-  formData.append('username', username);
-  return axios.patch<void>(`https://rsclone-backend.adaptable.app${APIRoute.Avatar}/${username}`, formData, {headers: { 'x-access-token': token }})
+  if(username) formData.append('username', username);
+  return axios.patch<void>(`https://rsclone-backend.adaptable.app${APIRoute.Avatar}/${username??''}`, formData, {headers: { 'x-access-token': token }})
 }

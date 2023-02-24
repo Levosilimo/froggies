@@ -19,7 +19,6 @@ function UserPage(): JSX.Element {
   const showUploadWindow = () => setIsShow(!isShow);
 
   const updateAvatarProps: IAvatar = {
-    username: userName,
     imageRef: avatar.current,
     onClose: showUploadWindow,
     show: isShow,
