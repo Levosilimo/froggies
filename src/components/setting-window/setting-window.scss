@@ -65,7 +65,8 @@
 
 .setting-list__item {
   list-style-type: none;
-  .title {
+  text-align: center;
+  .setting-list__item-title {
     margin-bottom: 12px;
     font-size: 22px;
     line-height: 20px;
@@ -74,30 +75,77 @@
   }
 }
 
-.volume-range {
-  -webkit-appearance: none;
+
+.volume-range{
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  appearance: none;
+  position: relative;
   width: 100%;
+  height: 19px;
+  background-color: transparent;
+  background: transparent;
+  overflow-x: hidden;
+  cursor: pointer;
 }
 
-.volume-range::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  border: 2px solid $green;
-  border-radius: 50%;
-  height: 16px;
-  width: 16px;
-  background: white;
-  cursor: pointer;
-  transform: translateY(-25%);
+.volume-range::-webkit-slider-runnable-track{
+  height: 17px;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 7px;
+  background-color: $white;
+  border-color: $green-bg;
+  z-index: 1;
+  overflow-x: hidden;
 }
 
-.volume-range::-webkit-slider-runnable-track {
-  width: 80%;
-  height: 8px;
-  cursor: pointer;
-  background: $green-bg;
-  border-radius: 3px;
-  border: 1px solid $green;
+.volume-range::-webkit-slider-thumb{
+  appearance: none;
+  width: 0;
+  height: 11px;
+  margin-top: 0;
+  border-width: 0;
+  border-style: solid;
+  border-radius: 25px;
+  background-color: $green-light;
+  border-color: $black;
+  box-shadow: -100vw 0 0 100vw $green-light;
+  clip-path: polygon(1px 0, 100% 0, 100% 100%, 1px 100%, 1px calc(50% + 5.5px), -100vw calc(50% + 5.5px), -100vw calc(50% - 5.5px), 0 calc(50% - 5.5px));
+  z-index: 1;
 }
+
+.volume-range::-moz-range-track{
+  width: 100%;
+  height: 11px;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 7px;
+  background-color: $white;
+  border-color: $green-bg;
+}
+
+.volume-range::-moz-range-thumb{
+  width: 0;
+  height: 13px;
+  border-width: 0;
+  border-style: solid;
+  border-radius: 25px;
+  background-color: $green-light;
+  border-color: $black;
+}
+
+.volume-range::-moz-range-progress{
+  height: 11px;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  background-color: $green-light;
+}
+
 
 .flag-en,
 .flag-ru,

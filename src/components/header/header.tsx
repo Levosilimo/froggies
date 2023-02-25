@@ -8,6 +8,7 @@ import {store} from "../../store";
 import {getAuthorizationStatus, getUsername} from "../../store/user/selectors";
 import {logOutAction} from "../../store/user/user-data";
 import {useTranslation} from "react-i18next";
+import AudioPlayer from "../audio-player/audio-player";
 
 
 function Header(): JSX.Element {
@@ -32,6 +33,7 @@ function Header(): JSX.Element {
           <li><Link to={AppRoute.Game}>{t("gamePage")}</Link></li>
           <li onClick={() => setIsVisible(true)}><img className="gear" src="../../../images/gear.png" alt="settings"/></li>
         </ul>
+        <AudioPlayer/>
         <div className="header-user">
           {authorizationStatus !== AuthorizationStatus.Auth
             ? ( <Link className="header-login" to={AppRoute.Login}>{t("login")}</Link>)

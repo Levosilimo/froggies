@@ -1,0 +1,12 @@
+@import "./src/scss/all";
+
+.mute-control {
+  &:before {
+    content: "🔊";
+  }
+  &.off{
+    &:before {
+      content: "🔇";
+    }
+  }
+}

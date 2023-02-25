@@ -1,4 +1,8 @@
+import {language} from "../types/user-data";
+
 const AUTH_TOKEN_KEY = 'token';
+const LANGUAGE_KEY = 'language';
+const VOLUME_KEY = 'volume';
 const CURRENT_LEVEL_FLEXBOX_KEY = 'flexbox-level';
 
 export const getLevel = (): number => {
@@ -21,4 +25,22 @@ export const saveToken = (token: string): void => {
 
 export const dropToken = (): void => {
   localStorage.removeItem(AUTH_TOKEN_KEY);
+};
+
+export const getLanguage = (): language => {
+  const language = localStorage.getItem(LANGUAGE_KEY) as language;
+  return language ?? 'en_us';
+};
+
+export const saveLanguage = (language: language): void => {
+  localStorage.setItem(LANGUAGE_KEY, language);
+};
+
+export const getVolume = (): number => {
+  const volume = Number(localStorage.getItem(VOLUME_KEY));
+  return !Number.isNaN(volume) && volume >= 0 && volume <= 100 ? volume : 50;
+};
+
+export const saveVolume = (volume: number): void => {
+  localStorage.setItem(VOLUME_KEY, volume.toString(10));
 };
