@@ -12,6 +12,7 @@ type InitialState = {
   username?: string;
   email?: string;
   records?: Record<string, Array<number>>;
+  isAdmin: boolean;
   currentLevel: number;
   isLoadingError: boolean,
   language?: language;
@@ -21,6 +22,7 @@ type InitialState = {
 
 const initialState: InitialState = {
   authorizationStatus: AuthorizationStatus.Unknown,
+  isAdmin: false,
   isDataLoading: false,
   isLoadingError: false,
   volume: 50,
@@ -35,6 +37,7 @@ export const userProcess = createSlice({
     logOutAction: (state) => {
       dropToken();
       state.authorizationStatus = AuthorizationStatus.NoAuth;
+      state.isAdmin = false;
     },
     setVolume: (state, action: PayloadAction<number>) => {
       state.volume = action.payload;
@@ -56,10 +59,12 @@ export const userProcess = createSlice({
       .addCase(checkAuthAction.fulfilled, (state) => {
         state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
+        state.isAdmin = Boolean(parseJwt(getToken()).isAdmin);
       })
       .addCase(checkAuthAction.rejected, (state) => {
         state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
+        state.isAdmin = false;
       })
       .addCase(registrationAction.pending, (state) => {
         state.isDataLoading = true;
@@ -67,6 +72,7 @@ export const userProcess = createSlice({
       .addCase(registrationAction.fulfilled, (state, action) => {
         state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
+        state.isAdmin = Boolean(parseJwt(getToken()).isAdmin);
         state.username = action.payload.username;
         state.records = action.payload.records;
         state.email = action.payload.email;
@@ -75,6 +81,7 @@ export const userProcess = createSlice({
         state.isLoadingError = true;
         state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
+        state.isAdmin = false;
       })
       .addCase(loginAction.pending, (state) => {
         state.isDataLoading = true;
@@ -82,6 +89,7 @@ export const userProcess = createSlice({
       .addCase(loginAction.fulfilled, (state, action) => {
         state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
+        state.isAdmin = Boolean(parseJwt(getToken()).isAdmin);
         state.username = action.payload.username;
         state.records = action.payload.records;
         state.email = action.payload.email;
@@ -90,6 +98,7 @@ export const userProcess = createSlice({
         state.isLoadingError = true;
         state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
+        state.isAdmin = false;
       })
       .addCase(getUserDataAction.fulfilled, (state, action) => {
         state.records = action.payload.records;
@@ -97,14 +106,18 @@ export const userProcess = createSlice({
         i18n.changeLanguage(action.payload.language);
       })
       .addCase(setUserDataAction.pending, (state, action) => {
-        state.records = action.meta.arg.records;
-        state.language = action.meta.arg.language;
-        i18n.changeLanguage(action.meta.arg.language);
+        if(!action.meta.arg.username || action.meta.arg.username===state.username){
+          state.records = action.meta.arg.records;
+          state.language = action.meta.arg.language;
+          i18n.changeLanguage(action.meta.arg.language);
+        }
       })
       .addCase(setUserDataAction.fulfilled, (state, action) => {
-        state.records = action.payload.records;
-        state.language = action.payload.language;
-        i18n.changeLanguage(action.payload.language);
+        if(!action.meta.arg.username || action.meta.arg.username===state.username) {
+          state.records = action.payload.records;
+          state.language = action.payload.language;
+          i18n.changeLanguage(action.payload.language);
+        }
       })
   }
 })
