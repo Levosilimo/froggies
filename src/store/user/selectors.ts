@@ -3,6 +3,7 @@ import { AuthorizationStatus, NameSpace } from "../../constants";
 import {language, theme} from "../../types/user-data";
 
 export const getAuthorizationStatus = (state: State): AuthorizationStatus => state[NameSpace.User].authorizationStatus;
+export const getIsAdmin = (state: State): boolean | undefined => state[NameSpace.User].isAdmin;
 export const getLanguage = (state: State): language | undefined => state[NameSpace.User].language;
 export const getVolume = (state: State): number => state[NameSpace.User].volume;
 export const getTheme = (state: State): theme => state[NameSpace.User].theme;
