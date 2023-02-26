@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.1681ab42.css",
-    "main.js": "/static/js/main.7ebc3854.js",
+    "main.css": "/static/css/main.597c24f7.css",
+    "main.js": "/static/js/main.cac1639b.js",
     "static/media/frog-bg-3.jpg": "/static/media/frog-bg-3.67ba8773de3fc09146ba.jpg",
     "static/media/frog-bg-4.jpg": "/static/media/frog-bg-4.3ae6ee33252badc60c21.jpg",
     "static/media/es.svg": "/static/media/es.9138c3c0a599c3036a65.svg",
@@ -15,11 +15,11 @@
     "index.html": "/index.html",
     "static/media/ru.svg": "/static/media/ru.ce9b6ea47dd7016ad3dc.svg",
     "static/media/ua.svg": "/static/media/ua.f9632e893bc41200a948.svg",
-    "main.1681ab42.css.map": "/static/css/main.1681ab42.css.map",
-    "main.7ebc3854.js.map": "/static/js/main.7ebc3854.js.map"
+    "main.597c24f7.css.map": "/static/css/main.597c24f7.css.map",
+    "main.cac1639b.js.map": "/static/js/main.cac1639b.js.map"
   },
   "entrypoints": [
-    "static/css/main.1681ab42.css",
-    "static/js/main.7ebc3854.js"
+    "static/css/main.597c24f7.css",
+    "static/js/main.cac1639b.js"
   ]
 }
