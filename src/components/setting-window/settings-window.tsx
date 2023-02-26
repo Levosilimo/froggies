@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useContext, useEffect, useState} from "react";
-import { settingContext } from "../../context";
+import { settingContext } from "../../contexts/settingContext";
 import "./setting-window.scss";
 import {language, theme} from "../../types/user-data";
 import {useAppDispatch, useAppSelector} from "../../hooks";
@@ -114,7 +114,7 @@ function SettingsWindow(): JSX.Element {
               <label>
                 <input
                   className={`theme__input ${theme ===  'green' ? 'active' : ''}`}
-                  hidden type="radio" name="theme" id="green" value="green" defaultChecked
+                  hidden type="radio" name="theme" id="green" value="green"
                   onChange={changeTheme}
                 />
                 <span className="theme-color">{t("greenTheme")}</span>

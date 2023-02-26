@@ -6,11 +6,11 @@ import i18n from "../../i18n";
 import {
   dropToken,
   getLanguage,
-  getLevel,
+  getLevel, getTheme,
   getToken,
   getVolume,
   saveLanguage,
-  saveLevel, saveVolume
+  saveLevel, saveTheme, saveVolume
 } from "../../services/local-storage";
 import {parseJwt} from "../../utils";
 
@@ -33,7 +33,7 @@ const initialState: InitialState = {
   isDataLoading: false,
   isLoadingError: false,
   volume: getVolume(),
-  theme: "green",
+  theme: getTheme(),
   currentLevel: getLevel(),
   language: getLanguage(),
   isPlayerMuted: false,
@@ -53,6 +53,7 @@ export const userProcess = createSlice({
     },
     setTheme: (state, action: PayloadAction<theme>) => {
       state.theme = action.payload;
+      saveTheme(action.payload);
     },
     setLevelAction: (state, action: PayloadAction<number>) => {
       saveLevel(action.payload);

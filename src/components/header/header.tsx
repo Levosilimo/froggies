@@ -2,7 +2,7 @@ import './header.scss';
 import {Link} from "react-router-dom";
 import {AppRoute, AuthorizationStatus} from "../../constants";
 import { useContext } from 'react';
-import { settingContext } from '../../context';
+import { settingContext } from '../../contexts/settingContext';
 import {useAppSelector} from "../../hooks";
 import {store} from "../../store";
 import {getAuthorizationStatus, getUsername} from "../../store/user/selectors";
@@ -32,8 +32,8 @@ function Header(): JSX.Element {
           <li><Link to={AppRoute.Main}>{t("mainPage")}</Link></li>
           <li><Link to={AppRoute.Game}>{t("gamePage")}</Link></li>
           <li onClick={() => setIsVisible(true)}><img className="gear" src="../../../images/gear.png" alt="settings"/></li>
+          <li><AudioPlayer/></li>
         </ul>
-        <AudioPlayer/>
         <div className="header-user">
           {authorizationStatus !== AuthorizationStatus.Auth
             ? ( <Link className="header-login" to={AppRoute.Login}>{t("login")}</Link>)

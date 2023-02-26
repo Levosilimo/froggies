@@ -36,7 +36,7 @@ function Login () {
       </div>
       <div className="form-block ">
         <label className="form-label">{t("passwordLabel")}</label>
-        <input className="form-input" type="password" placeholder={t("passwordPlaceholder").toString()}
+        <input className="form-input" autoComplete={"current-password"} type="password" placeholder={t("passwordPlaceholder").toString()}
                {...register("password",  { required: true, minLength: 6 })} />
         {errors.password && <span className="error">{t("passwordPlaceholder")}</span>}
       </div>

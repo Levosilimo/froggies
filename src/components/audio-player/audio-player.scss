@@ -1,6 +1,12 @@
 @import "./src/scss/all";
 
 .mute-control {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0 0 6px;
+  cursor: pointer;
   &:before {
     content: "🔊";
   }

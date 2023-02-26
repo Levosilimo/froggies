@@ -15,7 +15,7 @@ import FrogsContainer from "../../components/frogs-container/frogs-container";
 import LilypadsContainer from "../../components/lilypads-container/lilypads-container";
 import {language} from "../../types/user-data";
 import {redirectToRoute} from "../../store/action";
-const croakAudio = new Audio(process.env.PUBLIC_URL+"/sounds/croak.wav");
+const croakAudio = new Audio(process.env.PUBLIC_URL+"/sounds/croak.ogg");
 function GamePage(): JSX.Element {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [level, setLevel] = useState<TaskModel>();

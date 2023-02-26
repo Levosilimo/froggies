@@ -28,9 +28,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border-top: 4px solid $green-light;
+  @include themed() {
+    border-top: 4px solid t('light');
+  }
   border-radius: 15px 15px 0 0;
-  background-color: $green-bg;
+  @include themed() {
+    background-color: t('bg');
+  }
   color: $white;
 }
 

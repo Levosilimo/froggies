@@ -1,8 +1,9 @@
-import {language} from "../types/user-data";
+import {language, theme} from "../types/user-data";
 
 const AUTH_TOKEN_KEY = 'token';
 const LANGUAGE_KEY = 'language';
 const VOLUME_KEY = 'volume';
+const THEME_KEY = 'theme';
 const CURRENT_LEVEL_FLEXBOX_KEY = 'flexbox-level';
 
 export const getLevel = (): number => {
@@ -43,4 +44,13 @@ export const getVolume = (): number => {
 
 export const saveVolume = (volume: number): void => {
   localStorage.setItem(VOLUME_KEY, volume.toString(10));
+};
+
+export const getTheme = (): theme => {
+  const theme = localStorage.getItem(THEME_KEY) as theme;
+  return theme ?? 'green';
+};
+
+export const saveTheme = (theme: string): void => {
+  localStorage.setItem(THEME_KEY, theme);
 };
