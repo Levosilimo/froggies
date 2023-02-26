@@ -33,13 +33,10 @@
 }
 
 .avatar {
-  max-width: 400px;
+  display: flex;
+  justify-content: space-between;
+  max-width: 320px;
   width: 100%;
-  &:hover {
-    cursor: pointer;
-    transform: scale(1.03);
-    opacity: .9;
-  }
    .avatar__img {
     background-color: $green-bg;
     padding: 10px;
@@ -49,9 +46,9 @@
 }
 
 .info__item {
-  align-items: stretch;
   display: flex;
-  justify-content: space-between;
+  width: fit-content;
+  justify-content: start;
   align-items: center;
   background-color: $green-bg;
   border: 5px solid $green-light;
@@ -68,6 +65,28 @@
     text-transform: none;
     margin-left: 10px;
   }
+}
+
+.name {
+  margin-bottom: 0;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit {
+    width: 40px;
+    height: 40px;
+    background: url(../../../public/images/pencil.svg) center no-repeat;
+    background-size: cover;
+    transition: all .3s;
+    &:hover {
+      cursor: pointer;
+      transform: rotate(-45deg);
+    }
 }
 
 .score__list {

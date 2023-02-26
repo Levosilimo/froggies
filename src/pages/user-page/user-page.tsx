@@ -16,7 +16,7 @@ function UserPage(): JSX.Element {
   const urlForUserImage = `https://rsclone-backend.adaptable.app/avatar/${userName}`;
   const avatar = useRef<HTMLImageElement>(null);
   const [isShow, setIsShow] = useState(false);
-  const showUploadWindow = () => setIsShow(!isShow);
+  const showUploadWindow = (): void => setIsShow(!isShow);
 
   const updateAvatarProps: IAvatar = {
     imageRef: avatar.current,
@@ -33,12 +33,16 @@ function UserPage(): JSX.Element {
         <h1 className="user__title">Profile</h1>
         <section className="info user__info">
           <h2 className="info__title">Info</h2>
-          <div className="avatar info__avatar" onClick={showUploadWindow}>
+          <div className="avatar info__avatar">
             <img ref={avatar} src={urlForUserImage} alt="User avatar" className="avatar__img"/>
+            <div className="edit" onClick={showUploadWindow}></div>
           </div>
-          <p className="info__item">Name<span>{userName}</span></p>
-          <p className="info__item">Access level<span>{isAdmin ? "Administrator" : "User"}</span></p>
-          <p className="info__item">Level<span>VAR</span></p>
+          <div className="flex-container">
+            <p className="name info__item">Name<span>{userName}</span></p>
+            <div className="edit"></div>
+          </div>
+            <p className="access info__item">Access level<span>{isAdmin ? "Administrator" : "User"}</span></p>
+          <p className="level info__item">Game progress<span> Level</span></p>
         </section>
         <section className="score user__score">
           <h2 className="score__title">Top 10 score</h2>
