@@ -3,6 +3,7 @@ import React, {useEffect, useRef, useState} from "react";
 import {setAvatar} from "../../store/api-action";
 import { IAvatar } from '../../types/user-data';
 import {useTranslation} from "react-i18next";
+import { string } from 'yargs';
 
 function UpdateAvatar({username, imageRef, onClose, show}: IAvatar): JSX.Element {
 

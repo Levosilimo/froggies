@@ -54,7 +54,7 @@ export const loginAction = createAsyncThunk<AuthData, LoginData, {
 
 export async function getRecords({page, limit, sorting, order, fullInfo}: UserRecordsReq): Promise<UserRecordRes> {
   const token = getToken();
-  const data = (await fetch(`https://rsclone-backend.adaptable.app${APIRoute.Records}?page=${page??1}&limit=${limit??0}&sort=${sorting??'username'}&order=${order??'asc'}&fullInfo=${fullInfo}`, {method: 'GET',headers: { 'x-access-token': token}}))
+  const data = (await fetch(`https://rsclone-backend.adaptable.app${APIRoute.Records}?page=${page??1}&limit=${limit??0}&sort=${sorting??'username'}&order=${order??'asc'}${fullInfo?'&fullInfo='+fullInfo:''}`, {method: 'GET',headers: { 'x-access-token': token}}))
   const items: Array<UserRecordsItem> = await data.json();
   return { items, totalCount: Number(data.headers.get('X-Total-Count')) };
 }

@@ -40,16 +40,15 @@ function Header(): JSX.Element {
           : (<div className="header-user-data">
             <div className="user">
               <div className="header-avatar">
-                <img src={urlForUserImage} width="30" height="30" alt="User avatar"/>
+              <Link to={AppRoute.User}><img src={urlForUserImage} width="40" height="40" alt="User avatar"/></Link>
               </div>
-              <span className="header-username">{userName}</span>
+              <span className="header-username"><Link to={AppRoute.User}>{userName}</Link></span>
             </div>
             <button className="header-signout" onClick={logOut}>{t("logout")}</button>
           </div>)}
       </div>
     </header>
   )
-
 }
 
 export default Header;

@@ -1,13 +1,12 @@
 @import "../../scss/all.scss";
 
-.user {
+.user-page {
   color: $green;
   min-height: calc(100vh - $header-min-height - $footer-min-height);
   display: grid;
   grid-template-areas: "A A"
                        "B D";
   grid-template-rows: 100px 1fr;
-  gap: 20px 20px;
   justify-content: space-evenly;
 }
 
@@ -92,7 +91,7 @@
 .score__list {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: space-around;
   background-color: $green-bg;
   border: 5px solid $green-light;
   border-radius: 10px;
