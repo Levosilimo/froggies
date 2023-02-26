@@ -14,7 +14,7 @@
   }
 }
 
-.setting__overlay {
+.overlay-settings {
   position: absolute;
   z-index: 2;
   top: 50%;
@@ -112,11 +112,16 @@
   background-size: cover;
   margin: 5px 10px;
   transition: all .2s;
-    &:hover {
-      cursor: pointer;
-      transform: scale(1.05);
-      box-shadow: 0 0 0 5px $green-bg;
-    }
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    box-shadow: 0 0 0 5px $green-bg;
+  }
+  &.disabled {
+    cursor: auto;
+    transform: scale(1);
+    box-shadow: 0 0 0 5px $gray;
+  }
 }
 
 .flag-en {

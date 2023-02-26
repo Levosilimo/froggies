@@ -1,11 +1,11 @@
 import "./admin-dashboard-page.scss";
-import Footer from "../../components/footer/footer";
-import Header from "../../components/header/header";
 import InfiniteScroll from "react-infinite-scroll-component";
 import React, {useEffect, useRef, useState} from "react";
 import {UserRecordsItem, UserRecordsReq} from "../../types/user-data";
-import {getLevelCount, getRecords, updateUserData} from "../../store/api-action";
+import {getLevelCount, getRecords, setUserDataAction} from "../../store/api-action";
 import UpdateAvatar from "../../components/update-avatar/update-avatar";
+import {useAppDispatch} from "../../hooks";
+import {useTranslation} from "react-i18next";
 
 function AdminDashboardPage() {
 
@@ -21,6 +21,8 @@ function AdminDashboardPage() {
   useEffect(() => {
     fetchData();
   }, [])
+
+  const {t} = useTranslation();
 
   async function fetchData(): Promise<void> {
     if (!hasMore || usersCount <= (recordsReqParams.page-1) * recordsReqParams.limit) {
@@ -42,8 +44,11 @@ function AdminDashboardPage() {
     setRecordsReqParams({...recordsReqParams, page: recordsReqParams.page+1});
   }
 
+  const dispatch = useAppDispatch();
+
   const onUserLevelsFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    e.stopPropagation();
     const checkedLevels: Record<string, Array<number>> = {};
     let submitElement: HTMLInputElement | undefined;
     for (const element of e.currentTarget.elements){
@@ -59,12 +64,12 @@ function AdminDashboardPage() {
       }
     }
     if(submitElement) {
-      submitElement.value = "Updating...";
+      submitElement.value = t("userUpdating");
       submitElement.disabled = true;
     }
-    updateUserData({records: checkedLevels, username: e.currentTarget.name}).then(() => {
+    dispatch(setUserDataAction({records: checkedLevels, username: e.currentTarget.name})).then(() => {
       if(submitElement) {
-        submitElement.value = "Update user";
+        submitElement.value = t("userUpdate");
         submitElement.disabled = false;
       }
     });
@@ -72,16 +77,15 @@ function AdminDashboardPage() {
 
   return (
     <div className="page">
-      <Header/>
       <section className="">
-        <h1>Users</h1>
+        <h1>{t("usersPage")}</h1>
         <hr/>
         <InfiniteScroll
           className='user-records-scroll-wrapper'
           dataLength={users.length}
           next={fetchData}
           hasMore={hasMore}
-          loader={<h4>Loading...</h4>}
+          loader={<h4>{t("loading")}</h4>}
         >
           {users.map((user, index) => (
             <div className='user-record-wrapper' key={user.username}>
@@ -93,7 +97,7 @@ function AdminDashboardPage() {
                   <div className={'user-record-user-data'}>
                     <div className={'user-record-user-data-title'}>
                       <h3>{user.username}</h3>
-                      {(user.authData?.isAdmin) ? <span className={'user-record-admin'}>Admin</span>: ''}
+                      {(user.authData?.isAdmin) ? <span className={'user-record-admin'}>{t("admin")}</span>: ''}
                     </div>
                     <h4>{user.authData?.email}</h4>
                   </div>
@@ -114,12 +118,12 @@ function AdminDashboardPage() {
                     )})
                   }
                   <div className={'user-record-form-buttons'}>
-                    <input type="submit" value="Update user"/>
+                    <input type="submit" value={t("userUpdate").toString()}/>
                     <button type="button" onClick={() => {
                       setUpdateAvatarUsername(user.username);
                       setUpdateAvatarImageRef(imagesRef.current[index])
                       setShownUpdateAvatar(true);
-                    }}>Change Avatar
+                    }}>{t("changeAvatar")}
                     </button>
                   </div>
                   </form>
@@ -129,7 +133,6 @@ function AdminDashboardPage() {
           ))}
         </InfiniteScroll>
       </section>
-      <Footer/>
       <UpdateAvatar username={updateAvatarUsername} onClose={() => setShownUpdateAvatar(false)} imageRef={updateAvatarImageRef} show={isShownUpdateAvatar}></UpdateAvatar>
     </div>
   )

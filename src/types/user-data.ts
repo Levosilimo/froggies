@@ -25,6 +25,15 @@ export interface UserRecordRes {
   totalCount: number;
 }
 
+export interface UserData {
+  language: language;
+  records: Record<string, Array<number>>
+  username?: string;
+}
+
+export type theme = 'green' |'red' | 'yellow';
+export type language = 'en_us' | 'ru' | 'uk' | 'es_es';
+
 export interface IAvatar {
   username?: string,
   imageRef: HTMLImageElement | null | undefined,

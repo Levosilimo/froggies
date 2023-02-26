@@ -1,32 +1,34 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import { AuthorizationStatus, NameSpace } from "../../constants";
-import { checkAuthAction, loginAction, registrationAction } from "../api-action";
-import {dropToken, getToken, saveUserData} from "../../services/local-storage";
+import {checkAuthAction, getUserDataAction, loginAction, registrationAction, setUserDataAction} from "../api-action";
+import {language, theme} from "../../types/user-data";
+import i18n from "../../i18n";
+import {dropToken, getLevel, getToken, saveLevel} from "../../services/local-storage";
+import {parseJwt} from "../../utils";
 
 type InitialState = {
   authorizationStatus: AuthorizationStatus;
-  isDataLoaded: boolean;
-  userAvatar: string | null;
-  isAdmin: boolean | undefined;
+  isDataLoading: boolean;
+  username?: string;
+  email?: string;
+  records?: Record<string, Array<number>>;
+  isAdmin: boolean;
+  currentLevel: number;
   isLoadingError: boolean,
+  language?: language;
+  volume: number;
+  theme: theme;
 }
 
 const initialState: InitialState = {
   authorizationStatus: AuthorizationStatus.Unknown,
-  isDataLoaded: false,
-  userAvatar: null,
   isAdmin: false,
+  isDataLoading: false,
   isLoadingError: false,
+  volume: 50,
+  theme: "green",
+  currentLevel: getLevel(),
 };
-
-function parseJwt(token: string) {
-  const base64Url = token.split('.')[1];
-  const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-  const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function (c) {
-    return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-  }).join(''));
-  return JSON.parse(jsonPayload);
-}
 
 export const userProcess = createSlice({
   name: NameSpace.User,
@@ -34,64 +36,91 @@ export const userProcess = createSlice({
   reducers: {
     logOutAction: (state) => {
       dropToken();
-      state.userAvatar = null;
       state.authorizationStatus = AuthorizationStatus.NoAuth;
       state.isAdmin = false;
     },
+    setVolume: (state, action: PayloadAction<number>) => {
+      state.volume = action.payload;
+    },
+    setTheme: (state, action: PayloadAction<theme>) => {
+      state.theme = action.payload;
+    },
+    setLevelAction: (state, action: PayloadAction<number>) => {
+      saveLevel(action.payload);
+      state.currentLevel = action.payload;
+    }
   },
   extraReducers(builder) {
     builder
       .addCase(checkAuthAction.pending, (state) => {
-        state.isDataLoaded = true;
+        state.username = parseJwt(getToken()).username;
+        state.isDataLoading = true;
       })
       .addCase(checkAuthAction.fulfilled, (state) => {
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
         state.isAdmin = Boolean(parseJwt(getToken()).isAdmin);
       })
       .addCase(checkAuthAction.rejected, (state) => {
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
         state.isAdmin = false;
       })
       .addCase(registrationAction.pending, (state) => {
-        state.isDataLoaded = true;
+        state.isDataLoading = true;
       })
       .addCase(registrationAction.fulfilled, (state, action) => {
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
-        saveUserData({
-          username: action.payload.username,
-          email: action.payload.email
-        })
         state.isAdmin = Boolean(parseJwt(getToken()).isAdmin);
+        state.username = action.payload.username;
+        state.records = action.payload.records;
+        state.email = action.payload.email;
       })
       .addCase(registrationAction.rejected, (state) => {
         state.isLoadingError = true;
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
         state.isAdmin = false;
       })
       .addCase(loginAction.pending, (state) => {
-        state.isDataLoaded = true;
+        state.isDataLoading = true;
       })
       .addCase(loginAction.fulfilled, (state, action) => {
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.Auth;
-        saveUserData({
-          username: action.payload.username,
-          email: action.payload.email
-        })
         state.isAdmin = Boolean(parseJwt(getToken()).isAdmin);
+        state.username = action.payload.username;
+        state.records = action.payload.records;
+        state.email = action.payload.email;
       })
       .addCase(loginAction.rejected, (state) => {
         state.isLoadingError = true;
-        state.isDataLoaded = false;
+        state.isDataLoading = false;
         state.authorizationStatus = AuthorizationStatus.NoAuth;
         state.isAdmin = false;
+      })
+      .addCase(getUserDataAction.fulfilled, (state, action) => {
+        state.records = action.payload.records;
+        state.language = action.payload.language;
+        i18n.changeLanguage(action.payload.language);
+      })
+      .addCase(setUserDataAction.pending, (state, action) => {
+        if(!action.meta.arg.username || action.meta.arg.username===state.username){
+          state.records = action.meta.arg.records;
+          state.language = action.meta.arg.language;
+          i18n.changeLanguage(action.meta.arg.language);
+        }
+      })
+      .addCase(setUserDataAction.fulfilled, (state, action) => {
+        if(!action.meta.arg.username || action.meta.arg.username===state.username) {
+          state.records = action.payload.records;
+          state.language = action.payload.language;
+          i18n.changeLanguage(action.payload.language);
+        }
       })
   }
 })
 
-export const { logOutAction } = userProcess.actions;
+export const { logOutAction, setVolume, setTheme, setLevelAction } = userProcess.actions;
 
