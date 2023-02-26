@@ -126,7 +126,6 @@ export const userProcess = createSlice({
         if(!action.meta.arg.username || action.meta.arg.username===state.username){
           state.records = action.meta.arg.records;
           if(action.meta.arg.language) {
-            state.language = action.meta.arg.language;
             i18n.changeLanguage(action.meta.arg.language);
             saveLanguage(action.meta.arg.language);
           }
