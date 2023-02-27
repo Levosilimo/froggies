@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.597c24f7.css",
-    "main.js": "/static/js/main.cac1639b.js",
+    "main.css": "/static/css/main.2b39ddfb.css",
+    "main.js": "/static/js/main.30cdddba.js",
     "static/media/frog-bg-3.jpg": "/static/media/frog-bg-3.67ba8773de3fc09146ba.jpg",
     "static/media/frog-bg-4.jpg": "/static/media/frog-bg-4.3ae6ee33252badc60c21.jpg",
     "static/media/es.svg": "/static/media/es.9138c3c0a599c3036a65.svg",
@@ -12,14 +12,15 @@
     "static/media/rubik-regular.woff2": "/static/media/rubik-regular.fca675c08c9ff7e3b1a4.woff2",
     "static/media/rubik-bold.woff2": "/static/media/rubik-bold.2d835efd31ab863db792.woff2",
     "static/media/gb.svg": "/static/media/gb.aa013322542e381ceda8.svg",
+    "static/media/pencil.svg": "/static/media/pencil.5ecc966de540c285f6da.svg",
     "index.html": "/index.html",
     "static/media/ru.svg": "/static/media/ru.ce9b6ea47dd7016ad3dc.svg",
     "static/media/ua.svg": "/static/media/ua.f9632e893bc41200a948.svg",
-    "main.597c24f7.css.map": "/static/css/main.597c24f7.css.map",
-    "main.cac1639b.js.map": "/static/js/main.cac1639b.js.map"
+    "main.2b39ddfb.css.map": "/static/css/main.2b39ddfb.css.map",
+    "main.30cdddba.js.map": "/static/js/main.30cdddba.js.map"
   },
   "entrypoints": [
-    "static/css/main.597c24f7.css",
-    "static/js/main.cac1639b.js"
+    "static/css/main.2b39ddfb.css",
+    "static/js/main.30cdddba.js"
   ]
 }
