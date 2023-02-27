@@ -11,6 +11,7 @@ import {debounce} from "../../utils";
 import {useAppDispatch, useAppSelector} from "../../hooks";
 import {getLanguage} from "../../store/user/selectors";
 import {useTranslation} from "react-i18next";
+import {FieldAvailabilityMessage} from "../../types/auth-data";
 
 type FormData = {
   username: string;
@@ -19,15 +20,10 @@ type FormData = {
   adminPassword: string;
 }
 
-type FieldAvailability = {
-  msg: string;
-  isError: boolean
-}
-
 function Registration() {
   const {register, handleSubmit, watch, formState: {errors}} = useForm<FormData>();
-  const [usernameAvailability, setUsernameAvailability] = useState<FieldAvailability>();
-  const [emailAvailability, setEmailAvailability] = useState<FieldAvailability>();
+  const [usernameAvailability, setUsernameAvailability] = useState<FieldAvailabilityMessage>();
+  const [emailAvailability, setEmailAvailability] = useState<FieldAvailabilityMessage>();
   const {t} = useTranslation();
   const dispatch = useAppDispatch();
   const language = useAppSelector(getLanguage);

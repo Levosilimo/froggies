@@ -1,6 +1,6 @@
 export type SortingOrder = 'asc' | 'ascending' | 'desc' | 'descending';
 
-export type UserRecordsReq = {
+export interface UserRecordsReq {
   page?: number;
   limit?: number;
   sorting?: string;
@@ -18,6 +18,7 @@ export interface UserRecordsItem {
   records: Record<string, Array<number>>;
   language?: string;
   authData?: UserRecordsAuthData;
+  length?: number
 }
 
 export interface UserRecordRes {
@@ -33,3 +34,15 @@ export interface UserData {
 
 export type theme = 'green' |'red' | 'yellow';
 export type language = 'en_us' | 'ru' | 'uk' | 'es_es';
+
+export interface IAvatar {
+  username?: string,
+  imageRef: HTMLImageElement | null | undefined,
+  onClose: () => void,
+  show: boolean,
+}
+
+export interface UpdateUsernameProps {
+  onClose: () => void,
+  show: boolean,
+}

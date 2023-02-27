@@ -14,10 +14,11 @@ import LoadingScreen from "../loading-screen/loading-screen";
 import {useState} from "react";
 import React from "react";
 import Layout from "../layout/layout";
+import UserPage from "../../pages/user-page/user-page";
 import {settingContext} from "../../contexts/settingContext";
 import ThemeProvider from "../theme-provider/theme-provider";
 
-function App(): JSX.Element {
+export default function App(): JSX.Element {
   const isDataLoading = useAppSelector(getIsDataLoadingValue);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -38,6 +39,7 @@ function App(): JSX.Element {
             <Route path={AppRoute.Login} element={<LoginPage/>}/>
             <Route path={AppRoute.Dashboard} element={<PrivateRouteAdmin><AdminDashboardPage/></PrivateRouteAdmin>}/>
             <Route path={AppRoute.Game} element={<PrivateRoute><GamePage/></PrivateRoute>}/>
+            <Route path={AppRoute.User} element={<PrivateRoute><UserPage/></PrivateRoute>}/>
             <Route path="*" element={<PageNotFound/>}/>
           </Route>
         </Routes>
@@ -45,5 +47,3 @@ function App(): JSX.Element {
     </ThemeProvider>
   )
 }
-
-export default App;

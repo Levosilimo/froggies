@@ -2,6 +2,7 @@ export enum AppRoute {
   Login = '/login',
   Main = '/',
   Game = '/game',
+  User = '/user',
   Dashboard = '/dashboard',
 }
 
@@ -45,6 +46,7 @@ export enum PlayerStatus {
 
 export enum APIRoute {
   Login = '/login',
+  ChangeUsername = '/change-username',
   CheckAuth = '/check-auth',
   Registration = '/register',
   Levels = '/levels',

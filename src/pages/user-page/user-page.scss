@@ -1,0 +1,218 @@
+@import "../../scss/all.scss";
+
+.user-page {
+  @include themed() {
+    color: t('dark');
+  }
+  display: grid;
+  grid-template-areas: "A A A"
+                       "B C D";
+  grid-template-rows: 100px 1fr;
+  align-items: center;
+  @media (max-width: 1030px) {
+    display: flex;
+    flex-direction: column;
+  }
+  justify-content: center;
+  gap: 0 5%;
+}
+
+.user__title {
+  grid-area: A;
+  align-self: center;
+  justify-self: center;
+  text-transform: uppercase;
+}
+
+.user__info {
+  grid-area: B;
+}
+
+.user__score {
+  grid-area: D;
+}
+
+.info__title,
+.score__title {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.score__top-player-container {
+  display: none;
+  background-color: $white;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 1;
+  box-sizing: border-box;
+  max-width: 15%;
+  padding: 1rem;
+  color: $black;
+  box-shadow: 0 1px 10px -3px $black;
+  transition: .2s;
+
+  &.active {
+    display: block;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 8%;
+    margin-left: 0;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent $black;
+  }
+  img {
+    width: 40px;
+  }
+  span {
+    display: inline-block;
+    padding: 2px;
+    width: 1rem;
+    margin: 2px 0;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid $black;
+    &.score__info-user-username {
+      background-color: transparent;
+      font-weight: 400;
+      font-size: 1.2rem;
+      width: unset;
+      cursor: unset;
+      border: unset;
+    }
+    &.on {
+      @include themed() {
+        background-color: t('light');
+      }
+    }
+  }
+}
+
+.avatar {
+  display: flex;
+  max-width: 320px;
+  width: 100%;
+   .avatar__img {
+      @include themed() {
+        background-color: t('bg');
+        border: 5px solid t('light');
+      }
+      padding: 10px;
+      border-radius: 50%;
+  }
+}
+
+.info__item {
+  display: flex;
+  width: fit-content;
+  justify-content: flex-start;
+  align-items: center;
+  @include themed() {
+    background-color: t('bg');
+    border: 5px solid t('light');
+  }
+  border-radius: 10px;
+  padding-left: 10px;
+  color: $white;
+  text-transform: uppercase;
+  font-weight: 700;
+  span {
+    background-color: $white;
+    border-radius: 6px;
+    @include themed() {
+      color: t('dark');
+    }
+    padding: 10px;
+    text-transform: none;
+    margin-left: 10px;
+  }
+}
+
+.name {
+  margin-bottom: 0;
+}
+
+.flex-container {
+  display: flex;
+  gap: 5%;
+  align-items: center;
+}
+
+.edit {
+    width: 40px;
+    height: 40px;
+    background: url(../../../public/images/pencil.svg) center no-repeat;
+    background-size: cover;
+    transition: all .3s;
+    &:hover {
+      cursor: pointer;
+      transform: rotate(-45deg);
+    }
+}
+
+.score__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  @include themed() {
+    background-color: t('bg');
+    border: 5px solid t('light');
+  }
+  border-radius: 10px;
+  padding: 10px 10px 10px 30px;
+  .score__item {
+    color: $white;
+    text-align: left;
+    line-height: 30px;
+  }
+}
+
+.score__table__wrapper {
+  @include themed() {
+    border: 5px solid t('bg');
+  }
+  border-radius: 10px;
+}
+
+.score__table {
+  @include themed() {
+    background-color: t('bg');
+  }
+  border-style: hidden;
+  border-radius: 10px;
+  padding: 10px 10px 10px 30px;
+  text-align: center;
+  table-layout: fixed;
+  border-collapse: collapse;
+  tbody td {
+    span {
+      cursor: pointer;
+      &.top1 {
+        color: gold;
+        text-shadow: 0 0 2px $black;
+      }
+      &.top2 {
+        color: silver;
+        text-shadow: 0 0 2px $black;
+      }
+      &.top3 {
+        color: #CD7F32;
+        text-shadow: 0 0 2px $black;
+      }
+    }
+    @include themed() {
+      border: 5px solid t('light');
+    }
+    padding: .5rem;
+    font-weight: 500;
+  }
+  thead th {
+    @include themed() {
+      border: 5px solid t('light');
+    }
+    padding: .5rem;
+  }
+}

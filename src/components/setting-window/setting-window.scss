@@ -1,4 +1,4 @@
-@import "./src/scss/all";
+@import "../../scss/all";
 
 .setting {
   position: fixed;
@@ -8,15 +8,15 @@
   z-index: 1;
   transition: all .2s linear;
   text-align: center;
+  &.active {
+    top: 0;
+  }
 }
-
-.setting.active {
-  top: 0;
-}
-
 
 .overlay-settings {
+  box-shadow: 0 0 30px -5px black;
   position: absolute;
+  z-index: 2;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -29,7 +29,7 @@
   border-radius: 15px;
 }
 
-.close {
+.setting__close {
   position: absolute;
   right: 5%;
   font-weight: bold;
@@ -49,6 +49,7 @@
   display: block;
   transform: rotate(-45deg);
 }
+
 .close__line_toRight {
   display: block;
   transform: translate(-1px, -100%) rotate(45deg);;
@@ -178,7 +179,7 @@
   }
   border-radius: 10px;
   background-size: cover;
-  margin: 0 10px;
+  margin: 5px 10px;
   transition: all .2s;
   &:hover {
     cursor: pointer;
@@ -225,7 +226,7 @@
   border-radius: 10px;
   background-size: cover;
   padding: 5px;
-  margin: 0 10px;
+  margin: 5px 10px;
   transition: all .2s;
     &:hover {
       cursor: pointer;
