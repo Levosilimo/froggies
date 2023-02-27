@@ -1,0 +1,42 @@
+// Colors
+$white: #fff;
+$black: #000;
+$green-light: #97dc99;
+$green: #0e3c10;
+$green-bg: #82a183;
+$aqua: #30c5ff;
+$gray: #807b7b;
+$gray-light: #eee;
+$red-light:#dc9799;
+$red: #851818;
+$red-bg:#a15253;
+$yellow-light: #f0dd86;
+$yellow: #65582b;
+$yellow-bg: #998f56;
+$blue-light: #8fdaf8;
+$blue: #0000ff;
+
+$themes: (
+  "green": (
+    bg: $green-bg,
+    light: $green-light,
+    dark: $green
+  ),
+  "red": (
+    bg: $red-bg,
+    light: $red-light,
+    dark: $red
+  ),
+  "yellow": (
+    bg: $yellow-bg,
+    light: $yellow-light,
+    dark: $yellow
+  ),
+);
+
+// Fonts
+$main-font-family: 'Rubik', sans-serif;
+
+// Header & Footer
+$header-min-height: 83px;
+$footer-min-height: 78px;

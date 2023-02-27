@@ -1,0 +1,244 @@
+@import "../../scss/all";
+
+.setting {
+  position: fixed;
+  top: -200%;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: all .2s linear;
+  text-align: center;
+  &.active {
+    top: 0;
+  }
+}
+
+.overlay-settings {
+  box-shadow: 0 0 30px -5px black;
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  padding: 40px;
+  @include themed() {
+    background: t('bg');
+    border: 4px solid t('light');
+  }
+  border-radius: 15px;
+}
+
+.setting__close {
+  position: absolute;
+  right: 5%;
+  font-weight: bold;
+  font-size: 20px;
+  color: white;
+  margin-top: -25px;
+  transition: all .2s;
+    &:hover {
+      cursor: pointer;
+      @include themed() {
+        color: t('dark');
+      }
+    }
+}
+
+.close__line_toLeft {
+  display: block;
+  transform: rotate(-45deg);
+}
+
+.close__line_toRight {
+  display: block;
+  transform: translate(-1px, -100%) rotate(45deg);;
+}
+
+.setting-list {
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+  background: $white;
+  @include themed() {
+    color: t('dark');
+    border: 2px solid t('dark')
+  }
+  border-radius: 6px;
+  min-width: 220px;
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.setting-list__item {
+  list-style-type: none;
+  text-align: center;
+  .setting-list__item-title {
+    margin-bottom: 12px;
+    font-size: 22px;
+    line-height: 20px;
+    @include themed() {
+      color: t('dark');
+    }
+    font-weight: 400;
+  }
+}
+
+
+.volume-range{
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  appearance: none;
+  position: relative;
+  width: 100%;
+  height: 19px;
+  background-color: transparent;
+  background: transparent;
+  overflow-x: hidden;
+  cursor: pointer;
+}
+
+.volume-range::-webkit-slider-runnable-track{
+  height: 17px;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 7px;
+  background-color: $white;
+  @include themed() {
+    border-color: t('bg');
+  }
+  z-index: 1;
+  overflow-x: hidden;
+}
+
+.volume-range::-webkit-slider-thumb{
+  appearance: none;
+  width: 0;
+  height: 11px;
+  margin-top: 0;
+  border-width: 0;
+  border-style: solid;
+  border-radius: 25px;
+  @include themed() {
+    background-color: t('light');
+    box-shadow: -100vw 0 0 100vw t('light');
+  }
+  border-color: $black;
+  clip-path: polygon(1px 0, 100% 0, 100% 100%, 1px 100%, 1px calc(50% + 5.5px), -100vw calc(50% + 5.5px), -100vw calc(50% - 5.5px), 0 calc(50% - 5.5px));
+  z-index: 1;
+}
+
+.volume-range::-moz-range-track{
+  width: 100%;
+  height: 11px;
+  border-width: 3px;
+  border-style: solid;
+  border-radius: 7px;
+  background-color: $white;
+  @include themed() {
+    border-color: t('bg');
+  }
+}
+
+.volume-range::-moz-range-thumb{
+  width: 0;
+  height: 13px;
+  border-width: 0;
+  border-style: solid;
+  border-radius: 25px;
+  @include themed() {
+    background-color: t('light');
+  }
+  border-color: $black;
+}
+
+.volume-range::-moz-range-progress{
+  height: 11px;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
+  @include themed() {
+    background-color: t('light');
+  }
+}
+
+
+.flag-en,
+.flag-ru,
+.flag-ua,
+.flag-es {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 42px;
+  height: 34px;
+  @include themed() {
+    border: 2px solid t('dark');
+  }
+  border-radius: 10px;
+  background-size: cover;
+  margin: 5px 10px;
+  transition: all .2s;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    @include themed() {
+      box-shadow: 0 0 0 5px t('bg');
+    }
+  }
+  &.disabled {
+    cursor: auto;
+    transform: scale(1);
+    box-shadow: 0 0 0 5px $gray;
+  }
+}
+
+.flag-en {
+  background-image: url(../../../public/images/gb.svg);
+}
+
+.flag-ru {
+  background-image: url(../../../public/images/ru.svg);
+}
+
+.flag-ua {
+  background-image: url(../../../public/images/ua.svg);
+}
+
+.flag-es {
+  background-image: url(../../../public/images/es.svg);
+}
+
+.language__input.active ~ span {
+  @include themed() {
+    box-shadow: 0 0 0 5px t('bg');
+  }
+}
+
+.theme-color {
+  box-sizing: border-box;
+  display: inline-block;
+  @include themed() {
+    border: 2px solid t('dark');
+  }
+  border-radius: 10px;
+  background-size: cover;
+  padding: 5px;
+  margin: 5px 10px;
+  transition: all .2s;
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+      @include themed() {
+        box-shadow: 0 0 0 5px t('bg');
+      }
+    }
+}
+
+.theme__input.active ~ span {
+  @include themed() {
+    box-shadow: 0 0 0 5px t('bg');
+  }
+}

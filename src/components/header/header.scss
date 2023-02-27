@@ -1,0 +1,126 @@
+@import "./src/scss/all";
+
+a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  @include themed() {
+    background-color: t('bg');
+    border-bottom: 4px solid t('light');
+  }
+  border-radius: 0 0 15px 15px;
+  color: $white;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 28px;
+  text-transform: uppercase;
+}
+
+.header-menu {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+
+  li {
+    margin-left: 20px;
+    font-size: 22px;
+    cursor: pointer;
+
+    a {
+      color: $white;
+      text-decoration: none;
+    }
+
+    &:hover {
+      text-decoration: underline;
+      opacity: 0.8;
+    }
+
+    &:last-child {
+      margin-right: 20px;
+    }
+  }
+}
+
+.gear {
+  width: 30px;
+}
+
+.header-login {
+  font-size: 22px;
+  list-style: none;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: $white;
+
+  &:hover {
+    text-decoration: underline;
+    opacity: 0.6;
+  }
+}
+
+.header-user-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+
+  .user {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-username,
+  .header-level-game {
+    margin-right: 10px;
+    font-size: 22px;
+  }
+
+  .header-username {
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-style: italic;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+      opacity: 0.8;
+    }
+  }
+
+  .header-signout {
+    font-size: 18px;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+      opacity: 0.8;
+    }
+  }
+
+  .header-avatar {
+    margin-right: 10px;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+}

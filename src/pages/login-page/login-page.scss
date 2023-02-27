@@ -1,0 +1,172 @@
+@import "./src/scss/all";
+
+.login {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 50px 0 170px;
+  margin: 0 auto;
+  background-image: linear-gradient(to right, $white 651px, transparent 740px), url("../../../public/images/frog-bg-4.jpg");
+  background-position: top left,right top;
+  background-size: auto,auto 100%;
+  background-repeat: no-repeat,no-repeat;
+}
+
+.login-form {
+  position: relative;
+  height: calc(100vh - 154px);
+  width: 520px;
+  box-sizing: border-box;
+  padding: 20px 0;
+
+  &:after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 150px;
+    bottom: 0;
+    right: -12%;
+    background-color: $white;
+    @include themed() {
+      border-right: 6px solid t('light');
+    }
+    transform: skew(-6.5deg);
+  }
+}
+
+.form {
+  width: 345px;
+  z-index: 1;
+  padding: 20px;
+  @include themed() {
+    border: 2px solid t('dark');
+  }
+  border-radius: 6px;
+}
+
+.login-title {
+  margin: 0 0 16px 0;
+  font-size: 40px;
+  line-height: 38px;
+  @include themed() {
+    color: t('dark');
+  }
+}
+
+.form-label {
+  margin-bottom: 12px;
+  font-size: 22px;
+  line-height: 20px;
+  @include themed() {
+    color: t('dark');
+  }
+  span {
+    font-size: 16px;
+    color: $gray;
+  }
+}
+
+.form-block {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form-input {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 8px;
+  @include themed() {
+    border: 1px solid t('dark');
+  }
+}
+
+.form-submit {
+  width: 100%;
+  padding: 10px;
+  @include themed() {
+    background-color: t('dark');
+  }
+  color: $white;
+  font-size: 18px;
+  text-decoration: none;
+  text-transform: uppercase;
+  border-radius: 8px;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    @include themed() {
+      color: t('dark');
+      background-color: t('light');
+    }
+  }
+}
+
+.login-bg-block {
+  height: 100%;
+  width: 50%;
+}
+
+.error {
+  padding-top: 5px;
+  color: $red;
+  font-size: 15px;
+}
+
+.eligible {
+  color: #92c793;
+}
+
+.availability {
+  margin-top: 0.3rem;
+}
+
+.button-account {
+  font-size: 18px;
+  background-color: inherit;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+
+  &:hover {
+    @include themed() {
+      color: t('light');
+    }
+  }
+}
+
+@media (max-width: 795px) {
+  .login {
+    padding: 0;
+  }
+  .login-form {
+    position: relative;
+    box-sizing: border-box;
+    padding: 20px 0;
+    width: 80%;
+
+    &:after {
+      content: unset;
+    }
+  }
+  .form {
+    width: unset;
+  }
+}
+
+@media (max-width: 650px) {
+  .login-form {
+    width: 100%;
+  }
+}
+
+
+@media (max-height: 750px) {
+  .login-form {
+    height: unset;
+  }
+}

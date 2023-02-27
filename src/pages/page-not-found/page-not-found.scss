@@ -1,0 +1,34 @@
+@import "./src/scss/all";
+
+.page-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+
+  h2 {
+    font-size: 125px;
+    @include themed() {
+      color: t('dark');
+    }
+    margin: 0 0 20px;
+  }
+
+  p {
+    text-align: center;
+    margin: 0 0 15px;
+    font-size: 26px;
+  }
+}
+
+.link {
+  font-size: 26px;
+  color: $aqua;
+  font-weight: 500;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.6;
+  }
+}
