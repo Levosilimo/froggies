@@ -1,7 +1,6 @@
 @import "../../scss/all";
 
 .setting {
-  background-color: rgba(0, 0, 0, .5);
   position: fixed;
   top: -200%;
   width: 100%;
@@ -15,6 +14,7 @@
 }
 
 .overlay-settings {
+  box-shadow: 0 0 30px -5px black;
   position: absolute;
   z-index: 2;
   top: 50%;

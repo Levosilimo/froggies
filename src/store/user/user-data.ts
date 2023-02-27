@@ -1,6 +1,13 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import { AuthorizationStatus, NameSpace } from "../../constants";
-import {checkAuthAction, getUserDataAction, loginAction, registrationAction, setUserDataAction} from "../api-action";
+import {
+  changeUsernameAction,
+  checkAuthAction,
+  getUserDataAction,
+  loginAction,
+  registrationAction,
+  setUserDataAction
+} from "../api-action";
 import {language, theme} from "../../types/user-data";
 import i18n from "../../i18n";
 import {dropToken, getLevel, getToken, saveLevel} from "../../services/local-storage";
@@ -118,6 +125,18 @@ export const userProcess = createSlice({
           state.language = action.payload.language;
           i18n.changeLanguage(action.payload.language);
         }
+      })
+      .addCase(changeUsernameAction.pending, (state) => {
+        state.isDataLoading = true;
+      })
+      .addCase(changeUsernameAction.fulfilled, (state, action) => {
+        state.isDataLoading = false;
+        state.authorizationStatus = AuthorizationStatus.Auth;
+        state.isAdmin = Boolean(parseJwt(getToken()).isAdmin);
+        state.username = action.payload.username;
+      })
+      .addCase(changeUsernameAction.rejected, (state) => {
+        state.isDataLoading = false;
       })
   }
 })

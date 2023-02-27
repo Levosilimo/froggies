@@ -1,0 +1,43 @@
+@import "../../scss/all.scss";
+
+.update-username-modal {
+  transition: 0s;
+  grid-area: C;
+  overflow: hidden;
+  display: block;
+  box-shadow: unset;
+  visibility: hidden;
+  .update-username-main {
+    transition: .25s;
+    opacity: 0;
+    padding: 1rem;
+    border-radius: 6px;
+    form {
+      width: 320px;
+      padding: 20px;
+    }
+  }
+  &.active {
+    visibility: visible;
+    box-shadow: inset 0 1px 10px -3px #000;
+    height: unset;
+    border-radius: 6px;
+    .update-username-main {
+      transition: .25s;
+      opacity: 1;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      border-radius: 6px;
+      form {
+        width: 320px;
+        padding: 20px;
+        border: 2px solid $green;
+        background-color: $white;
+      }
+    }
+  }
+}
+
+

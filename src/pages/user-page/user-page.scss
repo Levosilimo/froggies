@@ -2,12 +2,17 @@
 
 .user-page {
   color: $green;
-  min-height: calc(100vh - $header-min-height - $footer-min-height);
   display: grid;
-  grid-template-areas: "A A"
-                       "B D";
+  grid-template-areas: "A A A"
+                       "B C D";
   grid-template-rows: 100px 1fr;
-  justify-content: space-evenly;
+  align-items: center;
+  @media (max-width: 1030px) {
+    display: flex;
+    flex-direction: column;
+  }
+  justify-content: center;
+  gap: 0 5%;
 }
 
 .user__title {
@@ -31,9 +36,59 @@
   text-transform: uppercase;
 }
 
+.score__top-player-container {
+  display: none;
+  background-color: $white;
+  border-radius: 8px;
+  position: absolute;
+  z-index: 1;
+  box-sizing: border-box;
+  max-width: 15%;
+  padding: 1rem;
+  color: $black;
+  box-shadow: 0 1px 10px -3px $black;
+  transition: .2s;
+
+  &.active {
+    display: block;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    left: 100%;
+    top: 8%;
+    margin-left: 0;
+    border-width: 8px;
+    border-style: solid;
+    border-color: transparent transparent transparent $black;
+  }
+  img {
+    width: 40px;
+  }
+  span {
+    display: inline-block;
+    padding: 2px;
+    width: 1rem;
+    margin: 2px 0;
+    text-align: center;
+    cursor: pointer;
+    border: 1px solid $black;
+    &.score__info-user-username {
+      background-color: transparent;
+      font-weight: 400;
+      font-size: 1.2rem;
+      width: unset;
+      cursor: unset;
+      border: unset;
+    }
+    &.on {
+      background-color: $green-light;
+    }
+  }
+}
+
 .avatar {
   display: flex;
-  justify-content: space-between;
   max-width: 320px;
   width: 100%;
    .avatar__img {
@@ -47,7 +102,7 @@
 .info__item {
   display: flex;
   width: fit-content;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
   background-color: $green-bg;
   border: 5px solid $green-light;
@@ -72,7 +127,7 @@
 
 .flex-container {
   display: flex;
-  justify-content: space-between;
+  gap: 5%;
   align-items: center;
 }
 
@@ -100,5 +155,44 @@
     color: $white;
     text-align: left;
     line-height: 30px;
+  }
+}
+
+.score__table__wrapper {
+  border: 5px solid $green-bg;
+  border-radius: 10px;
+}
+
+.score__table {
+  background-color: $green-bg;
+  border-style: hidden;
+  border-radius: 10px;
+  padding: 10px 10px 10px 30px;
+  text-align: center;
+  table-layout: fixed;
+  border-collapse: collapse;
+  tbody td {
+    span {
+      cursor: pointer;
+      &.top1 {
+        color: gold;
+        text-shadow: 0 0 2px $black;
+      }
+      &.top2 {
+        color: silver;
+        text-shadow: 0 0 2px $black;
+      }
+      &.top3 {
+        color: #CD7F32;
+        text-shadow: 0 0 2px $black;
+      }
+    }
+    border: 5px solid $green-light;
+    padding: .5rem;
+    font-weight: 500;
+  }
+  thead th {
+    border: 5px solid $green-light;
+    padding: .5rem;
   }
 }
