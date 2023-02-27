@@ -7,14 +7,15 @@ import {highlight, languages} from 'prismjs';
 import {getLevelAction, getUserDataAction, setUserDataAction} from "../../store/api-action";
 import LoadingScreen from "../../components/loading-screen/loading-screen";
 import {useAppDispatch, useAppSelector} from "../../hooks";
-import {getCurrentLevel, getLanguage, getRecords} from "../../store/user/selectors";
+import {getCurrentLevel, getLanguage, getRecords, getVolume} from "../../store/user/selectors";
 import {store} from "../../store";
 import {setLevelAction} from "../../store/user/user-data";
-import {frogsStyleText} from "../../constants";
+import {AppRoute, frogsStyleText} from "../../constants";
 import FrogsContainer from "../../components/frogs-container/frogs-container";
 import LilypadsContainer from "../../components/lilypads-container/lilypads-container";
 import {language} from "../../types/user-data";
-
+import {redirectToRoute} from "../../store/action";
+const croakAudio = new Audio(process.env.PUBLIC_URL+"/sounds/croak.ogg");
 function GamePage(): JSX.Element {
   const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [level, setLevel] = useState<TaskModel>();
@@ -30,7 +31,7 @@ function GamePage(): JSX.Element {
   const [frogsUserStyle, setFrogsUserStyle] = useState<string>('');
   const [userInput, setUserInput] = useState<string>('');
   const [linesCount, setLinesCount] = useState<number>(0);
-
+  croakAudio.volume = useAppSelector(getVolume)/100;
   const valueChange = (code: string) => {
     setUserInput(code);
     setFrogsUserStyle(frogsStyleText+preFirst+code+preLast);
@@ -42,6 +43,7 @@ function GamePage(): JSX.Element {
   }
 
   const onButtonClick = () => {
+    setIsButtonDisabled(true);
     const recordsCopy: Record<string, number[]> = {};
     if (records) {
       Object.assign(recordsCopy, records);
@@ -95,12 +97,12 @@ function GamePage(): JSX.Element {
         if (target.getAttribute("data-tooltip") === key){
           const divElement = tooltipsRef.current.find((htmlElement) => htmlElement && htmlElement.hasAttribute("data-tooltip") && htmlElement.getAttribute("data-tooltip") === key);
           if(divElement) {
-            if (tooltipContainerRef.current.style.top === target.getBoundingClientRect().bottom+10+"px"
+            if (tooltipContainerRef.current.style.top === target.getBoundingClientRect().bottom+10+window.scrollY+"px"
             && tooltipContainerRef.current.getAttribute("data-tooltip") === key) {
               closeTooltip();
               return;
             }
-            tooltipContainerRef.current.style.top = target.getBoundingClientRect().bottom+10+"px";
+            tooltipContainerRef.current.style.top = target.getBoundingClientRect().bottom+10+window.scrollY+"px";
             tooltipContainerRef.current.style.left = target.getBoundingClientRect().left-20+"px";
             tooltipContainerRef.current.hidden = false;
             tooltipContainerRef.current.setAttribute("data-tooltip", key);
@@ -149,6 +151,13 @@ function GamePage(): JSX.Element {
   }, [])
 
   useEffect(() => {
+    if(!isButtonDisabled) {
+      croakAudio.play();
+      setFrogsUserStyle(frogsUserStyle+".frog-item{animation: w .5s}");
+    }
+  }, [isButtonDisabled])
+
+  useEffect(() => {
     setLevel(undefined);
     getLevelAction({game: "flexbox", levelNumber})
       .then(level => {
@@ -160,13 +169,18 @@ function GamePage(): JSX.Element {
         if (questionBlock.current){
           setLinesCount(countLines(questionBlock.current));
         }
-      });
+      })
+      .catch((err) => dispatch(redirectToRoute(AppRoute.Login)));
   }, [levelNumber, language]);
 
-  useEffect(() => {
-    if (questionBlock.current){
+  const updateLinesCount = () => {
+    if(questionBlock.current) {
       setLinesCount(countLines(questionBlock.current));
     }
+  }
+
+  useEffect(() => {
+    updateLinesCount();
     const close = (e: KeyboardEvent) => {
       if(e.keyCode === 27){
         closeModals();
@@ -174,6 +188,7 @@ function GamePage(): JSX.Element {
     };
     window.addEventListener('keydown', close);
     window.addEventListener('click', closeModals);
+    window.addEventListener('resize',updateLinesCount);
   });
 
   if(!level) return (<LoadingScreen />)

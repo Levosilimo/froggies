@@ -1,5 +1,5 @@
 import React, {ChangeEvent, useContext, useEffect, useState} from "react";
-import { settingContext } from "../../context";
+import { settingContext } from "../../contexts/settingContext";
 import "./setting-window.scss";
 import {language, theme} from "../../types/user-data";
 import {useAppDispatch, useAppSelector} from "../../hooks";
@@ -41,7 +41,6 @@ function SettingsWindow(): JSX.Element {
   const changeVolume = (e: ChangeEvent) => {
     const currentVolume = (e.target as HTMLInputElement).value
     dispatch(setVolume(Number(currentVolume)));
-    localStorage.setItem('volume', currentVolume);
   }
 
   useEffect(() => {
@@ -62,12 +61,12 @@ function SettingsWindow(): JSX.Element {
         </div>
           <ul onClick={(e) => e.stopPropagation()} className="setting-list">
             <li className="language setting-list__item">
-              <h3 className="title">{t('languageTitle')}</h3>
+              <h3 className="setting-list__item-title">{t('languageTitle')}</h3>
               <label>
                 <input
                   disabled={buttonsBlocked}
                   className={`language__input ${language ===  'en_us' ? 'active' : ''}`}
-                  hidden type="radio" name="language" id="en" value="en_us" defaultChecked
+                  hidden type="radio" name="language" id="en" value="en_us"
                   onChange={changeLanguage}
                 />
                 <span className={`flag-en ${buttonsBlocked ? 'disabled' : ''}`}></span>
@@ -101,7 +100,7 @@ function SettingsWindow(): JSX.Element {
               </label>
             </li>
             <li className="volume setting-list__item">
-              <h3 className="title">{t("volumeTitle")}</h3>
+              <h3 className="setting-list__item-title">{t("volumeTitle")}</h3>
               <div className="volume">
                 <input
                   className="volume-range" type="range" step={5} value={volume}
@@ -111,11 +110,11 @@ function SettingsWindow(): JSX.Element {
               </div>
             </li>
             <li className="theme setting-list__item">
-              <h3 className="title">{t("themeTitle")}</h3>
+              <h3 className="setting-list__item-title">{t("themeTitle")}</h3>
               <label>
                 <input
                   className={`theme__input ${theme ===  'green' ? 'active' : ''}`}
-                  hidden type="radio" name="theme" id="green" value="green" defaultChecked
+                  hidden type="radio" name="theme" id="green" value="green"
                   onChange={changeTheme}
                 />
                 <span className="theme-color">{t("greenTheme")}</span>

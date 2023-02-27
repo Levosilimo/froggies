@@ -2,12 +2,13 @@ import './header.scss';
 import {Link} from "react-router-dom";
 import {AppRoute, AuthorizationStatus} from "../../constants";
 import {useContext} from 'react';
-import {settingContext} from '../../context';
+import {settingContext} from '../../contexts/settingContext';
 import {useAppSelector} from "../../hooks";
 import {store} from "../../store";
 import {getAuthorizationStatus, getIsAdmin, getUsername} from "../../store/user/selectors";
 import {logOutAction} from "../../store/user/user-data";
 import {useTranslation} from "react-i18next";
+import AudioPlayer from "../audio-player/audio-player";
 
 
 function Header(): JSX.Element {
@@ -31,8 +32,8 @@ function Header(): JSX.Element {
         <li><Link to={AppRoute.Main}>{t("mainPage")}</Link></li>
         <li><Link to={AppRoute.Game}>{t("gamePage")}</Link></li>
         {(isAdmin) ? (<li><Link to={AppRoute.Dashboard}>{t("usersPage")}</Link></li>) : ''}
-        <li onClick={() => setIsVisible(true)}><img className="gear" src="../../../images/gear.png" alt="settings"/>
-        </li>
+        <li onClick={() => setIsVisible(true)}><img className="gear" src="../../../images/gear.png" alt="settings"/></li>
+        <li><AudioPlayer/></li>
       </ul>
       <div className="header-user">
         {authorizationStatus !== AuthorizationStatus.Auth

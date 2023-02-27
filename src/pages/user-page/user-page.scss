@@ -1,7 +1,9 @@
 @import "../../scss/all.scss";
 
 .user-page {
-  color: $green;
+  @include themed() {
+    color: t('dark');
+  }
   display: grid;
   grid-template-areas: "A A A"
                        "B C D";
@@ -82,7 +84,9 @@
       border: unset;
     }
     &.on {
-      background-color: $green-light;
+      @include themed() {
+        background-color: t('light');
+      }
     }
   }
 }
@@ -92,10 +96,12 @@
   max-width: 320px;
   width: 100%;
    .avatar__img {
-    background-color: $green-bg;
-    padding: 10px;
-    border: 5px solid $green-light;
-    border-radius: 50%;
+      @include themed() {
+        background-color: t('bg');
+        border: 5px solid t('light');
+      }
+      padding: 10px;
+      border-radius: 50%;
   }
 }
 
@@ -104,8 +110,10 @@
   width: fit-content;
   justify-content: flex-start;
   align-items: center;
-  background-color: $green-bg;
-  border: 5px solid $green-light;
+  @include themed() {
+    background-color: t('bg');
+    border: 5px solid t('light');
+  }
   border-radius: 10px;
   padding-left: 10px;
   color: $white;
@@ -114,7 +122,9 @@
   span {
     background-color: $white;
     border-radius: 6px;
-    color: $green;
+    @include themed() {
+      color: t('dark');
+    }
     padding: 10px;
     text-transform: none;
     margin-left: 10px;
@@ -147,8 +157,10 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  background-color: $green-bg;
-  border: 5px solid $green-light;
+  @include themed() {
+    background-color: t('bg');
+    border: 5px solid t('light');
+  }
   border-radius: 10px;
   padding: 10px 10px 10px 30px;
   .score__item {
@@ -159,12 +171,16 @@
 }
 
 .score__table__wrapper {
-  border: 5px solid $green-bg;
+  @include themed() {
+    border: 5px solid t('bg');
+  }
   border-radius: 10px;
 }
 
 .score__table {
-  background-color: $green-bg;
+  @include themed() {
+    background-color: t('bg');
+  }
   border-style: hidden;
   border-radius: 10px;
   padding: 10px 10px 10px 30px;
@@ -187,12 +203,16 @@
         text-shadow: 0 0 2px $black;
       }
     }
-    border: 5px solid $green-light;
+    @include themed() {
+      border: 5px solid t('light');
+    }
     padding: .5rem;
     font-weight: 500;
   }
   thead th {
-    border: 5px solid $green-light;
+    @include themed() {
+      border: 5px solid t('light');
+    }
     padding: .5rem;
   }
 }

@@ -61,11 +61,11 @@ export enum NameSpace {
   Player = 'PLAYER'
 }
 
-export const frogsStyleText = '.frog-item div{background-color:transparent;background-repeat:no-repeat}.frog{display:flex;z-index:4}.items-wrapper{position:absolute;width:100%;height:100%;display:flex}.frog{z-index:5}.frog-item{display:flex;justify-content:flex-start;align-items:center;width:5.21vw;height:10.5vh;z-index:2}.frog-item div{width:100%;height:100%;background-size:100%}'
+export const frogsStyleText = '.frog-item div{background-color:transparent;background-repeat:no-repeat}.frog{display:flex;z-index:4}.items-wrapper{position:absolute;width:100%;height:100%;display:flex}.frog{z-index:5}.frog-item{display:flex;justify-content:flex-start;align-items:center;width:5.21vw;height:10.5vh;z-index:2}.frog-item div{width:100%;height:100%;background-size:100%}@keyframes w{0%{scale:1}50%{scale:1.3}to{scale:1}}'
 export const lilypadsStyleText = ".background{display:flex;width:5.21vw;height:10.6vh;background-color:transparent;z-index:1}.items-wrapper{position:absolute;width:100%;height:100%;display:flex}"
 
 export const getFrogSvg = (mainColor: string = "#59A47B", subColor: string = "#BFE078") => `<svg xmlns="http://www.w3.org/2000/svg" fill="none" preserveAspectRatio="none" viewBox="-20 -10 120 120">
-<animateTransform attributeType="XML" attributeName="transform" type="scale" values="1;1.08;1.07;1" additive="sum" begin="0s" dur="0.8s" repeatCount="indefinite"/>
+<animateTransform attributeType="XML" attributeName="transform" type="scale" values="1;1.08;1.07;1" additive="sum" begin="0s" dur="${(Math.random()*0.5)+0.5}s" repeatCount="indefinite"/>
 <path fill=${mainColor} d="M79 58c0 14.3 20.3 32.5-33.7 32.5C-19.5 90.5 5 72.3 5 58s12.3-26 37-26 37 11.8 37 26Z"/>
 <path fill=${subColor} d="M72 59.8c0 11.7 16.8 26.6-27.8 26.6-53.4 0-33.2-15-33.2-26.6 0-11.6 10-21.3 30.5-21.3 20.4 0 30.5 9.7 30.5 21.3Z"/>
 <ellipse cx="42" cy="29.2" fill=${mainColor} rx="42" ry="24.5"/>

@@ -33,7 +33,9 @@
       form {
         width: 320px;
         padding: 20px;
-        border: 2px solid $green;
+        @include themed() {
+          border: 2px solid t('dark');
+        }
         background-color: $white;
       }
     }
