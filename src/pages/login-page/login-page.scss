@@ -28,7 +28,9 @@
     bottom: 0;
     right: -12%;
     background-color: $white;
-    border-right: 6px solid $green-light;
+    @include themed() {
+      border-right: 6px solid t('light');
+    }
     transform: skew(-6.5deg);
   }
 }
@@ -37,7 +39,9 @@
   width: 345px;
   z-index: 1;
   padding: 20px;
-  border: 2px solid $green;
+  @include themed() {
+    border: 2px solid t('dark');
+  }
   border-radius: 6px;
 }
 
@@ -45,15 +49,18 @@
   margin: 0 0 16px 0;
   font-size: 40px;
   line-height: 38px;
-  color: $green;
+  @include themed() {
+    color: t('dark');
+  }
 }
 
 .form-label {
   margin-bottom: 12px;
   font-size: 22px;
   line-height: 20px;
-  color: $green;
-
+  @include themed() {
+    color: t('dark');
+  }
   span {
     font-size: 16px;
     color: $gray;
@@ -72,13 +79,17 @@
   padding: 10px;
   font-size: 16px;
   border-radius: 8px;
-  border: 1px solid $green;
+  @include themed() {
+    border: 1px solid t('dark');
+  }
 }
 
 .form-submit {
   width: 100%;
   padding: 10px;
-  background-color: $green;
+  @include themed() {
+    background-color: t('dark');
+  }
   color: $white;
   font-size: 18px;
   text-decoration: none;
@@ -88,8 +99,10 @@
 
   &:hover,
   &:focus {
-    color: $green;
-    background-color: $green-light;
+    @include themed() {
+      color: t('dark');
+      background-color: t('light');
+    }
   }
 }
 
@@ -120,6 +133,40 @@
   cursor: pointer;
 
   &:hover {
-    color: $green-light;
+    @include themed() {
+      color: t('light');
+    }
+  }
+}
+
+@media (max-width: 795px) {
+  .login {
+    padding: 0;
+  }
+  .login-form {
+    position: relative;
+    box-sizing: border-box;
+    padding: 20px 0;
+    width: 80%;
+
+    &:after {
+      content: unset;
+    }
+  }
+  .form {
+    width: unset;
+  }
+}
+
+@media (max-width: 650px) {
+  .login-form {
+    width: 100%;
+  }
+}
+
+
+@media (max-height: 750px) {
+  .login-form {
+    height: unset;
   }
 }

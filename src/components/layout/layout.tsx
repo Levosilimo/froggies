@@ -8,7 +8,6 @@ function Layout(): JSX.Element {
   return(
     <div className="page">
       <Header />
-      <AudioPlayer/>
       <SettingsWindow/>
       <Outlet />
       <Footer />

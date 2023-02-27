@@ -1,11 +1,13 @@
 import i18n from 'i18next';
 import {initReactI18next} from 'react-i18next';
+import {getLanguage} from "./services/local-storage";
 
 i18n
   .use(initReactI18next)
   .init({
     debug: false,
     fallbackLng: 'en_us',
+    lng:getLanguage(),
     interpolation: {
       escapeValue: false,
     },

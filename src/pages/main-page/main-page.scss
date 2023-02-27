@@ -24,7 +24,9 @@
 
   h2 {
     margin: 0 0 20px 0;
-    color: $green;
+    @include themed() {
+      color: t('dark');
+    }
     text-transform: uppercase;
   }
 }
@@ -43,7 +45,9 @@
     align-items: center;
     justify-content: center;
     align-self: center;
-    background-color: $green;
+    @include themed() {
+      background-color: t('dark');
+    }
     color: $white;
     font-size: 26px;
     text-decoration: none;
@@ -52,7 +56,9 @@
   }
 
   a:hover {
-    color: $green;
-    background-color: $green-light;
+    @include themed() {
+      color: t('dark');
+      background-color: t('light');
+    }
   }
 }

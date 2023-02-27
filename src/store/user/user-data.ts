@@ -3,7 +3,15 @@ import { AuthorizationStatus, NameSpace } from "../../constants";
 import {checkAuthAction, getUserDataAction, loginAction, registrationAction, setUserDataAction} from "../api-action";
 import {language, theme} from "../../types/user-data";
 import i18n from "../../i18n";
-import {dropToken, getLevel, getToken, saveLevel} from "../../services/local-storage";
+import {
+  dropToken,
+  getLanguage,
+  getLevel, getTheme,
+  getToken,
+  getVolume,
+  saveLanguage,
+  saveLevel, saveTheme, saveVolume
+} from "../../services/local-storage";
 import {parseJwt} from "../../utils";
 
 type InitialState = {
@@ -18,6 +26,7 @@ type InitialState = {
   language?: language;
   volume: number;
   theme: theme;
+  isPlayerMuted: boolean;
 }
 
 const initialState: InitialState = {
@@ -25,9 +34,11 @@ const initialState: InitialState = {
   isAdmin: false,
   isDataLoading: false,
   isLoadingError: false,
-  volume: 50,
-  theme: "green",
+  volume: getVolume(),
+  theme: getTheme(),
   currentLevel: getLevel(),
+  language: getLanguage(),
+  isPlayerMuted: false,
 };
 
 export const userProcess = createSlice({
@@ -41,13 +52,18 @@ export const userProcess = createSlice({
     },
     setVolume: (state, action: PayloadAction<number>) => {
       state.volume = action.payload;
+      saveVolume(action.payload);
     },
     setTheme: (state, action: PayloadAction<theme>) => {
       state.theme = action.payload;
+      saveTheme(action.payload);
     },
     setLevelAction: (state, action: PayloadAction<number>) => {
       saveLevel(action.payload);
       state.currentLevel = action.payload;
+    },
+    setPlayerMuted: (state, action: PayloadAction<boolean>) => {
+      state.isPlayerMuted = action.payload;
     }
   },
   extraReducers(builder) {
@@ -104,23 +120,29 @@ export const userProcess = createSlice({
         state.records = action.payload.records;
         state.language = action.payload.language;
         i18n.changeLanguage(action.payload.language);
+        saveLanguage(action.payload.language);
       })
       .addCase(setUserDataAction.pending, (state, action) => {
         if(!action.meta.arg.username || action.meta.arg.username===state.username){
           state.records = action.meta.arg.records;
-          state.language = action.meta.arg.language;
-          i18n.changeLanguage(action.meta.arg.language);
+          if(action.meta.arg.language) {
+            i18n.changeLanguage(action.meta.arg.language);
+            saveLanguage(action.meta.arg.language);
+          }
         }
       })
       .addCase(setUserDataAction.fulfilled, (state, action) => {
         if(!action.meta.arg.username || action.meta.arg.username===state.username) {
           state.records = action.payload.records;
-          state.language = action.payload.language;
-          i18n.changeLanguage(action.payload.language);
+          if(action.payload.language) {
+            state.language = action.payload.language;
+            i18n.changeLanguage(action.payload.language);
+            saveLanguage(action.payload.language);
+          }
         }
       })
   }
 })
 
-export const { logOutAction, setVolume, setTheme, setLevelAction } = userProcess.actions;
+export const { logOutAction, setVolume, setTheme, setLevelAction, setPlayerMuted } = userProcess.actions;
 

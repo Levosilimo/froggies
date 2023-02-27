@@ -2,12 +2,15 @@
 
 .header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  border-bottom: 4px solid $green-light;
+  @include themed() {
+    background-color: t('bg');
+    border-bottom: 4px solid t('light');
+  }
   border-radius: 0 0 15px 15px;
-  background-color: $green-bg;
   color: $white;
 }
 
@@ -22,6 +25,7 @@
   padding: 0;
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 

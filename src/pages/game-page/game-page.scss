@@ -17,7 +17,9 @@
 
 .game-desc {
   padding: 20px;
-  background-color: $green-bg;
+  @include themed() {
+    background-color: t('bg');
+  }
 }
 
 .title {
@@ -58,7 +60,9 @@
   box-sizing: border-box;
   box-shadow: 0 1px 8px rgba($black, 50%);
   button {
-    background-color: $green-bg;
+    @include themed() {
+      background-color: t('bg');
+    }
     color: $white;
     border-radius: 50%;
     width: 2rem;
@@ -66,7 +70,9 @@
     cursor: pointer;
     padding: 0;
     &.passed {
-      background-color: $green-light;
+      @include themed() {
+        background-color: t('light');
+      }
       color: $black;
     }
     &.current {
@@ -105,6 +111,9 @@
     display: inline-flex;
     width: 100%;
     padding-left: 0.9rem;
+    @media (max-width: 1160px) {
+      padding-left: unset;
+    }
     textarea {
       padding: 0;
       resize: none;
@@ -152,7 +161,9 @@ pre {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $green-light;
+  @include themed() {
+    background-color: t('light');
+  }
   color: $white;
   font-size: 18px;
   text-decoration: none;
@@ -163,7 +174,9 @@ pre {
   transition: 1s;
   border: none;
   &:disabled{
-    background-color: $green-light;
+    @include themed() {
+      background-color: t('light');
+    }
     box-shadow: inset 0 1px 10px -3px $black;
     cursor: auto;
     transition: 1s;
@@ -196,13 +209,17 @@ pre {
   }
   code {
     display: inline-block;
-    background: $green-bg;
+    @include themed() {
+      background-color: t('bg');
+    }
     border-radius: 0.3rem;
     padding: 0.05rem;
     margin: 0.1rem;
     cursor: pointer;
     &.off {
-      background: $green;
+      @include themed() {
+        background-color: t('dark');
+      }
       cursor: auto;
     }
   }
@@ -223,6 +240,7 @@ pre {
   border-radius: 0.2rem;
   padding: 0.1rem;
   background-color: $gray-light;
+  white-space: pre-line;
 }
 
 .rules-list > li > code {
@@ -230,7 +248,9 @@ pre {
   display: inline-block;
   margin: .1rem;
   border-radius: .3rem;
-  background-color: $green-light;
+  @include themed() {
+    background-color: t('light');
+  }
 }
 
 .view {
