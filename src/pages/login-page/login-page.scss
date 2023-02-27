@@ -138,3 +138,35 @@
     }
   }
 }
+
+@media (max-width: 795px) {
+  .login {
+    padding: 0;
+  }
+  .login-form {
+    position: relative;
+    box-sizing: border-box;
+    padding: 20px 0;
+    width: 80%;
+
+    &:after {
+      content: unset;
+    }
+  }
+  .form {
+    width: unset;
+  }
+}
+
+@media (max-width: 650px) {
+  .login-form {
+    width: 100%;
+  }
+}
+
+
+@media (max-height: 750px) {
+  .login-form {
+    height: unset;
+  }
+}

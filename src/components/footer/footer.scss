@@ -26,6 +26,7 @@
   padding: 10px 20px;
   margin-top: auto;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   @include themed() {
@@ -41,7 +42,7 @@
 .footer-block {
   width: 100%;
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   justify-content: space-between;
   text-align: center;
 }

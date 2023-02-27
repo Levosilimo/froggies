@@ -111,6 +111,9 @@
     display: inline-flex;
     width: 100%;
     padding-left: 0.9rem;
+    @media (max-width: 1160px) {
+      padding-left: unset;
+    }
     textarea {
       padding: 0;
       resize: none;
@@ -237,6 +240,7 @@ pre {
   border-radius: 0.2rem;
   padding: 0.1rem;
   background-color: $gray-light;
+  white-space: pre-line;
 }
 
 .rules-list > li > code {

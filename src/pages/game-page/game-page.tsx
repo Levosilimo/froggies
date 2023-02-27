@@ -97,12 +97,12 @@ function GamePage(): JSX.Element {
         if (target.getAttribute("data-tooltip") === key){
           const divElement = tooltipsRef.current.find((htmlElement) => htmlElement && htmlElement.hasAttribute("data-tooltip") && htmlElement.getAttribute("data-tooltip") === key);
           if(divElement) {
-            if (tooltipContainerRef.current.style.top === target.getBoundingClientRect().bottom+10+"px"
+            if (tooltipContainerRef.current.style.top === target.getBoundingClientRect().bottom+10+window.scrollY+"px"
             && tooltipContainerRef.current.getAttribute("data-tooltip") === key) {
               closeTooltip();
               return;
             }
-            tooltipContainerRef.current.style.top = target.getBoundingClientRect().bottom+10+"px";
+            tooltipContainerRef.current.style.top = target.getBoundingClientRect().bottom+10+window.scrollY+"px";
             tooltipContainerRef.current.style.left = target.getBoundingClientRect().left-20+"px";
             tooltipContainerRef.current.hidden = false;
             tooltipContainerRef.current.setAttribute("data-tooltip", key);
@@ -173,10 +173,14 @@ function GamePage(): JSX.Element {
       .catch((err) => dispatch(redirectToRoute(AppRoute.Login)));
   }, [levelNumber, language]);
 
-  useEffect(() => {
-    if (questionBlock.current){
+  const updateLinesCount = () => {
+    if(questionBlock.current) {
       setLinesCount(countLines(questionBlock.current));
     }
+  }
+
+  useEffect(() => {
+    updateLinesCount();
     const close = (e: KeyboardEvent) => {
       if(e.keyCode === 27){
         closeModals();
@@ -184,6 +188,7 @@ function GamePage(): JSX.Element {
     };
     window.addEventListener('keydown', close);
     window.addEventListener('click', closeModals);
+    window.addEventListener('resize',updateLinesCount);
   });
 
   if(!level) return (<LoadingScreen />)
