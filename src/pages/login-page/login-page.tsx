@@ -10,7 +10,7 @@ function LoginPage () {
   const onRegisterButtonClick = () => setIsLoginForm(!isLoginForm);
 
   return (
-    <div className="page-login">
+    <div className="page">
       <section className="login">
         <div className="login-form">
           <h1 className="login-title">{isLoginForm ? t("login") : t("createAccount")}</h1>

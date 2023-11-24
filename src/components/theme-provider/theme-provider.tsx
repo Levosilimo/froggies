@@ -16,7 +16,7 @@ function ThemeProvider(props: ThemeProviderProps): JSX.Element {
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
-      <div className={`theme--${theme}`}>{props.children}</div>
+      <div className={`theme--${theme} theme-wrapper`}>{props.children}</div>
     </ThemeContext.Provider>
   );
 }

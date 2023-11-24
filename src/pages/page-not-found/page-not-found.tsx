@@ -3,7 +3,7 @@ import './page-not-found.scss';
 
 function PageNotFound(): JSX.Element {
   return (
-    <div className="page-main">
+    <div className="page">
       <main className="page-not-found">
         <h2>404</h2>
         <p>Page not found</p>

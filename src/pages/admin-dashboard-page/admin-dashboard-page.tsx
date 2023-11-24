@@ -76,8 +76,8 @@ function AdminDashboardPage() {
   }
 
   return (
-    <div className="page">
-      <section className="">
+    <div className="page admin-page">
+      <section className="admin-wrapper">
         <h1>{t("usersPage")}</h1>
         <hr/>
         <InfiniteScroll
@@ -89,6 +89,7 @@ function AdminDashboardPage() {
         >
           {users.map((user, index) => (
             <div className='user-record-wrapper' key={user.username}>
+              {index !== 0 ? <div className='admin-page-divider' />: ''}
               <div className='user-record-info-wrapper'>
                 <div className='user-record-user-wrapper' key={user.username +'-user'+index}>
                   <img src={`https://rsclone-backend.adaptable.app/avatar/${user.username}`}
@@ -108,7 +109,7 @@ function AdminDashboardPage() {
                     Object.keys(user.records).map((level, recIndex) => {
                     return (
                       <div className={'user-record-checkboxes-wrapper'} key={user.username+level+'-checkboxes-wrapper'+recIndex}>
-                        <span>{level}</span>
+                        <span>{level.charAt(0).toUpperCase().concat(level.toLowerCase().substring(1))}</span>
                         {
                           Array(levels[level]).fill(0).map((x, i) => (
                             <label key={user.username+level+'-checkbox-label'+i+recIndex}><input type="checkbox" value={i+1} data-level={level} defaultChecked={user.records[level].includes(i+1)} className="level-checkbox"/></label>
@@ -118,8 +119,8 @@ function AdminDashboardPage() {
                     )})
                   }
                   <div className={'user-record-form-buttons'}>
-                    <input type="submit" value={t("userUpdate").toString()}/>
-                    <button type="button" onClick={() => {
+                    <input type="submit" className={"update-button"} value={t("userUpdate").toString()}/>
+                    <button type="button" className={"change-avatar-button"} onClick={() => {
                       setUpdateAvatarUsername(user.username);
                       setUpdateAvatarImageRef(imagesRef.current[index])
                       setShownUpdateAvatar(true);

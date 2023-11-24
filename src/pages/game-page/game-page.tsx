@@ -231,7 +231,7 @@ function GamePage(): JSX.Element {
   }
 
   return (
-    <div className="page-game">
+    <div className="page game-page">
       <main className="game">
         <section className="game-desc">
           <div className="title">

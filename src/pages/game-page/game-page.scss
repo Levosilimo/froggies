@@ -1,12 +1,15 @@
 @import "./src/scss/all";
 
+.game-page {
+  display: block;
+}
+
 .game {
   display: flex;
   justify-content: space-between;
   max-width: 100%;
-  min-height: 90vh;
   margin: 0 15px;
-
+  min-height: 90vh;
   section {
     width: 50vw;
     padding: 1rem;

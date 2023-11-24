@@ -1,70 +1,52 @@
-# Getting Started with Create React App
+# Froggies
+Welcome to Froggies, a fullstack web app game where users can enter their own CSS code to change the appearance of the website, moving frogs to their lily pads across different levels. This game is a recreation of [Flexbox Froggy](https://github.com/thomaspark/flexboxfroggy/) by [Thomas Park](https://github.com/thomaspark) using React, Express and MongoDB.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+Froggies is a game that allows users to interact with the web design by manipulating CSS, directing frogs to their respective lily pads. The backend repo is [here](https://github.com/Levosilimo/rsclone-backend), while the frontend is live on [Netlify](https://froggies.netlify.app/). Additionally, the backend deployment is live [here](https://rsclone-backend.adaptable.app/).
 
-In the project directory, you can run:
+## Frontend
 
-### `npm start`
+### Frontend Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Multilingual Support**: The game offers the ability to switch between four languages.
+- **Modal Avatar Upload**: Implemented a modal dialog for drag-and-drop avatar uploads.
+- **Routing Without Page Reloads**: Utilized routing without reloading the application pages.
+- **User Customization Options**: Users can customize the application with three color themes, volume settings, and four languages.
+- **Responsive Design**: The app is responsive and works seamlessly across various devices (phones, tablets, PCs).
+- **User Settings**: Includes forms for changing username, authentication, and registration.
+- **Syntax Highlighting**: Implemented syntax highlighting within the game.
+- **Styles Encapsulation**: Utilized Shadow DOM for encapsulating user-entered styles.
+- **Loader**: Included a loader for smooth transitions.
+- **Redux for User Settings**: Utilized Redux for storing and managing user settings.
+- **Statistics Display**: Includes view of user progress, and top player rankings within user profile.
+- **Tooltips Implementation**: Tooltips have been implemented on the game page and user profiles.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+### Technical Stack Highlights
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Audio API Usage**: Utilized Audio API for sounds.
+- **Webpack Integration**: Webpack has been used for bundling.
+- **Local Storage Operations**: Incorporated local storage for saving and loading data.
+- **TypeScript Implementation**: The application/game is fully written in TypeScript (Frontend/Backend).
 
-### `npm run build`
+## Backend
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The backend is accessible [here](https://github.com/Levosilimo/rsclone-backend), and the deployment is [live](https://rsclone-backend.adaptable.app/).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **JavaScript Stack Usage**: The backend utilizes a JavaScript stack: TS/Express/Node.js/MongoDB.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Backend Features
 
-### `npm run eject`
+- **REST API Usage**
+- **Database Connectivity**: Utilizes database connections effectively.
+- **ORM Implementation**: Uses ORM (mongoose).
+- **Authentication & Authorization**
+- **Username & Avatar Changes**
+- **Data Visualization**: Displays statistics derived from backend data.
+- **Node.js & Express Implementation**
+- **Image Handling**: Handles avatar uploads.
+- **Error Handling & Logging**: Provides clear error messages and readable logs.
+- **Game Level Retrieval from Backend**
+- **Username & Email Availability Checks**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For feature-specific information, refer to the [backend repository](https://github.com/Levosilimo/rsclone-backend).

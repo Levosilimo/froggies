@@ -7,7 +7,7 @@ import "./main-page.scss";
 function MainPage () {
   const { t } = useTranslation();
   return (
-    <div className="page-main">
+    <div className="page">
       <main className="main">
         <section className="main-content">
           <div className="game-description">

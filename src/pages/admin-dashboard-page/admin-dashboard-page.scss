@@ -1,5 +1,21 @@
 @import "./src/scss/all";
 
+.admin-page {
+  align-items: center;
+  overflow: unset;
+}
+
+.admin-wrapper {
+  text-align: center;
+}
+
+.admin-page-divider {
+  width: 100%;
+  height: 4px;
+  border-top: 1px black;
+  border-top-style: solid;
+}
+
 .user-game-record-wrapper {
   display: flex;
 }
@@ -39,6 +55,7 @@
   flex-direction: column;
   width: 100%;
   h4{
+    text-align: initial;
     font-family: Arial, serif;
     margin: .1rem;
   }
@@ -59,10 +76,38 @@
 .user-record-form-buttons {
   display: flex;
   justify-content: space-between;
+  button, .update-button {
+    @include themed() {
+      background-color: t('light');
+    }
+    border-radius: 3px;
+    border-width: 0;
+    box-shadow: rgba(255, 255, 255, .7) 0 1px 0 0 inset;
+    box-sizing: border-box;
+    color: #39739d;
+    cursor: pointer;
+    display: inline-block;
+    font-family: -apple-system,system-ui,"Segoe UI","Liberation Sans",sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.15385;
+    margin: 0;
+    outline: none;
+    padding: 8px .8em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    white-space: nowrap;
+    &:hover {
+      box-shadow: 0 0 1px;
+    }
+    &:active {
+      box-shadow: 0 0 2px;
+    }
+  }
 }
 
-.user-record-wrapper {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}

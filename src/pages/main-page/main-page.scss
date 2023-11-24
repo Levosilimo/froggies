@@ -1,13 +1,11 @@
 @import "./src/scss/all";
 
-.page-main {
-}
-
 .main {
-  min-height: calc(100vh - 153px);
   background-image: url("../../../public/images/frog-bg-3.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  flex: 1;
+  height: 100%;
 }
 
 .main-content {

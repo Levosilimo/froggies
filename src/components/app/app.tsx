@@ -1,4 +1,4 @@
-import {Route, Routes} from "react-router-dom";
+import {Route, Routes, useLocation} from "react-router-dom";
 import MainPage from "../../pages/main-page/main-page";
 import LoginPage from "../../pages/login-page/login-page";
 import {AppRoute} from "../../constants";
@@ -21,7 +21,7 @@ import ThemeProvider from "../theme-provider/theme-provider";
 export default function App(): JSX.Element {
   const isDataLoading = useAppSelector(getIsDataLoadingValue);
   const [isVisible, setIsVisible] = useState(false);
-
+  useLocation()
   if (isDataLoading) {
     return (
       <LoadingScreen/>
